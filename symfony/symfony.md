@@ -15,6 +15,25 @@
 * `php bin/console debug:autowiring` afficher tous les services disponibles
 * `php bin/console debug:event-dispatcher nomEvenement` avec `nomEvenement` en option (exemple : `kernel.controller`), afficher tous les listeners avec leur priorité
 
+### Services
+
+#### Injecter des paramètres manuellement via la config et le fichier .env
+* https://symfony.com/doc/current/service_container.html#manually-wiring-arguments
+* https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables 
+
+Exemple sur le projet 7 de la formation OpenClassrooms :
+
+*Fichier `services.yaml`*
+```
+App\EventListener\HttpCacheListener:
+        arguments:
+            $cacheExpiration: '%env(CACHE_EXPIRATION)%'
+```
+*Fichier `.env`*
+```
+CACHE_EXPIRATION='+10 minutes'
+```
+
 ### Récupérer un utilisateur
 
 * Dans un controller héritant de AbstractController
@@ -76,35 +95,6 @@ ini_set('memory_limit', -1);
 if ($debug) {
     Debug::enable(E_ERROR); // On change la sensibilité des erreurs, warnings...
 }
-```
-
-### Tests fonctionnels avec phpunit
-
-#### Installation
-
-* Exécuter `composer require --dev symfony/phpunit-bridge`
-
-#### Utilisation
-
-* Pour lancer tous les tests, exécuter `./bin/phpunit` dans le dossier du projet
-* Pour lancer que certains tests, exécuter `./bin/phpunit --filter nomDesMethodesTestsAExecuter` (exécutera uniquement les méthodes de test dont le nom est `nomDesMethodesTestsAExecuter`)
-* On peut visualiser la page demandée par un test en faisant un `echo $client->getResponse()->getContent();` dans la méthode de test et en redirigeant la sortie vers un fichier `.html` en exécutant `./bin/phpunit --filter nomMethodeTest > nomFichierDestination.html`
-* On peut récupérer un rapport du coverage avec `./bin/phpunit --coverage-html nomDossierDestination`
-
-#### Ajouter des headers perso dans la requête
-
-Préfixer l'intitulé du header par `HTTP_`
-
-```
-    $this->client->request(
-        'GET',
-        "/products/{$this->testProduct->getId()}",
-        [],
-        [],
-        [
-            "HTTP_X-AUTH-TOKEN" => "test_token"
-        ]
-    );
 ```
 
 ## Utiliser le serveur de développement
