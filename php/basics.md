@@ -20,7 +20,9 @@
 * `reset ( array &$array ) : mixed` retourne le premier élément d'un tableau et place le pointeur interne dessus
 * `current ( array $array ) : mixed` retourne l'élément courant d'un tableau, soit le premier élément par défaut [doc](https://www.php.net/manual/fr/function.current.php)
 * `array_unshift ( array &$array [, mixed $élementsAAjouter... ] ) : int` ajoute un ou plusieurs éléments au début d'un tableau. Toutes les clés numériques seront modifiées afin de commencer à partir de zéro, tandis que les clés littérales ne seront pas touchées.
-* ` array_flip ( array $array ) : array` retourne un tableau dont les clés sont les valeurs du précédent tableau array, et les valeurs sont les clés
+* `array_flip ( array $array ) : array` retourne un tableau dont les clés sont les valeurs du précédent tableau array, et les valeurs sont les clés
+* `array_combine ( array $keys , array $values ) : array` crée un tableau, dont les clés sont les valeurs de keys, et les valeurs sont les valeurs de values.
+* Opérateur `+` ajoute le tableau de droite au tableau de gauche. Si des clés sont communes, seules les valeurs du tableau de gauche seront conservées
 
 ## String
 
