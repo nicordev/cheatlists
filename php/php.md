@@ -1,4 +1,4 @@
-# Basics
+# PHP
 
 ## Variable types
 
@@ -157,6 +157,8 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 
 * `ord('a')` retourne le code du caractère
 * `chr(97)` retourne le caractère correspondant au code
+* `strpos(string $haystack, $needle[, int $offset = 0]): int` cherche la position numérique de la première occurrence de needle dans la chaîne de caractères haystack.
+* `strrpos(string $haystack, $needle[, int $offset = 0]): int` cherche la position numérique de la dernière occurrence de needle dans la chaîne de caractères haystack.
 
 ## xDebug
 

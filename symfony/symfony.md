@@ -8,7 +8,9 @@
 * Erreur en prod et pas en dev
     * Vider le cache
     * Changer `$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);` en `$kernel = new Kernel($_SERVER['APP_ENV'], true);` dans `index.php` pour identifier l'erreur
-* On peut voir le moment où des infos sont stockés dans la session en mettant un point d'arrêt dans `Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag::set()`
+* On peut voir le moment où :
+    * des infos sont stockés dans la session dans `Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag::set()`
+    * les classes sont chargées dans `Symfony\Component\ClassLoader\ClassLoader::loadClass()`
 
 ## CLI
 

@@ -59,7 +59,7 @@ Une requête `POST` sur `/login_check` contenant les identifiants est alors envo
 
 Lorsque l'évènement `kernel.request` est lancé, le listener `Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener` du firewall `Symfony\Component\Security\Http\Firewall` va procéder à l'authentification proprement dite. Il va notamment :
 1. Vérifier le token CSRF du formulaire s'il existe
-2. Appeler son `AuthenticationProviderManager` pour :
+2. Appeler son `Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager` pour :
     1. Enregistrer le nom de l'utilisateur inscrit dans le formulaire dans la session (`$_SESSION`) avec la clé `_security.last_username`
     1. Récupérer l'utilisateur dans la base de données correspondant au nom d'utilisateur envoyé via le formulaire
     1. Vérifier que le compte n'est pas bloqué, désactivé ou expiré
