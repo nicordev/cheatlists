@@ -1,6 +1,6 @@
-## Symfony
+# Symfony
 
-### Problèmes
+## Problèmes
 
 * Faire un `dd($maVariable)` pour débugger (dump and die)
 * 404 alors que les routes sont bien annotées sur un serveur Apache
@@ -8,16 +8,20 @@
 * Erreur en prod et pas en dev
     * Vider le cache
     * Changer `$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);` en `$kernel = new Kernel($_SERVER['APP_ENV'], true);` dans `index.php` pour identifier l'erreur
+* On peut voir le moment où des infos sont stockés dans la session en mettant un point d'arrêt dans `Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag::set()`
 
-### CLI
+## CLI
 
 * `php bin/console debug:router` afficher toutes les routes
-* `php bin/console debug:autowiring` afficher tous les services disponibles
+* `php bin/console debug:container --show-private` afficher tous les services disponibles dans le conteneur de services
+* `php bin/console debug:autowiring` afficher tous les services disponibles avec autowiring
 * `php bin/console debug:event-dispatcher nomEvenement` avec `nomEvenement` en option (exemple : `kernel.controller`), afficher tous les listeners avec leur priorité
+* Créer un système de connexion
+    * `php bin/console make:auth`
+    * `php bin/console make:user`
+    * `php bin/console make:voter`
 
-### Services
-
-#### Injecter des paramètres manuellement via la config et le fichier .env
+## Injecter des paramètres manuellement via la config et le fichier .env
 * https://symfony.com/doc/current/service_container.html#manually-wiring-arguments
 * https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables 
 
@@ -34,7 +38,7 @@ App\EventListener\HttpCacheListener:
 CACHE_EXPIRATION='+10 minutes'
 ```
 
-### Récupérer un utilisateur
+## Récupérer un utilisateur
 
 * Dans un controller héritant de AbstractController
     * `$this->getUser()`
@@ -43,47 +47,40 @@ CACHE_EXPIRATION='+10 minutes'
 * Via un objet implémentant TokenInterface
     * `$token->getUser()`
 
-### Créer un système de connexion
-
-Merci la CLI !
-`php bin/console make:auth`
-`php bin/console make:user`
-`php bin/console make:voter`
-
-### Configurer son serveur
+## Configurer son serveur
 
 [Documentation](https://symfony.com/doc/current/setup/web_server_configuration.html)
 
 Le dossier `public/` est la racine. Le virtual host doit donc pointer vers ce dossier.
 
-#### Apache
+### Apache
 
 Installer *symfony/apache-pack* en exécutant `composer require symfony/apache-pack`
 >Installe au passage un `.htaccess` dans le dossier `public\`
 
-### Utiliser Webpack Encore
+## Utiliser Webpack Encore
 
 [Documentation](https://symfony.com/doc/current/frontend.html)
 
 Prérequis :
 * Installer [yarn](https://yarnpkg.com/fr/)
 
-#### Installation
+### Installation
 
 Exécuter `composer require encore` puis `yarn install`
 
-#### Utilisation
+### Utilisation
 
 Exécuter `yarn encore dev` pour compiler les *assets* (fichiers situés dans le dossier `assets/` situé à la racine du projet).
 
 Exécuter `yarn encore dev --watch` pour recompiler automatiquement les fichiers si on fait des modifications.
 
-#### Configuration
+### Configuration
 
 Voir dans le fichier `webpack.config.js` situé à la racine du projet.
 >Si vous avez exécuté `yarn encore dev --watch` alors il faudra l'arrêter et le relancer après vos modifications.
 
-### Modifier PHP
+## Modifier PHP
 
 * Dans `bin/console` : 
 ```
@@ -124,3 +121,14 @@ if ($debug) {
             * les ficheirs twig dans `app/Resources/views/`
         * `src/`    contient le dossier `AppBundle` contenant les controleurs, entités, repository...
         * `web/`    contient `index.php`, `css/`, `js/`
+
+## Evénements lancés par le kernel
+
+1. kernel.request
+1. kernel.controller
+1. kernel.controller_arguments
+1. kernel.view
+1. kernel.response
+1. kernel.finish_request
+1. kernel.terminate
+1. kernel.exception
