@@ -155,11 +155,18 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 
 ## String
 
-* `ord('a')` retourne le code du caractère
-* `chr(97)` retourne le caractère correspondant au code
-* `strpos(string $haystack, $needle[, int $offset = 0]): int` cherche la position numérique de la première occurrence de needle dans la chaîne de caractères haystack.
-* `strrpos(string $haystack, $needle[, int $offset = 0]): int` cherche la position numérique de la dernière occurrence de needle dans la chaîne de caractères haystack.
+* `ord('a')` retourne le code du caractère.
+* `chr(97)` retourne le caractère correspondant au code.
+* `strpos(string $haystack, $needle [, int $offset = 0]): int` cherche la position numérique de la première occurrence de needle dans la chaîne de caractères haystack.
+* `strrpos(string $haystack, $needle [, int $offset = 0]): int` cherche la position numérique de la dernière occurrence de needle dans la chaîne de caractères haystack.
+* `substr(string $string, int $start [, int $length ]): string` retourne le segment de string défini par start et length.
+* `substr_replace(mixed $string, mixed $replacement, mixed $start [, mixed $length ]): mixed` remplace un segment de la chaîne string par la chaîne replacement. Le segment est délimité par start et éventuellement par length.
+* `substr_count(string $haystack, string $needle [, int $offset = 0 [, int $length ]]): int` retourne le nombre d'occurrences de needle dans la chaîne haystack. Notez que needle est sensible à la casse.
 
 ## xDebug
 
 * `sudo apt-get install php-xdebug`
+
+## Variables super globales
+
+* `filter_input ( int $type , string $variable_name [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed` récupère une variable externe et la filtre avec `$type` parmi `INPUT_GET`, `INPUT_POST`, `INPUT_COOKIE`, `INPUT_SERVER` ou `INPUT_ENV`.
