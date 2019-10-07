@@ -2,40 +2,29 @@
 
 ## Installation pour Symfony
 
-* Exécuter `composer require --dev symfony/phpunit-bridge`
+* `composer require --dev symfony/phpunit-bridge` installe juste phpunit
+* `composer require --dev symfony/browser-kit symfony/css-selector` installe le nécessaire pour faire des tests fonctionnels
+* `composer require --dev symfony/test-pack` installe tout le bazar d'un coup
 * Exécuter `./vendor/bin/simple-phpunit` pour installer phpunit
 
-## Exécution
+## Utilisation
 
 * Pour Symfony 4
     * Exécuter `php bin/phpunit`
 * Pour Symfony 3
     * Exécuter `./vendor/bin/simple-phpunit`
+* `php bin/phpunit --coverage-html nomDossierDestination` génère un rapport du coverage
+* `php bin/phpunit --filter=testNomMethodeATester` exécute certains tests seulement
+* `php bin/phpunit chemin/vers/fichierATester/nomfichierOuDossier` exécute les tests d'un fichier ou d'un dossier
 
-### Exécuter des tests en particulier
+### Utiliser les assertions de phpunit ailleurs
 
-* `php bin/phpunit --filter=testNomMethodeATester`
+* Utiliser les méthodes statiques de la classe `PHPUnit\Framework\Assert`
 
-### Exécuter les tests d'un fichier ou d'un dossier de tests particulier
-
-* Ajouter le chemin du fichier ou du dossier à la commande
-    * Exemple : `php bin/phpunit tests/Controller/ProductControllerTest`
-
-## Utiliser les assertions de phpunit ailleurs
-
-* Utiliser les méthodes statiques de `PHPUnit\Framework\Assert`
-
-## Code coverage
-
-* `./bin/phpunit --coverage-html nomDossierDestination` génère un rapport du coverage
-
-## Tests fonctionnels avec phpunit
+### Tests fonctionnels avec phpunit
 
 * On peut visualiser la page demandée par un test en faisant un `echo $client->getResponse()->getContent();` dans la méthode de test et en redirigeant la sortie vers un fichier `.html` en exécutant `./bin/phpunit --filter nomMethodeTest > nomFichierDestination.html`
-
-### Ajouter des headers perso dans la requête
-
-Préfixer l'intitulé du header par `HTTP_`
+* On peut ajouter des headers perso dans la requête en préfixant l'intitulé du header par `HTTP_`
 
 ```
     $this->client->request(
