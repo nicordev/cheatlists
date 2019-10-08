@@ -1,4 +1,4 @@
-# Authentification
+# Documentation technique
 
 ## Fonctionnement général d'une application Symfony
 
@@ -10,13 +10,20 @@ Toutes les requêtes sont redirigées vers le front controller, en l'occurence l
 5. Envoyer la réponse via `$response->send()` (contenant les instructions php `header` pour l'envoi des headers et `echo` pour le contenu de la réponse)
 6. Exécuter les dernières opérations du `$kernel` avant sa fermeture
 
-## Connexion
+## Zoom sur l'authentification
 
-Un utilisateur peut être soit anonyme, soit authentifié.
+Un utilisateur du site web peut être soit anonyme, soit authentifié.
 
-Une classe implémentant `Symfony\Component\Security\Core\User\UserInterface` doit
+### Prérequis
 
-Le fichier `security.yaml` contient les paramètres liés à l'authentification :
+Une entité dont la classe implémente l'interface `Symfony\Component\Security\Core\User\UserInterface` doit être présente.
+
+### Configuration
+
+Le fichier `security.yaml` contient les paramètres liés à l'authentification.
+
+Voici celui du projet décrypté :
+
 ```yaml
 security:
     encoders:
@@ -53,6 +60,8 @@ security:
         ROLE_ADMIN: ROLE_USER # Un utilisateur ayant le rôle ROLE_ADMIN possèdera automatiquement le ROLE_USER
 ```
 
+### Connexion
+
 Pour être authentifié, un utilisateur anonyme doit se rendre sur `/login`, entrer ses identifiants (nom d'utilisateur et mot de passe) et soumettre le formulaire.
 
 Une requête `POST` sur `/login_check` contenant les identifiants est alors envoyée au serveur pour être traitée par le front controller.
@@ -72,11 +81,80 @@ Les informations de l'utilisateur authentifié sont ensuite placées dans un tok
 
 Une nouvelle requête est alors traitée pour accéder à la page d'accueil. Les données de l'utilisateur connecté sont alors extraites du token stocké dans la session.
 
-## Connecté
+### Connecté
 
 Une fois l'utilisateur connecté, il peut accéder aux routes accessibles par son rôle grâce au token stocké dans la session. Une fois la session détruite, il devra s'authentifier de nouveau pour accéder au contenu protégé.
 
-## Déconnexion
+Une première vérification est alors effectuée au niveau de l'URI demandée, définie dans la partie `access_control` du fichier `security.yaml` :
+
+```yaml
+security:
+    # ...
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/users, roles: ROLE_ADMIN }
+        - { path: ^/, roles: ROLE_USER }
+```
+
+Dans cette partie, on peut voir que :
+* les utilisateurs non authentifiés ont uniquement accès aux routes dont l'URI commence par `/login`,
+* seuls les utilisateurs authentifiés et possédant le rôle `ROLE_ADMIN` peuvent accéder aux routes dont l'URI commence par `/users`,
+* les utilisateurs standards, c'est à dire possédant le rôle `ROLE_USER`, peuvent accéder à toutes les routes ormis celles réservées au rôle `ROLE_ADMIN` décrites à la ligne précédente.
+
+Afin que les utilisateurs ayant le rôle `ROLE_ADMIN` puissent accéder aux routes réservées au rôle `ROLE_USER`, ce dernier a été inclut dans le rôle `ROLE_ADMIN` dans la configuration de la hiérarchie des rôles, située dans la partie `role_hierarchy` du fichier `security.yaml` :
+
+```yaml
+security:
+    # ...
+    role_hierarchy:
+        ROLE_USER: ~
+        ROLE_ADMIN: ROLE_USER
+```
+
+Lorsque le contrôle d'accès par URI n'est pas suffisant, par exemple lorqu'un utilisateur standard essaie de modifier ou de supprimer une tâche d'un autre utilisateur, nous utilisons le système de voter de Symfony en appelant la méthode `denyAccessUnlessGranted` du trait `Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait`.
+
+Cette méthode permet d'appeler le ou les voters correspondant à la vérification à effectuer pour déterminer si il faut refuser l'accès à l'utilisateur en retournant une réponse 403.
+
+Voici un exemple avec la méthode `deleteTaskAction` du contrôleur `TaskController` :
+
+```php
+    /**
+     * @Route("/tasks/{id}/delete", name="task_delete") // Cette route est accessible à tous les utilisateurs authentifiés
+     */
+    public function deleteTaskAction(Task $task)
+    {
+        $this->denyAccessUnlessGranted(TaskVoter::DELETE, $task); // Appel de la méthode denyAccessUnlessGranted() en demandant tous les voters supportant l'attribut TaskVoter::DELETE et utilisant une entité Task en guise de sujet
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($task);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'La tâche a bien été supprimée.');
+
+        return $this->redirectToRoute('task_list');
+    }
+```
+
+1. La méthode `denyAccessUnlessGranted()` va demander au `Symfony\Component\Security\Core\Authorization\AuthorizationChecker` de vérifier si l'utilisateur est autorisé en appelant sa méthode `isGranted()`
+2. `AuthorizationChecker::isGranted()` va alors demander à son `Symfony\Component\Security\Core\Authorization\AccessDecisionManager` d'interroger les voters disponibles en appelant sa méthode `decide()`
+3. `AccessDecisionManager::decide()` va enfin appeler la méthode `vote()` des différents voters (dont notre voter `App\Security\TaskVoter`) pour :
+    1. savoir si le voter est compétent en appelant la méthode `support()` du voter
+    2. interroger le voter compétent en appelant la méthode `voteOnAttribute()`
+
+Si au moins un voter compétent a autorisé l'accès (en retournant `true` dans sa méthode `voteOnAttribute()`), alors l'utilisateur est autorisé et le reste de la méthode du contrôleur s'exécute. A l'inverse, si aucun voter n'autorise l'accès, alors une réponse 403 est retournée à l'utilisateur.
+
+Ce comportement est définie par la stratégie de vote utilisée, dans notre cas il s'agit de la stratégie par défaut `affirmative`.
+
+> Pour information, la stratégie utilisée peut se configurer dans le fichier `security.yaml` de la manière suivante :
+> 
+> ```yaml
+> security:
+>     # ...
+>     access_decision_manager:
+>         strategy: affirmative # Stratégie utilisée, par défaut "affirmative"
+> ```
+
+### Déconnexion
 
 Lorsque l'utilisateur connecté clique sur le iien "Se déconnecter", une requête est envoyée avec l'URI `/logout`.
 

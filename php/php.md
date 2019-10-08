@@ -148,6 +148,7 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `array_keys ( array $array , mixed $search_value [, bool $strict = FALSE ] ) : array` récupére les clés d'un tableau [doc](https://www.php.net/manual/fr/function.array-keys.php)
 * `reset ( array &$array ) : mixed` retourne le premier élément d'un tableau et place le pointeur interne dessus
 * `current ( array $array ) : mixed` retourne l'élément courant d'un tableau, soit le premier élément par défaut [doc](https://www.php.net/manual/fr/function.current.php)
+* `array_shift ( array &$array ) : mixed` extrait la première valeur du tableau `array` et la retourne, en raccourcissant `array` d'un élément, et en déplaçant tous les éléments vers le bas. Toutes les clés numériques seront modifiées pour commencer à zéro pendant que les clées litérale ne seront pas affectées. 
 * `array_unshift ( array &$array [, mixed $élementsAAjouter... ] ) : int` ajoute un ou plusieurs éléments au début d'un tableau. Toutes les clés numériques seront modifiées afin de commencer à partir de zéro, tandis que les clés littérales ne seront pas touchées.
 * `array_flip ( array $array ) : array` retourne un tableau dont les clés sont les valeurs du précédent tableau array, et les valeurs sont les clés
 * `array_combine ( array $keys , array $values ) : array` crée un tableau, dont les clés sont les valeurs de keys, et les valeurs sont les valeurs de values.
@@ -155,6 +156,7 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 
 ## String
 
+* `PHP_EOL` renvoie une chaine correspondant au saut de ligne sur la plateforme (LF, \n ou #10 sur Unix, CRLF, \r\n ou #13#10 sur Windows).
 * `ord('a')` retourne le code du caractère.
 * `chr(97)` retourne le caractère correspondant au code.
 * `strpos(string $haystack, $needle [, int $offset = 0]): int` cherche la position numérique de la première occurrence de needle dans la chaîne de caractères haystack.

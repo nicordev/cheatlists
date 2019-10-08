@@ -34,3 +34,7 @@
     "vendor/package": "^0.3.2", // >=0.3.2 <0.4.0 // except if major version is 0
 }
 ```
+
+## Optimisation
+
+* `composer dump-autoload --optimize` ou `-o` convert PSR-0/4 autoloading to classmap to get a faster autoloader. This is recommended especially for production, but can take a bit of time to run so it is currently not done by default.
