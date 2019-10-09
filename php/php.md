@@ -165,6 +165,17 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `substr_replace(mixed $string, mixed $replacement, mixed $start [, mixed $length ]): mixed` remplace un segment de la chaîne string par la chaîne replacement. Le segment est délimité par start et éventuellement par length.
 * `substr_count(string $haystack, string $needle [, int $offset = 0 [, int $length ]]): int` retourne le nombre d'occurrences de needle dans la chaîne haystack. Notez que needle est sensible à la casse.
 
+## Input
+
+> Un flux est un fichier.
+> Une ressource est une variable spéciale, contenant une référence vers une ressource externe. Une ressource peut être un fichier.
+
+* `STDIN` Un flux déjà ouvert vers stdin. Ceci évite de l'ouvrir explicitement avec `$stdin = fopen('php://stdin', 'r');`
+* `STDOUT` Un flux déjà ouvert vers stdout. Ceci évite de l'ouvrir explicitement avec `$stdout = fopen('php://stdout', 'r');`
+* `STDERR` Un flux déjà ouvert vers stderr. Ceci évite de l'ouvrir explicitement avec `$stderr = fopen('php://stderr', 'r');`
+* `fgets ( resource $file [, int $length ] ) : string` récupère la ligne courante sur laquelle se trouve le pointeur du fichier.
+    * `fgets(STDIN)` lit la ligne entrée au clavier.
+
 ## xDebug
 
 * `sudo apt-get install php-xdebug`
