@@ -97,3 +97,12 @@ MOT_CLE_DE_FIN
         * `-r` ou `--reboot` Redémarrer
         * `-k` Ne fait rien à par afficher le wall message
         * `-c` Annuler un shutdown programmé
+
+## Variables d'environnement
+
+* `LANG=fr_FR.UTF-8` modifie la variable d'environnement existante `LANG`
+*   ```bash
+    EDITOR=nano
+    export EDITOR
+    ```
+    créé une nouvelle variable d'environnement `EDITOR`. Peut être écrit sur une ligne : `export EDITOR=nano`
