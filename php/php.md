@@ -142,8 +142,15 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `http_response_code(404);` set the http response code
 * `header('Content-Type: text/html');` set a header
 
+## Numbers
+
+* `number_format ( float $number [, int $decimals = 0 ] ) : string` formate un nombre pour l'affichage
+* `round ( float $val [, int $precision = 0 [, int $mode = PHP_ROUND_HALF_UP ]] ) : float` arrondit un nombre à virgule flottante
+* `ceil ( float $value ) : float` retourne l'entier supérieur du nombre value.
+
 ## Arrays
 
+* `unset ( mixed $var [, mixed $... ] ) : void` détruit un élément d'un tableau ou n'importe quelle autre variable
 * `array_values ( array $array ) : array` converti un tableau associatif en tableau à clés numériques [doc](https://www.php.net/manual/en/function.array-values.php)
 * `array_keys ( array $array , mixed $search_value [, bool $strict = FALSE ] ) : array` récupére les clés d'un tableau [doc](https://www.php.net/manual/fr/function.array-keys.php)
 * `reset ( array &$array ) : mixed` retourne le premier élément d'un tableau et place le pointeur interne dessus
