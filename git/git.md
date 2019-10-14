@@ -72,6 +72,22 @@
     * `git stash` met de côté les modifications en cours qui n'ont pas fait l'objet d'un commit pour pouvoir faire d'autres modifications, par exemple lorsque quelqu'un nous demande de régler un bug qui n'a rien à voir avec ce sur quoi on travaille actuellement. On stash notre travail, on règle le bug, on commit les modifications apportées pour régler le bug et on revient sur notre travail avec `git stash pop` ou `git stash apply`.
         * La différence entre `pop` et `apply` est que nos modifications sont effacées du stash lors d'un `pop`.
 
+#### Merge
+
+1. Coder sa branche et faire ses commits
+2. `git push origin nomBranche` envoie la branche sur GitHub
+3. GitHub exécute `git merge nomBranche` pour fusionner la branche `nomBranche` dans la branche master, en créant un commit de merge pour gérer les conflits
+
+Nos commits sont intégrés à l'historique de la branche master de manière chronologique.
+
+#### Rebase
+
+1. Coder sa branche et faire ses commits
+2. `git pull --rebase origin master` récupère les commits de la master manquants et place nos commits à la suite, modifiant l'historique chronologique
+3. `git push force-with-lease` envoie notre branche sans faire de merge
+
+Nos commits deviennent les plus récents.
+
 ## GitHub
 
 * Récupérer un repository
