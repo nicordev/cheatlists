@@ -2,19 +2,21 @@
 
 ## Lancer VIM
 
-* Exécuter `vim`
+* Exécuter `vim` ou `vi`
 
 ## Quitter VIM
 
 * Appuyer sur `Echap` pour être sûr d'être en mode normal
+* Quitter
+    * Taper `:q` puis `Entrée`
 * Quitter sans enregistrer
-    * Taper `:q!` puis `Entrée`
+    * `:q!`
 * Enregistrer et quitter
     * `:wq`
 
 ## Lancer le tutoriel
 
-* Exécuter vimtutor
+* Exécuter `vimtutor`
 
 ## Principe
 
@@ -72,7 +74,7 @@
 
 ## Enregistrer
 
-* `:w`
+* `:w` en mode normal
 
 ## Annuler et refaire
 
@@ -82,3 +84,19 @@
     * `U`
 * Refaire la dernière commande
     * `ctl + r`
+
+## Rechercher
+
+* En mode normal
+    * `/texteARechercher` cherche vers le bas.
+    * `?texteARechercher` cherche vers le haut.
+    * `n` va vers la prochaine occurence.
+    * `N` va vers la précédente occurence.
+    * `%` quand le curseur est sur une parenthèse pour aller à la parenthèse correspondante ({[]}).
+
+## Rechercher et remplacer
+
+* `:s/texteARemplacer/texteDeRemplacement/g` change toutes les occurences du texte dans la ligne courante (on peut omettre `/g` pour ne remplacer que la première occurence).
+* `#,#s/texteARemplacer/texteDeRemplacement/g` change toutes les occurences du texte entre 2 lignes (remplacer les `#` par des numéros de ligne).
+* `%s/texteARemplacer/texteDeRemplacement/g` change toutes les occurences du texte dans tout le fichier.
+* `%s/texteARemplacer/texteDeRemplacement/gc` change toutes les occurences du texte dans tout le fichier avec demande de confirmation pour chaque remplacement.
