@@ -18,6 +18,16 @@
 
 * Exécuter `vimtutor`
 
+## Ouvrir un fichier
+
+* `vi nomFichier` ou `vim nomFichier`
+
+## Changer de mode
+
+* `Echap` mode normal
+* `i` mode insertion
+* `a` mode ajout
+
 ## Principe
 
 * Opérateur, mouvement et quantificateur
@@ -29,6 +39,8 @@
         * exemple : `2w` déplace le curseur de 2 mots
 
 ## Navigation
+
+> En mode normal
 
 * Déplacement du curseur en mode normal
     * Déplacement par caractère
@@ -45,11 +57,12 @@
         * `2` déplace de 2 lignes vers le bas
         * `3` déplace de 3 lignes vers le bas
         * ...
+* `G` va à la fin du fichier
 
 ## Edition de texte
 
-* On ouvre un fichier avec la commande `vim nomDuFichier`
-* On accède au mode normal avec la touche `Echap`
+> En mode normal
+
 * Effacer le caractère en cours
     * `x`
 * Insérer du texte
@@ -71,6 +84,10 @@
     * `d0`
 * Effacer une ligne complète
     * `dd`
+* Effacer plusieurs lignes
+    * `#dd` où `#` est le nombre de lignes
+* Coller les dernières lignes effacées
+    * `p`
 
 ## Enregistrer
 
@@ -87,14 +104,17 @@
 
 ## Rechercher
 
-* En mode normal
-    * `/texteARechercher` cherche vers le bas.
-    * `?texteARechercher` cherche vers le haut.
-    * `n` va vers la prochaine occurence.
-    * `N` va vers la précédente occurence.
-    * `%` quand le curseur est sur une parenthèse pour aller à la parenthèse correspondante ({[]}).
+> En mode normal
+
+* `/texteARechercher` cherche vers le bas.
+* `?texteARechercher` cherche vers le haut.
+* `n` va vers la prochaine occurence.
+* `N` va vers la précédente occurence.
+* `%` quand le curseur est sur une parenthèse pour aller à la parenthèse correspondante ({[]}).
 
 ## Rechercher et remplacer
+
+> En mode normal
 
 * `:s/texteARemplacer/texteDeRemplacement/g` change toutes les occurences du texte dans la ligne courante (on peut omettre `/g` pour ne remplacer que la première occurence).
 * `#,#s/texteARemplacer/texteDeRemplacement/g` change toutes les occurences du texte entre 2 lignes (remplacer les `#` par des numéros de ligne).
