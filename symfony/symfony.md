@@ -1,5 +1,12 @@
 # Symfony
 
+## Nouveau projet
+
+* `composer create-project symfony/website-skeleton my_project_name` créé un projet complet via composer
+* `composer create-project symfony/skeleton my_project_name` créé un projet minimal via composer
+* `symfony new nameOfTheProjectHere --full` créé un projet complet avec l'exécutable Symfony
+* `symfony new nameOfTheProjectHere` créé un projet minimal avec l'exécutable Symfony
+
 ## Problèmes
 
 * Faire un `dd($maVariable)` pour débugger (dump and die)
@@ -24,6 +31,7 @@
     * `php bin/console make:voter`
 
 ## Injecter des paramètres manuellement via la config et le fichier .env
+
 * https://symfony.com/doc/current/service_container.html#manually-wiring-arguments
 * https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables 
 
@@ -105,12 +113,13 @@ if ($debug) {
 * Utiliser une version particulière de php en créant un fichier `.phpversion` contenant le numéro de version
     * `echo "7.2" > .php-version`
 * Créer un fichier `php.ini` personnalisé à la racine du projet pour modifier la configuration de php du serveur
+* Le fichier `php.ini` utilisé dans mon cas est situé dans `c/wamp64/bin/php/php7.3.5/`
 
 ## Différences Symfony 3 et 4
 
 * Choix de l'environnement prod ou dev
     * sf4 : remplir `APP_ENV=prod ou dev` dans le fichier `.env.local`
-    * sf3 : modifier la ligne `$kernel = new AppKernel('prod ou dev', false);` dans `web/app.php`
+    * sf3 : ajouter à l'URL `/app.php` pour le mode prod ou `/app_dev.php` pour le mode dev
 * Aborescence
     * sf4 :
         * `config/`     contient les fichiers de configuration
