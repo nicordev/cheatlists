@@ -56,3 +56,48 @@
     shape-outside: unset;
 }
 ```
+
+## Animations
+
+* Simple: utiliser `transition-property` et `transition-duration`
+    ```css
+    .logo {
+        transition-property: text-shadow;
+        transition-duration: 100ms;
+    }
+
+    .logo:hover {
+        text-shadow: azure -2px 2px 2px;
+    }
+    ```
+* Evolué: utiliser les propriétés `animation` et `@keyframes`
+    ```css
+    #square2 {
+        transition-property: background-color, width, height;
+        transition-duration: 250ms;
+    }
+
+    #square2:hover {
+        animation-name: masuperanimation;
+        animation-duration: 2s;
+        animation-delay: 0.4ms;
+        animation-timing-function: ease; /* ease linear ease-in ease-out ease-in-out  cubic-bezier(val1, val2, val3, val4) step-start step-end steps(X) */
+        animation-iteration-count: infinite;
+        animation-direction: alternate; /* alternate reverse normal */
+        animation-fill-mode: none; /* none forwards backwards */
+    }
+
+    @keyframes masuperanimation {
+        0% {
+            transform: translateX(0px);
+        }
+
+        50% {
+            transform: translateX(150px);
+        }
+
+        100% {
+            transform: translateX(150px) rotate(30deg);
+        }
+    }
+    ```
