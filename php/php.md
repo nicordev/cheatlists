@@ -142,6 +142,11 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `http_response_code(404);` set the http response code
 * `header('Content-Type: text/html');` set a header
 
+## Binary
+
+* `decbin ( int $number ) : string` retourne une chaîne contenant la représentation binaire de l'entier number donné en argument.
+* `bindec ( string $binary_string ) : number` retourne la conversion d'un nombre binaire représenté par la chaîne binary_string en décimal.
+
 ## Numbers
 
 * `number_format ( float $number [, int $decimals = 0 ] ) : string` formate un nombre pour l'affichage
@@ -171,6 +176,10 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `substr(string $string, int $start [, int $length ]): string` retourne le segment de string défini par start et length.
 * `substr_replace(mixed $string, mixed $replacement, mixed $start [, mixed $length ]): mixed` remplace un segment de la chaîne string par la chaîne replacement. Le segment est délimité par start et éventuellement par length.
 * `substr_count(string $haystack, string $needle [, int $offset = 0 [, int $length ]]): int` retourne le nombre d'occurrences de needle dans la chaîne haystack. Notez que needle est sensible à la casse.
+
+## Dates
+
+* `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante
 
 ## Input
 
