@@ -50,3 +50,9 @@ param => expression
 let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
 f();
 ```
+
+## Tableaux
+
+* `Array.prototype.slice([début, fin])` renvoie un objet tableau, contenant une copie superficielle (shallow copy) du tableau d'origine ou juste d'une portion [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/slice)
+* `Array.prototype.push()` ajoute un ou plusieurs éléments à la fin d'un tableau et retourne la nouvelle taille du tableau. [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/push)
+* `Array.prototype.unshift()` ajoute un ou plusieurs éléments au début d'un tableau et renvoie la nouvelle longueur du tableau. [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/unshift)

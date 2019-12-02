@@ -180,6 +180,7 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 ## Dates
 
 * `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante
+* `echo (new DateTime())->format("W");` donne le numéro de la semaine actuelle
 
 ## Input
 
