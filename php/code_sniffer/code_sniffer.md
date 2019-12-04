@@ -4,7 +4,8 @@
 
 ## Installation
 
-`composer global require "squizlabs/php_codesniffer=*"`
+* `composer global require "squizlabs/php_codesniffer=*"`
+* `composer require --dev "squizlabs/php_codesniffer"`
 
 ## phpcs
 
