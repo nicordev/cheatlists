@@ -14,6 +14,14 @@
 
 ## Utilisation
 
+* `sudo -iu postgres` lance le shell
 * `createdb nomBaseDeDonnées` créé une base de données.
 * `dropdb nomBaseDeDonnées` supprime une base de données.
 * `psql nomBaseDeDonnées` sélectionne une base de données.
+* ```SQL
+    SELECT pg_terminate_backend(pg_stat_activity.pid)
+    FROM pg_stat_activity
+    WHERE datname = current_database()
+    AND pid <> pg_backend_pid();
+    ```
+    déconnecte les utilisateurs de la base de données sélectionnée
