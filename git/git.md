@@ -50,10 +50,10 @@
 * `git add`
     * `git add nomDuFichierAIndexer` Ajoute un fichier à l'index de git pour pouvoir en faire un commit
     * `git add .` Indexe tous les fichiers du repository en vue d'un commit
-* `git commit`
-    * `git commit -m "Entrez ici la description du commit"` Permet de créer un commit
-    * `git commit -a -m "Entrez ici la description du commit"` Le -a permet de créer un commit avec les fichiers qui ont déjà été indexés une fois et sans avoir à les réindexer avec add
-    * `git commit --amend -m "Votre nouveau message pour le dernier commit"` Modifie le message du dernier commit
+* `git commit` Permet de créer un commit et ouvre l'éditeur pour inscrire la description du commit
+    * `git commit -m "Entrez ici le résumé du commit" -m "Entrez ici la description détaillée du commit"` Permet de créer un commit et d'ajouter la description en même temps.
+    * `git commit -a` Le -a permet de créer un commit avec les fichiers qui ont déjà été indexés une fois et sans avoir à les réindexer avec add
+    * `git commit --amend` Modifie le dernier commit
 * `git reset --hard` Annule les changements qui n'ont pas encore été commités
 * `git checkout`
     * `git checkout SHADuCommit` Revenir à un commit précédent

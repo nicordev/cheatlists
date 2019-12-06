@@ -78,3 +78,28 @@
         }
     }
     ```
+
+### Récupérer un élément du DOM
+
+* En utilisant `React.createRef()` :
+    ```js
+    class App extends React.Component {
+
+        customerInput = React.createRef();
+
+        handleSubmit = event => {
+            event.preventDefault();
+            console.log(this.customerInput.current.value); // Ici on utilise l'élément this.customerInput
+        }
+
+        render() {
+            return <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input ref={this.customerInput} type="text" placeholder="Ajouter un client" />
+                    <button>Confirmer</button> 
+                </form>
+            </div>
+
+        }
+    }
+    ```
