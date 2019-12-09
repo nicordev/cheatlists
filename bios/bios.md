@@ -2,6 +2,8 @@
 
 ## Enlever le mot de passe du bios
 
+[Source](https://www.toxicnerd.com/post/how-to-remove-or-reset-acer-laptop-bios-password/20)
+
 * Taper F2 lors du démarrage
 * Lorsque le bios demande le mot de passe
     1. Faire 3 tentatives infructueuses
