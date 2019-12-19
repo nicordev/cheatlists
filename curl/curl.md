@@ -1,5 +1,11 @@
 # CURL
 
+[doc](https://curl.haxx.se/docs/manual.html)
+
+## Requêtes GET
+
+* `curl http://mon.super.site`
+
 ## Requêtes POST
 
 * [stack](https://superuser.com/questions/149329/what-is-the-curl-command-line-syntax-to-do-a-post-request)
