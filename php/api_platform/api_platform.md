@@ -68,7 +68,7 @@
         /**
         * @ApiFilter(
         *     SearchFilter::class,
-        *     properties={"firstName": "start", "lastName": "partial", "company"}
+        *     properties={"firstName": "start", "lastName": "partial", "company", "user.firstName": "exact"}
         * )
         */
         ```
