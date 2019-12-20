@@ -203,10 +203,6 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `fgets ( resource $file [, int $length ] ) : string` récupère la ligne courante sur laquelle se trouve le pointeur du fichier.
     * `fgets(STDIN)` lit la ligne entrée au clavier.
 
-## xDebug
-
-* `sudo apt-get install php-xdebug`
-
 ## Variables super globales
 
 * `filter_input ( int $type , string $variable_name [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed` récupère une variable externe et la filtre avec `$type` parmi `INPUT_GET`, `INPUT_POST`, `INPUT_COOKIE`, `INPUT_SERVER` ou `INPUT_ENV`.

@@ -1,5 +1,9 @@
 # xDebug
 
+## Installation
+
+* `sudo apt-get install php-xdebug`
+
 ## php.ini
 
 Ajouter les lignes suivantes au fichier `php.ini` de la version de php utilisée :
