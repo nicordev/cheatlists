@@ -25,3 +25,9 @@
 * `systemctl enable nomService` permet à un service de se lancer au démarrage
 * `systemctl enable --now nomService` démarre le service dès le démarrage
 * `systemctl disable nomService` empêche un service de se lancer au démarrage
+
+## Power management
+
+* `pamac install tlp` installe tlp
+* `systemctl enable --now tlp` et `systemctl enable --now tlp-sleep.service` active tlp
+* `pamac install tlpui` installe l'interface graphique
