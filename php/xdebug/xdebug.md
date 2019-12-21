@@ -2,6 +2,9 @@
 
 ## Installation
 
+1. ``
+2. `pecl install xdebug`
+ou
 * `sudo apt-get install php-xdebug`
 
 ## php.ini

@@ -8,3 +8,11 @@
     1. `systemctl start mysqld` démarre le service
     1. `systemctl enable mysqld` lance le service au démarrage du système
     1. Ajouter un mot de passe à l'utilisateur `root`
+
+## Utilisation
+
+* `sudo mysql -u root -p` permet de se connecter
+
+## Configuration
+
+* `sudo mysql_secure_installation` configure les options, notamment le mot de passe root
