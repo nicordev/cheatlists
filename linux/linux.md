@@ -96,7 +96,27 @@ MOT_CLE_DE_FIN
         * `-H` ou `--halt`
         * `-r` ou `--reboot` Redémarrer
         * `-k` Ne fait rien à par afficher le wall message
-        * `-c` Annuler un shutdown programmé
+        * `-c` Annuler un shutdown programmé 
+
+## Accès SSH
+
+* Connexion SSH simple
+    * `ssh loginUtilisateur@ipServeur` lance la connexion puis demande le mot de passe
+    * `logout` ou `ctl + D` déconnecte l'utilisateur
+* Authentification par paire de clés
+    1. `ssh-keygen -t rsa` ou `dsa` demande une passphrase puis génère une paire de clés privée/publique
+        * `~/.ssh/id_rsa.pub` fichier de la clé publique
+        * `~/.ssh/id_rsa` fichier de la clé privée
+    2. `ssh-copy-id -i id_rsa.pub loginUtilisateur@ipServeur` envoie la clé publique au serveur
+    3. `ssh loginUtilisateur@ipServeur` connecte l'utilisteur et demande la passphrase
+    4. (optionel) `ssh-add` permet d'ajouter la passphrase
+* Transformer son ordi en serveur
+    1. `sudo apt-get install openssh-server` installe le serveur SSH
+    2. `sudo /etc/init.d/ssh/start` démarre le serveur
+    3. `sudo /etc/init.d/ssh/stop` arrête le serveur
+* Configuration
+    1. Modifier le fichier `/etc/ssh/ssh_config`
+    2. `sudo /etc/init.d/ssh reload` prend en compte les changements
 
 ## Variables d'environnement
 
