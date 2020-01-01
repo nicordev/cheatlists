@@ -14,6 +14,10 @@
 * Enregistrer et quitter
     * `:wq`
 
+## Configurer VIM
+
+* `~/.vimrc` fichier de configuration de VIM
+
 ## Lancer le tutoriel
 
 * Exécuter `vimtutor`

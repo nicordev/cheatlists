@@ -48,3 +48,11 @@ docker container ls -aq
     * `requirements.txt`
     * `fichierDeCodeAExecuter`
 * Exécuter `docker build --tag=nomdutag .` pour créer l'image (`--tag` peut être remplacé par `-t`)
+
+## Exemple : Lancement d'un serveur nginx via un conteneur
+
+* `docker run -d -p 8080:80 nginx` lance le serveur où :
+    * `-d` détache le conteneur du processus principal de la console.
+    * `-p 8080:80` transfère le trafic du port 8080 vers le port 80 du conteneur.
+* `docker exec -ti ID_RETOURNÉ_LORS_DU_DOCKER_RUN bash` lance un shell bash pour agir directement sur le conteneur.
+* `docker stop ID_RETOURNÉ_LORS_DU_DOCKER_RUN` arrête le conteneur
