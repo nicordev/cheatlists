@@ -72,7 +72,7 @@
         * )
         */
         ```
-    * `OrderFilter` (utilisable avec le paramètre `?order[nomAttribut]=desc` ou `asc`) :
+    * `OrderFilter` avec ou sans l'attribut `properties` (utilisable avec le paramètre `?order[nomAttribut]=desc` ou `asc`) :
         ```php
         /**
         * @ApiFilter(
