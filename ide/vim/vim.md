@@ -37,10 +37,10 @@
 * Mode normal :
     * `opérateurQuantificateurMouvement` exécute la commande de l'`opérateur` sur le `Mouvement` un certain nombre de fois (correspondant au `Quantificateur`). Exemples :
         * `2w` déplace le curseur de 2 mots. Ici l'`opérateur` est vide, le `Quantificateur` est `2` et le `Mouvement` est `w`.
-        * `d2w` efface 2 mots entiers à partir du curseur
-            * `d` : l'opérateur (ici effacer)
-            * `2` : le quantificateur
-            * `w` : le mouvement (ici le mot entier)
+        * `d2w` efface 2 mots entiers à partir du curseur :
+            * `d` : l'opérateur (ici effacer).
+            * `2` : le quantificateur.
+            * `w` : le mouvement (ici le mot entier).
 * Enregistrer le fichier *(en mode normal)*
     * `:w` enregistre le fichier.
 * Quitter vim *(en mode normal)*
@@ -65,12 +65,21 @@
             * `3` déplace de 3 lignes vers le bas
             * ...
     * `G` va à la fin du fichier
-* Edition de texte *(en mode normal)*
-    * Ajout
-        * `i` passe en mode insertion pour ajouter du texte au niveau du curseur.
-        * `A` passe en mode ajout pour ajouter du texte à la fin de la ligne du curseur.
-    * Effacement
+* Edition de texte
+    * Ajout *(en mode normal)*
+        * `i` passe en mode *insertion* pour ajouter du texte au niveau du curseur.
+        * `A` passe en mode *ajout* pour ajouter du texte à la fin de la ligne du curseur.
+    * Indentation
+        * *(en mode normal)*
+            * `>` décale vers la droite.
+            * `<` décale vers la gauche.
+        * *(en mode insertion)*
+            * `ctl + t` décale vers la droite (`t` pour `tab`).
+            * `ctl + d` décale vers la gauche (`d` pour `de-tab`).
+    * Effacement *(en mode normal)*
         * `x` efface le caractère sous le curseur.
+        * `d4l` ou `d4 + flèche droite` efface 4 caractères à droite du curseur.
+        * `d4h` ou `d4 + flèche gauche` efface 4 caractères à gauche du curseur.
         * `dw` efface du curseur jusqu'au début du prochain mot.
         * `de` efface du curseur jusqu'à la fin du mot courant.
         * `d$` efface du curseur jusqu'à la fin de la ligne.
