@@ -2,6 +2,11 @@
 
 Liste réalisée à partir [du cours de mateo21 sur OpenClassrooms](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux)
 
+## Bureau Gnome
+
+* `ctl + alt + flèche haut/bas` change de bureau.
+* `ctl + alt + shift + flèche haut/bas` déplace l'application en cours sur un autre bureau.
+
 ## Invite de commande
 
 * `nomUtilisateur@nomOrdinateur:~$`

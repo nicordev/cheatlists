@@ -3,6 +3,8 @@
 ## Installation
 
 * [Doc officielle](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+    * Pour Ubuntu 19.10 :
+
 * [Linux Mint](https://linuxhint.com/install_docker_linux_mint/)
 * Ajouter l'utilisateur au groupe `docker` pour éviter d'utiliser `sudo` à tout va en exécutant :
     * `sudo usermod -aG docker nomUtilisateur`

@@ -25,9 +25,12 @@
 ## Utilisation
 
 * `code nomDossier` ouvre Visual Studio Code.
+* Raccourcis clavier
+    * `alt + click gauche` ajoute des curseurs (`ctl + click gauche` peut être sélectionné dans *Selection > Switch to Ctrl+Click for Multi-Cursor*).
+    * `ctl + shift + flèche haut/bas` ajoute des curseurs.
 
 ## Configuration
 
 * Sauvegarde automatique `File > Preferences > Settings > Files: Auto Save > after delay`
 * Raccourcis clavier `File > Preferences > Keyboard Shortcuts` :
-    * `View: Toggle Integrated Terminal` affiche ou masque le terminal
+    * `View: Toggle Integrated Terminal` affiche ou masque le terminal (`ctl + ù`)
