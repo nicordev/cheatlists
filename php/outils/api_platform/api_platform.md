@@ -162,7 +162,8 @@
     *     itemOperations={"GET", "DELETE", "PUT", "PATCH"}
     * )
     */
-    class Customer {
+    class Customer 
+    {
         // ...
     }
     ```
@@ -176,16 +177,75 @@
     *     itemOperations={"GET"={"path"="/clients/{id}"}, "DELETE", "PUT", "PATCH"}
     * )
     */
-    class Customer {
+    class Customer 
+    {
         // ...
     }
     ```
+* Créer ses propres opérations et modifier la doc
+    1. Créer un contrôleur chargé de l'opération :
+        ```php
+        <?php
+
+        namespace App\Controller;
+
+        use App\Entity\Invoice;
+        use App\Repository\InvoiceRepository;
+
+        class InvoiceIncrementationController
+        {
+            /**
+            * @var InvoiceRepository
+            */
+            private $invoiceRepository;
+
+            public function __construct(InvoiceRepository $invoiceRepository)
+            {
+                $this->invoiceRepository = $invoiceRepository;
+            }
+
+            public function __invoke(Invoice $data) // Méthode appelée par notre opération maison. Le paramètre doit être nommé data.
+            {
+                $this->invoiceRepository->incrementAmount($data);
+
+                return $data;
+            }
+        }
+        ```
+    2. Modifier l'annotation `@ApiResource` en ajoutant l'opération maison (ici *increment*) :
+        ```php
+        /**
+        * @ApiResource(
+        *     itemOperations={
+        *          "GET", "PUT", "DELETE", "PATCH", "increment"={
+        *              "method"="post",
+        *              "path"="/invoices/{id}/increment",
+        *              "controller"="App\Controller\InvoiceIncrementationController",
+        *              "openapi_context"={
+        *                  "summary"="Increment the amount of an invoice.",
+        *                  "description"="Increment the amount of an invoice. It's just to show how to make custom operations."
+        *              }
+        *          }
+        *     }
+        * )
+        */
+        class Invoice
+        {
+            // ...
+        }
+        ```
+
 
 ### Sous-ressources
 
-* Accessible via une url de type `/nomEntitésPrincipales/{id}/nomSousRessources`
+> [doc](https://api-platform.com/docs/core/subresources/#subresources)
+
+* Accessible via une url de type `/nomEntitésPrincipales/{id}/nomSousRessources` en ajoutant l'annotation `@ApiSubresource()` à un attribut :
     ```php
-    class Customer {
+    // ...
+
+    class Customer 
+    {
         // ...
         /**
         * ...
@@ -194,3 +254,52 @@
         private $invoices;
     }
     ```
+* Configurable au niveau de l'annotation `@ApiSubresource()` de la classe :
+    * Au niveau de la classe principale pour des paramètres comme l'uri :
+        ```php
+        // ...
+
+        /**
+        * // ...
+        * @ApiResource(
+        *     subresourceOperations={
+        *          "invoices_get_subresource"={"path"="/clients/{id}/factures"}
+        *     }
+        * )
+        */
+        class Customer 
+        {
+            // ...
+            /**
+            * ...
+            * @ApiSubresource()
+            */
+            private $invoices;
+        }
+        ```
+    * Au niveau de la sous-ressource pour les groupes de normalisation :
+        ```php
+        // ...
+
+        /**
+         * // ...
+         * @ApiResource(
+         *     subresourceOperations={
+         *          "api_customers_invoices_get_subresource"={
+         *              "normalization_context"={
+         *                  "groups"={"invoices_subresource"}
+         *              }
+         *          }
+         *     }
+         * )
+         */
+        class Invoice
+        {
+            // ...
+            /**
+            * ...
+            * @ApiSubresource()
+            */
+            private $invoices;
+        }
+        ```
