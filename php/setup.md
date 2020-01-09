@@ -25,9 +25,11 @@
     * `sudo apt-get install php-curl` installe l'extension *curl* utile pour composer.
     * `sudo apt-get install php-mysql` installe l'extension nécessaire pour mysql et mariadb.
 
-## Configuration via php.ini
+## Configuration
 
-Fichier situé dans `/etc/php/numéro_version/apache2/` et dans `/etc/php/numéro_version/cli/`
+* Configuration via le fichier `php.ini` situé dans `/etc/php/numéro_version/apache2/` et dans `/etc/php/numéro_version/cli/`.
+* Sélectionner une version
+    * `sudo update-alternatives --set php /usr/bin/php7.3` sélectionne la version PHP 7.3 pour la CLI
 
 ## xDebug
 
