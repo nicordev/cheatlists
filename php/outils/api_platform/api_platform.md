@@ -93,3 +93,104 @@
         */
         ```
 
+### Groupes de sérialisation
+
+* Normalisation :
+    > Il est conseillé de mettre tous les attributs d'une entité dans un groupe pour pouvoir facilement choisir lesquels afficher par la suite.
+    ```php
+    <?php
+
+    // ...
+
+    use ApiPlatform\Core\Annotation\ApiResource;
+    use Symfony\Component\Serializer\Annotation\Groups;
+
+    /**
+     * // ...
+     * @ApiResource(
+     *     normalizationContext={
+     *          "groups"={"customers_read"}
+     *     }
+     * )
+     */
+    class Customer
+    {
+        /**
+         * // ...
+         * @Groups(
+         *     {"customers_read", "invoices_read"}
+         * ) // Ici l'id apparaîtra dans le cadre de la normalisation des Customer et des Invoice.
+         */
+        private $id;
+        // ..
+
+        /**
+        * Get the sum of the customer's invoices
+        *
+        * @Groups({"customers_read"}) // La méthode sera appelée pendant la normalisation. On parle de champs calculé.
+        * @return float
+        */
+        public function getTotalAmount(): float // Le résultat de cette méthode apparaîtra dans un attribut JSON "getTotalAmount"
+        {
+            return array_reduce($this->invoices->toArray(), function ($total, $invoice) {
+                return $total + $invoice->getAmount();
+            }, 0);
+        }
+    }
+    ```
+
+### Opérations
+
+> [doc](https://api-platform.com/docs/core/operations/)
+
+* 2 types d'opération : 
+    * les *Collection operations* dont l'url ne recquiert pas d'identifiant (`/customers`) :
+        * GET (obtenir la liste)
+        * POST (ajouter à la liste)
+    * les *Item operations* dont l'url requiert un identifiant (`/customers/{id}`) :
+        * GET (obtenir un élément)
+        * PUT (remplacer)
+        * PATCH (mettre à jour un élément)
+        * DELETE (supprimer un élément)
+* Autoriser certaines opérations :
+    > L'ordre d'écriture des opérations dans le docblock est celui utilisé pour l'affichage dans la doc swagger sur /api
+    ```php
+    /**
+    * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
+    * @ApiResource(
+    *     collectionOperations={"GET", "POST"},
+    *     itemOperations={"GET", "DELETE", "PUT", "PATCH"}
+    * )
+    */
+    class Customer {
+        // ...
+    }
+    ```
+* Modifier l'url pour certaines opérations :
+    > Ici on veut /clients plutôt que /customers
+    ```php
+    /**
+    * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
+    * @ApiResource(
+    *     collectionOperations={"GET"={"path"="/clients"}, "POST"},
+    *     itemOperations={"GET"={"path"="/clients/{id}"}, "DELETE", "PUT", "PATCH"}
+    * )
+    */
+    class Customer {
+        // ...
+    }
+    ```
+
+### Sous-ressources
+
+* Accessible via une url de type `/nomEntitésPrincipales/{id}/nomSousRessources`
+    ```php
+    class Customer {
+        // ...
+        /**
+        * ...
+        * @ApiSubresource()
+        */
+        private $invoices;
+    }
+    ```
