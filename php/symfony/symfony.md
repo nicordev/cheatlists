@@ -1,5 +1,10 @@
 # Symfony
 
+## Installation
+
+* [Download](https://symfony.com/download)
+* `wget https://get.symfony.com/cli/installer -O - | bash` installe Symfony sous Linux.
+
 ## Nouveau projet
 
 * `composer create-project symfony/website-skeleton my_project_name` créé un projet complet via composer

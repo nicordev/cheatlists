@@ -2,10 +2,8 @@
 
 ## Installation
 
-1. ``
-2. `pecl install xdebug`
-ou
-* `sudo apt-get install php-xdebug`
+* `sudo apt-get install php-xdebug` installe xdebug sur debian et dérivés.
+* `pecl install xdebug` installe xdebug via pecl.
 
 ## php.ini
 

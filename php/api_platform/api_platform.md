@@ -1,13 +1,24 @@
 # ApiPlatform
 
+## Généralités
+
+* 2 contextes : sérialisation et désérialisation
+* Serialize:
+    1. Normalize: PHP Object -> PHP Array
+    2. Encode: PHP Array -> Format (JSON, XML)
+* Deserialize:
+    1. Decode: Format (JSON, XML) -> PHP Array
+    2. Denormalize: PHP Array -> PHP Object
+
 ## Installation
 
 * `composer require api` Depuis un projet Symfony existant
 
 ## En-têtes
 
-* `Accept` `application/json` pour récupérer uniquement les données brutes (sans hypermédias)
-* `Accept` `application/ld+json` pour récupérer les données avec hypermédias (par défaut)
+* Reqûetes
+    * `Accept` `application/json` pour récupérer uniquement les données brutes (sans hypermédias)
+    * `Accept` `application/ld+json` pour récupérer les données avec hypermédias (par défaut)
 
 ## Configuration
 
@@ -45,7 +56,7 @@
                 client_items_per_page: true # Permet aux clients de l'API de modifier le nombre d'items par page via un paramètre dans l'URL (par défaut ?itemsPerPage=10)
     ```
 
-### Ordre d'apparition des attributes des ressources
+### Ordre d'apparition des attributs des ressources
 
 * [https://api-platform.com/docs/core/default-order/](https://api-platform.com/docs/core/default-order/)
 * Exemple :

@@ -9,13 +9,13 @@
     php composer-setup.php
     php -r "unlink('composer-setup.php');"
     ```
-* `sudo mv composer.phar /usr/local/bin/composer` déplace le fichier de composer pour utiliser la commande `composer`
+* `sudo mv composer.phar /usr/local/bin/composer` déplace le fichier de composer pour utiliser la commande `composer`.
 
 ## Utilisation
 
 * Soit via la commande `composer` si composer est installé globalement, soit via `php composer.phar` si on a le fichier `composer.phar` dans le dossier du projet.
 * `compsoer intall` lit le fichier `composer.json`, créé un fichier `composer.lock` et installe les paquets.
-* `composer update` met à jour les paquets installés selon le fichier `composer.json` et met à jour le fichier `composer.lock`
+* `composer update` met à jour les paquets installés selon le fichier `composer.json` et met à jour le fichier `composer.lock`.
 * `composer require nomPackage [--dev]` ajoute un paquet au fichier `composer.json`. Ajouter `--dev` pour que le paquet soit utilisé dans la partie développement `require-dev` du fichier `composer.json`.
 * `composer dump-autoload` recré l'autoload de composer.
 
