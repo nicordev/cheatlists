@@ -24,6 +24,37 @@
     * des infos sont stockés dans la session dans `Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag::set()`
     * les classes sont chargées dans `Symfony\Component\ClassLoader\ClassLoader::loadClass()`
 
+## Validation des données
+
+* [doc](https://symfony.com/doc/current/reference/constraints.html)
+* Utilisation
+    ```php
+    use Symfony\Component\Validator\Constraints as Assert;
+
+    class MyAwesomeEntity
+    {
+        /**
+         * @Assert\NomContrainte(paramètres)
+         */
+        private $myAwesomeProperty;
+    }
+    ```
+* Quelques annotations
+    * `@Assert\NotBlank` oblige à renseigner cette attribut.
+        * Exemple : `@Assert\NotBlank(message="The customer's first name is mandatory.")`
+    * `@Assert\Length` nécessite un nombre de caractère spécifique.
+        * Exemple : `@Assert\Length(min=3, max=255, minMessage="Must be greater than 2", maxMessage="Must be lower than 256")`
+    * `@Assert\Type` nécessite un type spécifique.
+        * Exemple : `@Assert\Type(type="numeric", message="Must be numeric.")`
+    * `@Assert\DateTime` nécessite un objet DateTime.
+    * `@Assert\Choice` restreint les valeurs à une liste définie.
+        * Exemples : 
+            * `@Assert\Choice(choices={"Apple", "Banana", "Raspberry"}, message="Choose a valid choice from the list.")` où on définit la liste de choix directement dans l'annotation.
+            * `@Assert\Choice(choices=FruitBasket::FRUITS)` où on utilise une constante contenant un tableau PHP.
+            * `@Assert\Choice(callback={"App\Entity\FruitBasket", "getFruits"})` où on utilise une méthode pour obtenir la liste de choix.
+                * `@Assert\Choice(callback="getFruits")` si la méthode requise est présente dans l'entité.
+    * `@UniqueEntity` empêche que 2 entités soient identiques. [doc](https://symfony.com/doc/current/reference/constraints.html)
+    
 
 ## Injecter des paramètres manuellement via la config et le fichier .env
 
@@ -45,14 +76,16 @@ CACHE_EXPIRATION='+10 minutes'
 
 ## Récupérer un utilisateur
 
-* Dans un controller héritant de AbstractController
+* Dans un controller héritant de `AbstractController`
     * `$this->getUser()`
-* Via un objet Security
+* Via un objet `Symfony\Component\Security\Core\Security`
     * `$security->getUser()`
-* Via un objet implémentant TokenInterface
+* Via un objet implémentant `TokenInterface`
     * `$token->getUser()`
 
 ## Evénements lancés par le kernel
+
+> [doc](https://symfony.com/doc/current/reference/events.html#kernel-events)
 
 1. kernel.request
 1. kernel.controller

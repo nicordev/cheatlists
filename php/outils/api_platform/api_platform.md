@@ -3,12 +3,12 @@
 ## Généralités
 
 * 2 contextes : sérialisation et désérialisation
-* Serialize:
-    1. Normalize: PHP Object -> PHP Array
-    2. Encode: PHP Array -> Format (JSON, XML)
-* Deserialize:
-    1. Decode: Format (JSON, XML) -> PHP Array
-    2. Denormalize: PHP Array -> PHP Object
+    * Serialize:
+        1. Normalize: PHP Object -> PHP Array
+        2. Encode: PHP Array -> Format (JSON, XML)
+    * Deserialize:
+        1. Decode: Format (JSON, XML) -> PHP Array
+        2. Denormalize: PHP Array -> PHP Object
 
 ## Installation
 
@@ -22,251 +22,240 @@
 
 ## Configuration
 
-* 3 niveaux de configuration :
-    1. Le fichier de configuration api_platform.yaml donne des configurations pour toutes nos ressources
-    1. L'annotation @ApiResource() permet de configurer au cas par cas nos ressources
-    1. Les paramètres qu'on passe à une requête HTTP peuvent encore préciser certaines choses 
-* La configuration générale se situe dans le fichier `/config/packages/api_platform.yaml`.
-* L'annotation `@ApiResource()` permet de modifier la configuration au cas par cas. Les paramètres à modifier deviennent une suite de termes reliés par des `_` en guise de clé :
-    > ```
-    > /**
-    >  * @ApiResource(
-    >  *     attributes={
-    >  *          "pagination_enabled"=true
-    >  *     }
-    >  * )
-    >  */
-    > ```
-    > va modifier le paramètre `pagination: enabled: true` du fichier de configuration
-
-### Pagination
-
-[https://api-platform.com/docs/core/pagination/](https://api-platform.com/docs/core/pagination/)
-
-* Pagination automatique par défaut. Renvoie 30 items par page par défaut.
-* Configuration via `/config/packages/api_platform.yaml` :
-    ```yaml
-    api_platform:
-        # ...
-        collection:
-            pagination:
-                enabled: false # Désactive la pagination pour toutes les ressources
-                items_per_page: 17 # Indique combien d'items par page
-                client_enabled: true # Permet aux clients de l'API d'activer ou de désactiver la pagination via un paramètre dans l'URL (par défaut ?pagination=true)
-                client_items_per_page: true # Permet aux clients de l'API de modifier le nombre d'items par page via un paramètre dans l'URL (par défaut ?itemsPerPage=10)
-    ```
-
-### Ordre d'apparition des attributs des ressources
-
-* [https://api-platform.com/docs/core/default-order/](https://api-platform.com/docs/core/default-order/)
-* Exemple :
-    ```php
-    /**
-    * @ApiResource(
-    *     attributes={
-    *          "order": {"sentAt": "desc"}
-    *     }
-    * )
-    */
-    ```
-
-### Filtrer et ordonner
-
-* [https://api-platform.com/docs/core/filters/](https://api-platform.com/docs/core/filters/)
-* L'annotation `@ApiFilter` permet de filtrer ou d'ordonner :
-    * `SearchFilter` avec 3 attributs et 2 stratégies de filtrage (utilisable avec le paramètre `?nomAttribut=valeurCible`) :
-        ```php
-        /**
-        * @ApiFilter(
-        *     SearchFilter::class,
-        *     properties={"firstName": "start", "lastName": "partial", "company", "user.firstName": "exact"}
-        * )
-        */
+* Généralités
+    * 3 niveaux de configuration :
+        1. Le fichier de configuration api_platform.yaml donne des configurations pour toutes nos ressources
+        1. L'annotation @ApiResource() permet de configurer au cas par cas nos ressources
+        1. Les paramètres qu'on passe à une requête HTTP peuvent encore préciser certaines choses 
+    * La configuration générale se situe dans le fichier `/config/packages/api_platform.yaml`.
+    * L'annotation `@ApiResource()` permet de modifier la configuration au cas par cas. Les paramètres à modifier deviennent une suite de termes reliés par des `_` en guise de clé :
+        > ```
+        > /**
+        >  * @ApiResource(
+        >  *     attributes={
+        >  *          "pagination_enabled"=true
+        >  *     }
+        >  * )
+        >  */
+        > ```
+        > va modifier le paramètre `pagination: enabled: true` du fichier de configuration
+* Pagination
+    * [doc](https://api-platform.com/docs/core/pagination/)
+    * Pagination automatique par défaut. Renvoie 30 items par page par défaut.
+    * Configuration via `/config/packages/api_platform.yaml` :
+        ```yaml
+        api_platform:
+            # ...
+            collection:
+                pagination:
+                    enabled: false # Désactive la pagination pour toutes les ressources
+                    items_per_page: 17 # Indique combien d'items par page
+                    client_enabled: true # Permet aux clients de l'API d'activer ou de désactiver la pagination via un paramètre dans l'URL (par défaut ?pagination=true)
+                    client_items_per_page: true # Permet aux clients de l'API de modifier le nombre d'items par page via un paramètre dans l'URL (par défaut ?itemsPerPage=10)
         ```
-    * `OrderFilter` avec ou sans l'attribut `properties` (utilisable avec le paramètre `?order[nomAttribut]=desc` ou `asc`) :
-        ```php
-        /**
-        * @ApiFilter(
-        *     OrderFilter::class,
-        *     properties={"amount", "sentAt"}
-        * )
-        */
-        ```
-
-### Groupes de sérialisation
-
-* Normalisation :
-    > Il est conseillé de mettre tous les attributs d'une entité dans un groupe pour pouvoir facilement choisir lesquels afficher par la suite.
-    ```php
-    <?php
-
-    // ...
-
-    use ApiPlatform\Core\Annotation\ApiResource;
-    use Symfony\Component\Serializer\Annotation\Groups;
-
-    /**
-     * // ...
-     * @ApiResource(
-     *     normalizationContext={
-     *          "groups"={"customers_read"}
-     *     }
-     * )
-     */
-    class Customer
-    {
-        /**
-         * // ...
-         * @Groups(
-         *     {"customers_read", "invoices_read"}
-         * ) // Ici l'id apparaîtra dans le cadre de la normalisation des Customer et des Invoice.
-         */
-        private $id;
-        // ..
-
-        /**
-        * Get the sum of the customer's invoices
-        *
-        * @Groups({"customers_read"}) // La méthode sera appelée pendant la normalisation. On parle de champs calculé.
-        * @return float
-        */
-        public function getTotalAmount(): float // Le résultat de cette méthode apparaîtra dans un attribut JSON "getTotalAmount"
-        {
-            return array_reduce($this->invoices->toArray(), function ($total, $invoice) {
-                return $total + $invoice->getAmount();
-            }, 0);
-        }
-    }
-    ```
-
-### Opérations
-
-> [doc](https://api-platform.com/docs/core/operations/)
-
-* 2 types d'opération : 
-    * les *Collection operations* dont l'url ne recquiert pas d'identifiant (`/customers`) :
-        * GET (obtenir la liste)
-        * POST (ajouter à la liste)
-    * les *Item operations* dont l'url requiert un identifiant (`/customers/{id}`) :
-        * GET (obtenir un élément)
-        * PUT (remplacer)
-        * PATCH (mettre à jour un élément)
-        * DELETE (supprimer un élément)
-* Autoriser certaines opérations :
-    > L'ordre d'écriture des opérations dans le docblock est celui utilisé pour l'affichage dans la doc swagger sur /api
-    ```php
-    /**
-    * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
-    * @ApiResource(
-    *     collectionOperations={"GET", "POST"},
-    *     itemOperations={"GET", "DELETE", "PUT", "PATCH"}
-    * )
-    */
-    class Customer 
-    {
-        // ...
-    }
-    ```
-* Modifier l'url pour certaines opérations :
-    > Ici on veut /clients plutôt que /customers
-    ```php
-    /**
-    * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
-    * @ApiResource(
-    *     collectionOperations={"GET"={"path"="/clients"}, "POST"},
-    *     itemOperations={"GET"={"path"="/clients/{id}"}, "DELETE", "PUT", "PATCH"}
-    * )
-    */
-    class Customer 
-    {
-        // ...
-    }
-    ```
-* Créer ses propres opérations et modifier la doc
-    1. Créer un contrôleur chargé de l'opération :
-        ```php
-        <?php
-
-        namespace App\Controller;
-
-        use App\Entity\Invoice;
-        use App\Repository\InvoiceRepository;
-
-        class InvoiceIncrementationController
-        {
-            /**
-            * @var InvoiceRepository
-            */
-            private $invoiceRepository;
-
-            public function __construct(InvoiceRepository $invoiceRepository)
-            {
-                $this->invoiceRepository = $invoiceRepository;
-            }
-
-            public function __invoke(Invoice $data) // Méthode appelée par notre opération maison. Le paramètre doit être nommé data.
-            {
-                $this->invoiceRepository->incrementAmount($data);
-
-                return $data;
-            }
-        }
-        ```
-    2. Modifier l'annotation `@ApiResource` en ajoutant l'opération maison (ici *increment*) :
+* Ordre d'apparition des attributs des ressources
+    * [doc](https://api-platform.com/docs/core/default-order/)
+    * Exemple :
         ```php
         /**
         * @ApiResource(
-        *     itemOperations={
-        *          "GET", "PUT", "DELETE", "PATCH", "increment"={
-        *              "method"="post",
-        *              "path"="/invoices/{id}/increment",
-        *              "controller"="App\Controller\InvoiceIncrementationController",
-        *              "openapi_context"={
-        *                  "summary"="Increment the amount of an invoice.",
-        *                  "description"="Increment the amount of an invoice. It's just to show how to make custom operations."
-        *              }
-        *          }
+        *     attributes={
+        *          "order": {"sentAt": "desc"}
         *     }
         * )
         */
-        class Invoice
+        ```
+* Filtrer et ordonner
+    * [doc](https://api-platform.com/docs/core/filters/)
+    * L'annotation `@ApiFilter` permet de filtrer ou d'ordonner :
+        * `SearchFilter` avec 3 attributs et 2 stratégies de filtrage (utilisable avec le paramètre `?nomAttribut=valeurCible`) :
+            ```php
+            /**
+            * @ApiFilter(
+            *     SearchFilter::class,
+            *     properties={"firstName": "start", "lastName": "partial", "company", "user.firstName": "exact"}
+            * )
+            */
+            ```
+        * `OrderFilter` avec ou sans l'attribut `properties` (utilisable avec le paramètre `?order[nomAttribut]=desc` ou `asc`) :
+            ```php
+            /**
+            * @ApiFilter(
+            *     OrderFilter::class,
+            *     properties={"amount", "sentAt"}
+            * )
+            */
+            ```
+* Groupes de sérialisation
+    * [doc](https://api-platform.com/docs/core/serialization/)
+    * [doc composant serializer de Symfony](https://symfony.com/doc/current/components/serializer.html)
+    * Normalisation :
+        * Groupes de sérialisation :
+            > Il est conseillé de mettre tous les attributs d'une entité dans un groupe pour pouvoir facilement choisir lesquels afficher par la suite.
+            ```php
+            // ...
+
+            use ApiPlatform\Core\Annotation\ApiResource;
+            use Symfony\Component\Serializer\Annotation\Groups;
+
+            /**
+            * // ...
+            * @ApiResource(
+            *     normalizationContext={
+            *          "groups"={"customers_read"}
+            *     }
+            * )
+            */
+            class Customer
+            {
+                /**
+                * // ...
+                * @Groups(
+                *     {"customers_read", "invoices_read"}
+                * ) // Ici l'id apparaîtra dans le cadre de la normalisation des Customer et des Invoice.
+                */
+                private $id;
+                // ..
+
+                /**
+                * Get the sum of the customer's invoices
+                *
+                * @Groups({"customers_read"}) // La méthode sera appelée pendant la normalisation. On parle de champs calculé.
+                * @return float
+                */
+                public function getTotalAmount(): float // Le résultat de cette méthode apparaîtra dans un attribut JSON "getTotalAmount"
+                {
+                    return array_reduce($this->invoices->toArray(), function ($total, $invoice) {
+                        return $total + $invoice->getAmount();
+                    }, 0);
+                }
+            }
+            ```
+    * Dénormalisation :
+        * Désactiver la vérification du types des données en entrée :
+            ```php
+            // ...
+
+            use ApiPlatform\Core\Annotation\ApiResource;
+
+            /**
+            * // ...
+            * @ApiResource(
+            *     denormalizationContext={
+            *          "disable_type_enforcement"=true // Désactive la vérification du types des données en entrée
+            *     }
+            * )
+            */
+            class Invoice
+            {
+                // ...
+
+
+                public function setAmount($amount): self // On ne spécifie pas de type pour l'attribut $amount
+                {
+                    $this->amount = $amount;
+
+                    return $this;
+                }
+            }
+            ```
+* Opérations
+    * [doc](https://api-platform.com/docs/core/operations/)
+    * 2 types d'opération : 
+        * les *Collection operations* dont l'url ne recquiert pas d'identifiant (`/customers`) :
+            * GET (obtenir la liste)
+            * POST (ajouter à la liste)
+        * les *Item operations* dont l'url requiert un identifiant (`/customers/{id}`) :
+            * GET (obtenir un élément)
+            * PUT (remplacer)
+            * PATCH (mettre à jour un élément)
+            * DELETE (supprimer un élément)
+    * Autoriser certaines opérations :
+        > L'ordre d'écriture des opérations dans le docblock est celui utilisé pour l'affichage dans la doc swagger sur /api
+        ```php
+        /**
+        * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
+        * @ApiResource(
+        *     collectionOperations={"GET", "POST"},
+        *     itemOperations={"GET", "DELETE", "PUT", "PATCH"}
+        * )
+        */
+        class Customer 
         {
             // ...
         }
         ```
-
-
-### Sous-ressources
-
-> [doc](https://api-platform.com/docs/core/subresources/#subresources)
-
-* Accessible via une url de type `/nomEntitésPrincipales/{id}/nomSousRessources` en ajoutant l'annotation `@ApiSubresource()` à un attribut :
-    ```php
-    // ...
-
-    class Customer 
-    {
-        // ...
+    * Modifier l'url pour certaines opérations :
+        > Ici on veut /clients plutôt que /customers
+        ```php
         /**
-        * ...
-        * @ApiSubresource()
+        * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
+        * @ApiResource(
+        *     collectionOperations={"GET"={"path"="/clients"}, "POST"},
+        *     itemOperations={"GET"={"path"="/clients/{id}"}, "DELETE", "PUT", "PATCH"}
+        * )
         */
-        private $invoices;
-    }
-    ```
-* Configurable au niveau de l'annotation `@ApiSubresource()` de la classe :
-    * Au niveau de la classe principale pour des paramètres comme l'uri :
+        class Customer 
+        {
+            // ...
+        }
+        ```
+    * Créer ses propres opérations et modifier la doc
+        1. Créer un contrôleur chargé de l'opération :
+            ```php
+            namespace App\Controller;
+
+            use App\Entity\Invoice;
+            use App\Repository\InvoiceRepository;
+
+            class InvoiceIncrementationController
+            {
+                /**
+                * @var InvoiceRepository
+                */
+                private $invoiceRepository;
+
+                public function __construct(InvoiceRepository $invoiceRepository)
+                {
+                    $this->invoiceRepository = $invoiceRepository;
+                }
+
+                public function __invoke(Invoice $data) // Méthode appelée par notre opération maison. Le paramètre doit être nommé data.
+                {
+                    $this->invoiceRepository->incrementAmount($data);
+
+                    return $data;
+                }
+            }
+            ```
+        2. Modifier l'annotation `@ApiResource` en ajoutant l'opération maison (ici *increment*) :
+            ```php
+            /**
+            * @ApiResource(
+            *     itemOperations={
+            *          "GET", "PUT", "DELETE", "PATCH", "increment"={
+            *              "method"="post",
+            *              "path"="/invoices/{id}/increment",
+            *              "controller"="App\Controller\InvoiceIncrementationController",
+            *              "openapi_context"={
+            *                  "summary"="Increment the amount of an invoice.",
+            *                  "description"="Increment the amount of an invoice. It's just to show how to make custom operations."
+            *              }
+            *          }
+            *     }
+            * )
+            */
+            class Invoice
+            {
+                // ...
+            }
+            ```
+* Sous-ressources
+    * [doc](https://api-platform.com/docs/core/subresources/#subresources)
+    * Accessible via une url de type `/nomEntitésPrincipales/{id}/nomSousRessources` en ajoutant l'annotation `@ApiSubresource()` à un attribut :
         ```php
         // ...
 
-        /**
-        * // ...
-        * @ApiResource(
-        *     subresourceOperations={
-        *          "invoices_get_subresource"={"path"="/clients/{id}/factures"}
-        *     }
-        * )
-        */
         class Customer 
         {
             // ...
@@ -277,29 +266,114 @@
             private $invoices;
         }
         ```
-    * Au niveau de la sous-ressource pour les groupes de normalisation :
-        ```php
-        // ...
-
-        /**
-         * // ...
-         * @ApiResource(
-         *     subresourceOperations={
-         *          "api_customers_invoices_get_subresource"={
-         *              "normalization_context"={
-         *                  "groups"={"invoices_subresource"}
-         *              }
-         *          }
-         *     }
-         * )
-         */
-        class Invoice
-        {
+    * Configurable au niveau de l'annotation `@ApiSubresource()` de la classe :
+        * Au niveau de la classe principale pour des paramètres comme l'uri :
+            ```php
             // ...
+
             /**
-            * ...
-            * @ApiSubresource()
+            * // ...
+            * @ApiResource(
+            *     subresourceOperations={
+            *          "invoices_get_subresource"={"path"="/clients/{id}/factures"}
+            *     }
+            * )
             */
-            private $invoices;
-        }
+            class Customer 
+            {
+                // ...
+                /**
+                * ...
+                * @ApiSubresource()
+                */
+                private $invoices;
+            }
+            ```
+        * Au niveau de la sous-ressource pour les groupes de normalisation :
+            ```php
+            // ...
+
+            /**
+            * // ...
+            * @ApiResource(
+            *     subresourceOperations={
+            *          "api_customers_invoices_get_subresource"={
+            *              "normalization_context"={
+            *                  "groups"={"invoices_subresource"}
+            *              }
+            *          }
+            *     }
+            * )
+            */
+            class Invoice
+            {
+                // ...
+                /**
+                * ...
+                * @ApiSubresource()
+                */
+                private $invoices;
+            }
+            ```
+* Validation
+    * Comme pour un projet Symfony classique avec les annotations `@Assert\` : [doc](https://symfony.com/doc/current/reference/constraints.html).
+* Authentification
+    * JWT avec le [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#getting-started) : [doc](https://api-platform.com/docs/core/jwt/#jwt-authentication)
+        * Exemple de firewalls dans le fichier `security.yaml` :
+            ```yaml
+            security:
+                firewalls:
+                    dev:
+                        pattern: ^/(_(profiler|wdt)|css|images|js)/
+                        security: false
+                    # Firewall utilisé lors de la création d'un utilisateur
+                    registration:
+                        pattern: ^/api/users
+                        anonymous: true
+                        stateless: true
+                        methods: [POST]
+                    # Firewall utilisé pour obtenir un JWT
+                    login:
+                        pattern:  ^/api/login
+                        stateless: true
+                        anonymous: true
+                        json_login:
+                            check_path:               /api/login_check
+                            success_handler:          lexik_jwt_authentication.handler.authentication_success
+                            failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                    # Firewall pour protéger notre API
+                    api:
+                        pattern:   ^/api
+                        stateless: true
+                        anonymous: true # Mettre à false si on veut tout bloquer, mais mieux vaut utiliser l'access_control plus bas
+                        guard:
+                            authenticators:
+                                - lexik_jwt_authentication.jwt_token_authenticator
+                    main:
+                        anonymous: lazy
+
+                    access_control:
+                        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+                        - { path: ^/api/customers, roles: IS_AUTHENTICATED_FULLY }
+                        - { path: ^/api/invoices, roles: IS_AUTHENTICATED_FULLY }
+                        - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, DELETE] }
+            ```
+* Agir sur les entités pendant les opérations POST, PUT, PATCH ou DELETE avec les **Data Persisters**
+    * [doc](https://api-platform.com/docs/core/data-persisters/)
+* Utiliser les événements
+    * [doc](https://api-platform.com/docs/core/events/#the-event-system)
+* Modifier les requêtes Doctrine :
+    * [doc](https://api-platform.com/docs/core/extensions/)
+    * Pour les collections : Faire une classe qui implémente `ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInterface`.
+    * Pour les items : Faire une classe qui implémente `ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface`.
+    * Si pas d'autoconfiguration, modifier le fichier `/api/config/services.yaml` :
+        ```yaml
+        services:
+
+            # ...
+
+            'App\Doctrine\CurrentUserExtension':
+                tags:
+                    - { name: api_platform.doctrine.orm.query_extension.collection }
+                    - { name: api_platform.doctrine.orm.query_extension.item }
         ```

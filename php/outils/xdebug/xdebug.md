@@ -11,7 +11,7 @@ Ajouter les lignes suivantes au fichier `php.ini` de la version de php utilisée
 * Linux
     ```
     [xdebug]
-    zend_extension="/usr/lib/php/modules/xdebug.so"
+    zend_extension="/usr/lib/php/modules/xdebug.so" # Optionel
     xdebug.remote_enable=on
     xdebug.profiler_enable=off
     xdebug.profiler_enable_trigger=off
