@@ -78,6 +78,9 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
 
 > Nos commits deviennent les plus récents.
 
+### git clone dans un répertoire non vide
 
-
-
+1. `git clone urlRepo nomDossierProjet/nomDossierTemporaire` clone le projet dans un dossier temporaire à l'intérieur du dossier du projet.
+2. `mv nomDossierProjet/nomDossierTemporaire/.git nomDossierProjet/` déplace le dossier caché `.git` dans le dossier du projet.
+3. `rm -rf nomDossierProjet/nomDossierTemporaire` supprime le dossier temporaire et son contenu.
+4. `git reset --hard HEAD` recréé les fichiers et dossiers du projet dans le dossier du projet (git pense qu'ils ont été supprimés et restaure le projet).
