@@ -16,7 +16,7 @@
         ```
 * Exécuter un script bash
     * Soit en utilisant le chemin relatif ou absolu vers l'emplacement du fichier :
-        * `cheminVersMonScript/nomScript.sh` exécute le script.
+        * `cheminVersMonScript/nomScript.sh nomParamètre1 nomParamètre2` exécute le script.
     * Soit comme une commande :
         1. `echo $PATH` affiche les dossiers contenant les commandes.
         2. Copier ou déplacer le fichier du script dans l'un des dossiers affiché.
@@ -43,4 +43,12 @@
     let "a = 10 / 3" # echo $a affiche 3 (la partie flottante est enlevée)
     let "a = 10 % 3" # echo $a affiche 1
     ```
-    
+* Variables d'environnement :
+    * Variables utilisables depuis n'importe quel programme (variables globales).
+    * `env` affiche les variables d'environnement (leur nom et leur valeur). Exemples :
+        * `SHELL` le shell en cours d'utilisation.
+        * `PATH` la liste des répertoires contenant des programmes pouvant être lancé en entrant le nom de leur fichier directement dans la console.
+        * `EDITOR` le nom de l'éditeur de texte par défaut.
+        * `HOME` l'emplacement du dossier `home`.
+        * `PWD` l'emplacement du dossier courant.
+        * `OLDPWD` l'emplacement du dossier dans lequel on était avant.
