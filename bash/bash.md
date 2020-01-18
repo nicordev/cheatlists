@@ -21,14 +21,25 @@
         1. `echo $PATH` affiche les dossiers contenant les commandes.
         2. Copier ou déplacer le fichier du script dans l'un des dossiers affiché.
         3. Exécuter directement `nomScript.sh` n'importe où. La classe !
+* Paramètres d'un script :
+    * `$#` contient le nombre de paramètres passés au script.
+    * `$0` contient le nom du script.
+    * `$1`, `$2`, [...] `$9` contient la valeur d'un des 9 premiers paramètres.
+    * `shift` décale les variables `$1` à `$9` d'un paramètre (exemple : `$1` contient maintenant le 2ème paramètre).
 * Variables :
     * `nomVariable=valeurVariable` affecte une valeur à une variable. Attention à ne pas mettre d'espace autour du signe `=`.
+    * `$nomVariable` permet d'accéder à la valeur de la variable.
 * Quotes :
     * `'Hello $nom!'` les simples quotes `''` stockent la chaîne telle quelle. Ici : `Hello $nom!`.
     * `'Hello $nom!'` les doubles quotes `""` stockent la chaîne avec les valeurs des variables qu'elle contient. Ici : `Hello Bob!`.
     * ``nomCommande`` les backticks `` ` `` exécutent la commande.
+* Tableaux :
+    * `nomTableau=('valeur0' 'valeur1' 'valeur2')` définit un tableau.
+    * `tableau[index]='valeur'` affecte une valeur à une case, quelque soit la valeur de l'index.
+    * `${tableau[index]}` accède à la valeur d'une case d'un tableau.
 * `echo $nomVariable1$nomVariable2` affiche des variables. 
     * Chaque nom de variable doit être précédée du symbole `$`.
+    * `echo ${tableau[*]}` affiche toutes les valeurs d'un tableau.
     * `-e` active les retours à la ligne avec le caractère `\n` (même dans des simples quotes). Exemple : `echo -e 'Hello\nworld!'`
 * `read nomVariable1 nomVariable2` demande la saisie de valeurs pour des variables.
     * `read -p 'Entrez une valeur puis une autre : ' nomVariable1 nomVariable2` affiche un message avant de demander la saisie (prompt).
@@ -52,3 +63,4 @@
         * `HOME` l'emplacement du dossier `home`.
         * `PWD` l'emplacement du dossier courant.
         * `OLDPWD` l'emplacement du dossier dans lequel on était avant.
+    * `export NOM_VARIABLE` transforme une variable existante en variable d'environnement.
