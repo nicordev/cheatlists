@@ -101,7 +101,30 @@ MOT_CLE_DE_FIN
         * `-H` ou `--halt`
         * `-r` ou `--reboot` Redémarrer
         * `-k` Ne fait rien à par afficher le wall message
-        * `-c` Annuler un shutdown programmé 
+        * `-c` Annuler un shutdown programmé
+
+## Exécuter des programmes en arrière plan
+
+* `nomCommande paramètres &` exécute la commande en arrière plan. Affiche le numéro du processus et l'identifiant du processus (PID).
+    * `nomCommande paramètres 2>&1 &` redirige aussi les erreurs.
+* `nohup nomCommande paramètres` détache le processus de la console. La sortie est redirigée par défaut vers un fichier `nohup.out` créé dans le dossier courant.
+* Passer un processus en cours en arrière plan
+    1. `ctl + z` met en pause l'exécution du programme.
+    2. `bg` passe le processus mis en pause en arrière plan et le réactive.
+* `jobs` affiche la liste des processus en arrière plan.
+* `fg %numéroProcessus` passe un processus au premier plan.
+
+## Date
+
+* `date "+%codeDate"` affiche une partie de la date actuelle `%codeDate` :
+    * `%W` numéro de la semaine.
+    * `%A` nom du jour.
+    * On peut ajouter du texte et mettre plusieurs parties :
+        * `date "+Nous sommes le %A de la semaine %W"`
+
+## Exécuter un programme à une heure différée
+
+* `at`
 
 ## Accès SSH
 
