@@ -17,10 +17,10 @@
 
 > [Tutoriels](http://www.postgresqltutorial.com/)
 
-1. `sudo -iu postgres` lance le shell.
-1. `psql [nomBaseDeDonnées]` lance `psql` [et sélectionne une base de données].
-    * `psql -d nomBaseDeDonnées -U  nomUtilisateur -W` se connecte à une base de données avec un utilisateur particulier.
-
+* Lancer le shell
+    1. `sudo -iu postgres` lance le shell.
+    1. `psql [nomBaseDeDonnées]` lance `psql` [et sélectionne une base de données].
+        * `psql -d nomBaseDeDonnées -U  nomUtilisateur -W` se connecte à une base de données avec un utilisateur particulier.
 * `SELECT version();` affiche la version de postgresql.
 * `\?` affiche les commandes de `psql`.
 * `\h nomCommande` affiche de l'aide sur une commande.
@@ -42,6 +42,13 @@
     * `dropdb nomBaseDeDonnées` supprime une base de données.
     * `\c nomBaseDeDonnées [nomUtilisateur]` sélectionne une base de données [avec un utilisateur spécifique].
     * `\l` liste les bases de données disponibles.
+    * Export/Import de bases de données :
+        * [doc](https://www.postgresql.org/docs/9.1/backup-dump.html)
+        * Exporter une base de données :
+            1. Sortir du shell
+            2. `pg_dump nomBaseDeDonnées > nomFichierACréer`
+        * Importer une base de données :
+            * `psql dbname < nomFichierCrééPar_pg_dump`
 * Schémas
     * `\dn` liste les schémas existants.
 * Tables
