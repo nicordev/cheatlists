@@ -1,5 +1,18 @@
 # Git
 
+## Principe
+
+Git gère les versions de vos travaux locaux à travers 3 zones locales majeures :
+* le répertoire de travail (working directory/WD) ;
+* l’index, ou stage (nous préférerons le second terme) ;
+* le dépôt local (Git directory/repository).
+
+> Working directory -> `git add` -> Stage -> `git commit` -> Repository -> `git push` -> Remote (GitHub, GitLab...)
+
+Une nouvelle branche ne peut être créée que lorque la branche master existe. La branche master n'est créée qu'après avoir fait un premier commit.
+
+
+
 ## Configuration
 
 * `git config --list` Liste les paramètres
@@ -53,6 +66,7 @@
     * `git branch nomDeLaNouvelleBranche` Créé une nouvelle branche 
         * `git branch nomDeLaNouvelleBranche SHA_d_un_commit` Créé une nouvelle branche à partir d'un commit particulier
     * `git branch -d nomDeLaBrancheASupprimer` Supprime une branche
+    * `git branch -D nomDeLaBrancheASupprimer` Supprime une branche et toutes les modifications non commitées
     * `git branch -m nouveauNomDeLaBrancheActive` Renomme la branche active
 * `git merge nomDeLaBrancheAFusionner` Permet de fusionner la branche indiquée dans la branche active
     * Par exemple pour ajouter dans une branche A les mises à jour que vous avez faites dans une autre branche B, on se place dans la branche A avant d'exécuter la commande `git merge brancheB`
