@@ -26,6 +26,9 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
             nomFichierA.exclure
         ```
 * Eviter que Git ne demande le nom d'utilisateur et le mot de passe tout le temps
+    * Sources :
+        * [site](https://stackoverflow.com/a/12240995)
+        * [site](https://stackoverflow.com/a/14528360)
     * En passant en SSH avec `git remote set-url origin git@github.com:username/repo.git`
     * Ou en enregistrant les identifiants:
         1. `git config --global credential.helper store`
@@ -41,6 +44,46 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
                 st = status
                 br = branch
         ```
+
+## Outils
+
+* [Commitzen](https://github.com/commitizen/cz-cli) Assistant de rédaction de messages de commit :
+    * Installation
+        1. `npm install -g commitizen`
+        2. `npm install -g cz-conventional-changelog`
+        3. `echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc`
+    * Utilisation
+        * `git cz`
+* [Commitlint](https://commitlint.js.org/#/) Empêche de générer de mauvais messages de commit :
+    * Installation
+        1. `npm install -g @commitlint/cli @commitlint/config-conventional` installe commitlint.
+        2. `echo "module.exports = {extends: ['@commitlint/config-conventional']}" > ~/commitlint.config.js` créé un fichier de configuration.
+        4. Tester :
+            ```bash
+            echo 'should fail' | commitlint
+            echo "fix(server): send cors headers" | commitlint
+            ```
+* [Git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+    1. Configuration de git :
+        * `mkdir -p ~/.git/hooks`
+        * `git config --global core.hooksPath ~/.git/hooks`
+    2. Création du fichier de hook `commit-msg` :
+        * `touch ~/.git/hooks/commit-msg`
+        * `chmod a+x ~/.git/hooks/commit-msg`
+        * Contenu du fichier `commit-msg` :
+            ```bash
+            #! /bin/bash
+
+            # run any local commit-msg hook first
+            if test -e ./.git/hooks/commit-msg
+            then
+                    sh ./.git/hooks/commit-msg
+            fi
+
+            commitlint < $1
+
+            exit $status
+            ```
 
 ## Utilisation
 

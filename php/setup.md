@@ -24,6 +24,7 @@
     * `sudo apt-get install php-xml` installe l'extension *xml* nécessaire pour composer.
     * `sudo apt-get install php-curl` installe l'extension *curl* utile pour composer.
     * `sudo apt-get install php-mysql` installe l'extension nécessaire pour mysql et mariadb.
+    * `sudo apt-get install php-pgsql` installe l'extension nécessaire pour postgresql.
 
 ## Configuration
 
