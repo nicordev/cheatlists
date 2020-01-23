@@ -18,7 +18,6 @@ Liste réalisée à partir [du cours de mateo21 sur OpenClassrooms](https://open
     * `$` Niveau d'autorisation
         * `$` Normal
         * `#` Super utilisateur (pseudonyme *root*)
-* `make ` + `tab` affiche les commandes possible du `Makefile`
 
 ## Utilisateurs et les droits
 
