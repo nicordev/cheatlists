@@ -1,5 +1,9 @@
 # CLI
 
+## Pratique
+
+* `php bin/console security:encode-password` encode un mot de passe.
+
 ## debug
 
 * `php bin/console debug:router` afficher toutes les routes
