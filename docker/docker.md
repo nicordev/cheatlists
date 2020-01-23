@@ -55,7 +55,7 @@
 
 ## Créer un Dockerfile
 
-> **Note perso** Un Dockerfile permet de construire une image Docker.
+> **Note perso** Un Dockerfile permet de construire une image Dockabout:configer.
 
 1. Créer un fichier `Dockerfile` à la racine du projet contenant les instructions suivantes :
     * `FROM nomImageDeBase` défini l'image à utiliser comme base.
