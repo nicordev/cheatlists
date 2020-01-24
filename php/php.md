@@ -158,6 +158,7 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 
 ## Arrays
 
+* `compact ( mixed $varname1 [, mixed $... ] ) : array` crée un tableau à partir de variables et de leur valeur.
 * `unset ( mixed $var [, mixed $... ] ) : void` détruit un élément d'un tableau ou n'importe quelle autre variable
 * `array_reduce ( array $array , callable $callback [, mixed $initial = NULL ] ) : mixed` applique itérativement la fonction `callback` aux éléments du tableau `array`, de manière à réduire le tableau à une valeur simple.
 * `array_values ( array $array ) : array` converti un tableau associatif en tableau à clés numériques [doc](https://www.php.net/manual/en/function.array-values.php)
