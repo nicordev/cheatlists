@@ -62,7 +62,7 @@
             schemaname != 'pg_catalog'
         AND schemaname != 'information_schema';
         ```
-    * `\d nomTable` ou `\d+ nomTable` affiche les infos d'une table. Equivaut à :
+    * `\d nomTable` ou `\d+ nomTable` affiche les infos d'une table (correspond à `DESCRIBE nomTable;` de MySQL). Equivaut à :
         ```sql
         SELECT
             COLUMN_NAME
