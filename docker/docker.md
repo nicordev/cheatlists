@@ -102,7 +102,7 @@
 ## Docker compose
 
 * [Installation](https://docs.docker.com/compose/install/)
-    * `sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose && sudo chmod +x /usr/bin/docker-compose` installe Docker compose sur Linux.
+    * `sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose && sudo chmod +x /usr/bin/docker-compose` installe Docker compose sur Linux. Modifier la commande en fonction de la dernière version.
 
 * Fichier `docker-compose.yaml` :
     * Fichier à créer qui contiendra le descriptif des conteneurs à générer.
