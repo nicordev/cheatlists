@@ -15,6 +15,7 @@
 * `composer create-project symfony/website-skeleton my_project_name` créé un projet complet via composer
 * `composer create-project symfony/skeleton my_project_name` créé un projet minimal via composer
 * `symfony new nameOfTheProjectHere --full` créé un projet complet avec l'exécutable Symfony
+* `symfony new my_project_name --version=lts` sélectionne une version en particulier
 * `symfony new nameOfTheProjectHere` créé un projet minimal avec l'exécutable Symfony
 
 ## Problèmes

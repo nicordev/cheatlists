@@ -73,3 +73,6 @@
         ```
 * Fonctions
     * `\df` liste les fonctions disponibles.
+* Types custom
+    * `DROP TYPE nom_type cascade;` supprime le type.
+    * `CREATE TYPE nom_énumération AS ENUM ('valeur1', 'valeur2', 'valeur3');` créé une nouvelle énumération.

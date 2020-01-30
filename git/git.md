@@ -11,8 +11,6 @@ Git gère les versions de vos travaux locaux à travers 3 zones locales majeures
 
 Une nouvelle branche ne peut être créée que lorque la branche master existe. La branche master n'est créée qu'après avoir fait un premier commit.
 
-
-
 ## Configuration
 
 * `git config --list` Liste les paramètres

@@ -47,3 +47,37 @@
                     // ...
                 }
                 ```
+* Créer des énumérations custom pour Symfony :
+    * Installer le `fresh/doctrine-enum-bundle`
+    * Créer une classe `src/DBAL/Types/NomEnumarationType.php`. Exemple :
+        ```php
+        <?php
+
+        namespace App\DBAL\Types;
+
+        use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
+
+        /**
+        * Class ProductType.
+        */
+        final class ProductType extends AbstractEnumType
+        {
+            public const TO_PLACE = '2PLACE';
+            public const TO_SCHOOL = '2SCHOOL';
+            public const TO_TAD = '2TAD';
+
+            protected static $choices = [
+                self::TO_PLACE => '2PLACE',
+                self::TO_SCHOOL => '2SCHOOL',
+                self::TO_TAD => '2TAD',
+            ];
+        }
+        ```
+    * Modifier le fichier `config/packages/doctrine.yaml`. Exemple :
+        ```yaml
+        # ...
+        doctrine:
+            dbal:
+                types:
+                    ProductType: App\DBAL\Types\ProductType
+        ```
