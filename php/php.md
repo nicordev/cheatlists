@@ -190,6 +190,11 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `substr_replace(mixed $string, mixed $replacement, mixed $start [, mixed $length ]): mixed` remplace un segment de la chaîne string par la chaîne replacement. Le segment est délimité par start et éventuellement par length.
 * `substr_count(string $haystack, string $needle [, int $offset = 0 [, int $length ]]): int` retourne le nombre d'occurrences de needle dans la chaîne haystack. Notez que needle est sensible à la casse.
 
+## Serialize, deserialize
+
+* `serialize ( mixed $value ) : string` transforme (linéarise) une variable en string (serialize). La string produite est similaire à celle utilisée dans les bases de données (exemple : type array de doctrine).
+* `unserialize ( string $str [, array $options ] ) : mixed` prend une variable linéarisée et la convertit en variable PHP. 
+
 ## Dates
 
 * `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante
