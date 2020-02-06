@@ -20,7 +20,7 @@
     * `Accept` `application/json` pour récupérer uniquement les données brutes (sans hypermédias)
     * `Accept` `application/ld+json` pour récupérer les données avec hypermédias (par défaut)
 
-## Configuration
+## Configuration via des annotations
 
 * Généralités
     * 3 niveaux de configuration :
@@ -376,4 +376,28 @@
                 tags:
                     - { name: api_platform.doctrine.orm.query_extension.collection }
                     - { name: api_platform.doctrine.orm.query_extension.item }
+        ```
+
+## Configuration via des fichiers .yaml
+
+* Limiter la profondeur de sérialization à 1 :
+    * Fichier `/config/packages/api_platform/Company.yaml`:
+        ```yaml
+        resources:
+            App\Entity\Company:
+                attributes:
+                    normalization_context:
+                        enable_max_depth: true
+        ```
+    * Entité `App\Entity\Company`:
+        ```php
+        use Symfony\Component\Serializer\Annotation\MaxDepth;
+
+        class Company
+        {
+            /**
+            * @MaxDepth(1)
+            */
+            private $grantedCompanies;
+        }
         ```
