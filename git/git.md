@@ -85,6 +85,7 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
 
 ## Utilisation
 
+* `git fetch origin` mets à jour le dépôt local avec le remote.
 * `git init` Active le répertoire courant en repository git (ajoute un dossier caché .git au répertoire)
 * `git status` Donne le statut du repository (fichiers indexés ou non pouvant faire l'objet d'un commit)
 * `git log` Donne les différents commit du repository
@@ -129,6 +130,7 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
 
 ### Rebase
 
+* `git rebase nomDeMaBranche nomBrancheARécupérer` applique les commits de `nomBrancheARécupérer` dans `nomDeMaBranche`.
 1. Coder sa branche et faire ses commits
 2. `git pull --rebase origin master` récupère les commits de la master manquants et place nos commits à la suite, modifiant l'historique chronologique
 3. `git push force-with-lease` envoie notre branche sans faire de merge
