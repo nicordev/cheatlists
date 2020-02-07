@@ -1,4 +1,4 @@
-# Git
+https://stackoverflow.com/questions/39974833/composer-the-requested-package-exists-as-but-these-are-rejected-by-your-constrhttps://stackoverflow.com/questions/39974833/composer-the-requested-package-exists-as-but-these-are-rejected-by-your-constr# Git
 
 ## Principe
 
@@ -130,12 +130,17 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
 
 ### Rebase
 
-* `git rebase nomDeMaBranche nomBrancheARécupérer` applique les commits de `nomBrancheARécupérer` dans `nomDeMaBranche`.
-1. Coder sa branche et faire ses commits
-2. `git pull --rebase origin master` récupère les commits de la master manquants et place nos commits à la suite, modifiant l'historique chronologique
-3. `git push force-with-lease` envoie notre branche sans faire de merge
+* `git rebase nomBrancheARécupérer` insère les commits de `nomBrancheARécupérer` avant les commits de la branche active. Fonctionnement :
+    1. revient au commit commun entre la branche courante et la branche à récupérer
+    2. applique les commits de la branche à récupérer
+    3. applique les commits de la branche courante.
+* `git rebase nomDeMaBranche nomBrancheARécupérer` applique les commits de `nomBrancheARécupérer` dans `nomDeMaBranche` avant d'appliquer ceux de `nomDeMaBranche`.
+* Méthode :
+    1. Coder sa branche et faire ses commits
+    2. `git pull --rebase origin master` récupère les commits de la master manquants et place nos commits à la suite, modifiant l'historique chronologique
+    3. `git push force-with-lease` envoie notre branche sans faire de merge
 
-> Nos commits deviennent les plus récents.
+    > Nos commits deviennent les plus récents.
 
 ### git clone dans un répertoire non vide
 

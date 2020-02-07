@@ -1,5 +1,19 @@
 # Doctrine ORM
 
+## Erreurs
+
+* Avec PostgreSQL:
+    * **invalid value for parameter "client_encoding": "utf8mb4"** :
+        * Dans `/config/packages/doctrine.yaml`, supprimer les lignes suivantes  :
+            ```yaml
+            doctrine:
+                dbal:
+                    # Supprimer ou commenter les lignes suivantes :
+                    charset: utf8mb4
+                    default_table_options:
+                        collate: utf8mb4_unicode_ci
+            ```
+
 ## Utilisation
 
 * Migrations
