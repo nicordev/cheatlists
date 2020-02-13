@@ -2,6 +2,7 @@
 
 ## Ubuntu
 
+* `php -m` affiche les modules (extensions) installés.
 * Installer une version spécifique :
     * [PHP 7.3](https://computingforgeeks.com/how-to-install-php-7-3-on-ubuntu-18-04-ubuntu-16-04-debian/)
         1. `sudo add-apt-repository ppa:ondrej/php` ajoute le repository

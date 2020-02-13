@@ -103,7 +103,7 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
     * `git checkout nomDeLaBranche` Se placer sur le dernier commit d'une branche
     * `git checkout -b nomDeLaNouvelleBranche` Créé une nouvelle branche et nous place dessus
         * `git checkout -b nomDeLaNouvelleBranche SHA_d_un_commit` Créé une nouvelle branche à partir d'un commit particulier et nous place dessus
-* `git revert SHADuCommit` Créé un nouveau commit qui fait exactement l'inverse d
+* `git revert SHADuCommit` Créé un nouveau commit qui fait exactement l'inverse du commit indiqué.
 * `git branch` Affiche les différentes branches du repository
     * `git branch nomDeLaNouvelleBranche` Créé une nouvelle branche 
         * `git branch nomDeLaNouvelleBranche SHA_d_un_commit` Créé une nouvelle branche à partir d'un commit particulier
@@ -117,8 +117,9 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
 * `git stash` met de côté les modifications en cours qui n'ont pas fait l'objet d'un commit pour pouvoir faire d'autres modifications, par exemple lorsque quelqu'un nous demande de régler un bug qui n'a rien à voir avec ce sur quoi on travaille actuellement. On stash notre travail, on règle le bug, on commit les modifications apportées pour régler le bug et on revient sur notre travail avec `git stash pop` ou `git stash apply`.
     * `git stash list` affiche la liste des stash créés.
     * `git stash apply` applique les modifications situées dans le dernier stash créé.
-    * `git stash apply stash@{0}` applique les modifications d'un stash particulier.
+        * `git stash apply numéroDuStash` applique les modifications d'un stash particulier.
     * `git stash pop` applique les modifications et les efface du stash.
+        * `git stash pop numéroDuStash` applique les modifications d'un stash particulier.
 
 ### Merge
 
