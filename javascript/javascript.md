@@ -1,5 +1,59 @@
 # Javascript
 
+## Types
+
+* Primitive types || Value types
+    * String
+    * Number
+    * Boolean
+    * undefined
+    * null
+        > Note: `typeof null;` donne **"object"**
+* Reference types
+    * Object
+    * Array
+    * Function
+        ```js
+        function greet(name, lastName) { // name et lastName sont des paramètres. Leur valeur par défaut est undefined
+           console.log('Hello ' + name + ' ' + lastName);
+        }
+
+        greet('bob'); // 'bob' est un argument
+        ```
+
+## Strings
+
+* Exemples :
+    ```js
+    'Hello Bob!'
+    "Hello Bob!"
+    `Hello ${name}!
+    What's up?`
+    ```
+
+## Objects
+
+* Notation:
+    ```js
+    const person = {
+        name: 'Bob',
+        age: 30
+    }
+    ```
+    * Dot notation:
+        ```js
+        person.name = 'Sarah';
+        console.log(person.name); // Affiche Sarah
+        ```
+    * Bracket notation:
+        ```js
+        person['name'] = 'Anaïs';
+        console.log(person['name']); // Affiche Anaïs. On aurait pu utiliser une variable pour stocker la clé 'name'.
+        ```
+* Ajout / Suppression d'une propriété
+    * `nomObjet.nomNouvellePropriété = valeurNouvellePropriété` ajoute une propriété à un objet.
+    * `delete nomObjet.nomPropriété` retire une propriété à un objet.
+
 ## Exceptions
 
 ```javascript

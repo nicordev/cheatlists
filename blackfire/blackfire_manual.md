@@ -1,11 +1,12 @@
 # Blackfire
 
-## Utilisation avec le navigateur
+[Installation](https://blackfire.io/docs/up-and-running/installation)
 
-1. Lancer le programme `blackfire-agent.exe`
-2. Lancer blackfire via l'extension du navigateur (firefox ou chrome)
+## Avec Windows
 
-## Utilisation avec curl
-
-1. Lancer le programme `blackfire-agent.exe`
-2. Exécuter `blackfire curl http://example.com/`
+* Utilisation avec le navigateur
+    1. Lancer le programme `blackfire-agent.exe`
+    2. Lancer blackfire via l'extension du navigateur (firefox ou chrome)
+* Utilisation avec curl
+    1. Lancer le programme `blackfire-agent.exe`
+    2. Exécuter `blackfire curl http://example.com/`
