@@ -53,6 +53,45 @@
 * Ajout / Suppression d'une propriété
     * `nomObjet.nomNouvellePropriété = valeurNouvellePropriété` ajoute une propriété à un objet.
     * `delete nomObjet.nomPropriété` retire une propriété à un objet.
+* Création d'objets
+    * On peut instancier des types primitifs comme ça :
+        ```js
+        let isOkay = new Boolean(5); // Toute valeur différente de 0 correspond à > 'true'.
+        let name = new String('Bob');
+        let age = new Number(42);
+        ```
+    * Propriété `constructor` :
+
+        ```js
+        let isOkay = new Boolean(5);
+        isOkay.constructor // Retourne 'function Boolean()'.
+        ```
+
+        Tous les objets ont cette propriété. Elle pointe vers la fonction qui a été utilisée pour créer l'objet.
+    * Factory functions:
+        ```js
+        function createCircle(radius) {
+            return {
+                radius,
+                draw: function () {
+                    console.log(`Draw a circle of ${this.radius}`);
+                }
+            }
+        }
+
+        const circle = createCircle(10);
+        ```
+    * Constructor function:
+        ```js
+        function Circle(radius) {
+            this.radius = radius;
+            this.draw =  function () {
+                console.log(`Draw a circle of ${this.radius}`);
+            }
+        }
+
+        const circleFromConstructor = new Circle(999); // Si on oublie le new, alors 'this' correspondra à l'objet 'Window' dans un navigateur ou 'global' dans node
+        ```
 
 ## Exceptions
 

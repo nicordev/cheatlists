@@ -30,6 +30,15 @@
     * des infos sont stockés dans la session dans `Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag::set()`
     * les classes sont chargées dans `Symfony\Component\ClassLoader\ClassLoader::loadClass()`
 
+## Accéder à la requête
+
+> [doc](https://symfony.com/doc/current/service_container/request.html)
+
+Injecter `Symfony\Component\HttpFoundation\RequestStack $requestStack` et faire :
+```php
+$request = $this->requestStack->getCurrentRequest();
+```
+
 ## Validation des données
 
 * [doc](https://symfony.com/doc/current/reference/constraints.html)

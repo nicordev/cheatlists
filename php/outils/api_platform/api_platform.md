@@ -86,6 +86,42 @@
             * )
             */
             ```
+    * Créer un filtre custom :
+        * Uniquement pour les collections.
+        * Créer une classe dans `src/Filter` qui implémente `ApiPlatform\Core\Api\FilterInterface` :
+            ```php
+            interface FilterInterface
+            {
+                /**
+                * Gets the description of this filter for the given resource.
+                *
+                * Returns an array with the filter parameter names as keys and array with the following data as values:
+                *   - property: the property where the filter is applied
+                *   - type: the type of the filter
+                *   - required: if this filter is required
+                *   - strategy (optional): the used strategy
+                *   - is_collection (optional): is this filter is collection
+                *   - swagger (optional): additional parameters for the path operation,
+                *     e.g. 'swagger' => [
+                *       'description' => 'My Description',
+                *       'name' => 'My Name',
+                *       'type' => 'integer',
+                *     ]
+                *   - openapi (optional): additional parameters for the path operation in the version 3 spec,
+                *     e.g. 'openapi' => [
+                *       'description' => 'My Description',
+                *       'name' => 'My Name',
+                *       'schema' => [
+                *          'type' => 'integer',
+                *       ]
+                *     ]
+                * The description can contain additional data specific to a filter.
+                *
+                * @see \ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer::getFiltersParameters
+                */
+                public function getDescription(string $resourceClass): array;
+            }
+            ```
 * Groupes de sérialisation
     * [doc](https://api-platform.com/docs/core/serialization/)
     * [doc composant serializer de Symfony](https://symfony.com/doc/current/components/serializer.html)

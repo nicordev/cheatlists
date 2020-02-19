@@ -131,15 +131,19 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
 
 ### Rebase
 
+* Annuler un rebase :
+    1. `git reflog` affiche un historique montrant le dernier rebase.
+    2. `git checkout shaDuDernierCommitAvantRebase` se place sur le dernier commit avant le rebase.
+    3. `git reset --hard shaDuDernierCommitAvantRebase` annule le rebase.
 * `git rebase nomBrancheARécupérer` insère les commits de `nomBrancheARécupérer` avant les commits de la branche active. Fonctionnement :
-    1. revient au commit commun entre la branche courante et la branche à récupérer
-    2. applique les commits de la branche à récupérer
+    1. revient au commit commun entre la branche courante et la branche à récupérer.
+    2. applique les commits de la branche à récupérer.
     3. applique les commits de la branche courante.
 * `git rebase nomDeMaBranche nomBrancheARécupérer` applique les commits de `nomBrancheARécupérer` dans `nomDeMaBranche` avant d'appliquer ceux de `nomDeMaBranche`.
 * Méthode :
-    1. Coder sa branche et faire ses commits
-    2. `git pull --rebase origin master` récupère les commits de la master manquants et place nos commits à la suite, modifiant l'historique chronologique
-    3. `git push force-with-lease` envoie notre branche sans faire de merge
+    1. Coder sa branche et faire ses commits.
+    2. `git pull --rebase origin master` récupère les commits de la master manquants et place nos commits à la suite, modifiant l'historique chronologique.
+    3. `git push force-with-lease` envoie notre branche sans faire de merge.
 
     > Nos commits deviennent les plus récents.
 
