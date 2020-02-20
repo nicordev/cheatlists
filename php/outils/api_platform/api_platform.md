@@ -122,6 +122,15 @@
                 public function getDescription(string $resourceClass): array;
             }
             ```
+        * On peut aussi accéder aux paramètres de la requête en héritant de `SearchFilter` et en surchargeant la méthode `apply` :
+            ```php
+
+            public function apply(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null, array $context = [])
+            {
+                $propertiesToLookFor = $context['filters'];
+                parent::apply($queryBuilder, $queryNameGenerator, $resourceClass, $operationName, $context);
+            }
+            ```
 * Groupes de sérialisation
     * [doc](https://api-platform.com/docs/core/serialization/)
     * [doc composant serializer de Symfony](https://symfony.com/doc/current/components/serializer.html)
