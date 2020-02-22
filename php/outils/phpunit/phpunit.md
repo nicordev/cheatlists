@@ -13,6 +13,7 @@
     * Exécuter `php bin/phpunit`
 * Pour Symfony 3
     * Exécuter `./vendor/bin/simple-phpunit`
+* `php bin/phpunit --verbose` ou `-v` détaille les problèmes.
 * `php bin/phpunit --coverage-html nomDossierDestination` génère un rapport du coverage
 * `php bin/phpunit --filter=testNomMethodeATester` exécute certains tests seulement
 * `php bin/phpunit chemin/vers/fichierATester/nomfichierOuDossier` exécute les tests d'un fichier ou d'un dossier
@@ -25,15 +26,14 @@
 
 * On peut visualiser la page demandée par un test en faisant un `echo $client->getResponse()->getContent();` dans la méthode de test et en redirigeant la sortie vers un fichier `.html` en exécutant `./bin/phpunit --filter nomMethodeTest > nomFichierDestination.html`
 * On peut ajouter des headers perso dans la requête en préfixant l'intitulé du header par `HTTP_`
-
-```
-    $this->client->request(
-        'GET',
-        "/products/{$this->testProduct->getId()}",
-        [],
-        [],
-        [
-            "HTTP_X-AUTH-TOKEN" => "test_token"
-        ]
-    );
-```
+    ```php
+        $this->client->request(
+            'GET',
+            "/products/{$this->testProduct->getId()}",
+            [],
+            [],
+            [
+                "HTTP_X-AUTH-TOKEN" => "test_token"
+            ]
+        );
+    ```
