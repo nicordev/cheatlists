@@ -89,6 +89,8 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
 * `git init` Active le répertoire courant en repository git (ajoute un dossier caché .git au répertoire)
 * `git status` Donne le statut du repository (fichiers indexés ou non pouvant faire l'objet d'un commit)
 * `git log` Donne les différents commit du repository
+    * `git log --oneline` affiche l'historique des commits avec une ligne par commit.
+    * `git log --graph` affiche une ligne de couleur pour chaque branche.
 * Touche "q" du clavier Permet de sortir du log
 * `git add`
     * `git add nomDuFichierAIndexer` Ajoute un fichier à l'index de git pour pouvoir en faire un commit
@@ -140,6 +142,12 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
     2. applique les commits de la branche à récupérer.
     3. applique les commits de la branche courante.
 * `git rebase nomDeMaBranche nomBrancheARécupérer` applique les commits de `nomBrancheARécupérer` dans `nomDeMaBranche` avant d'appliquer ceux de `nomDeMaBranche`.
+* Rebase d'une branche venant d'un autre repository :
+    1. `git remote add nomAutreRemote https://github.com/nomUtilisateur/nomRepository.git` créé un nouveau remote pointant vers le repository contenant la branche désirée.
+    2. `git fetch nomAutreRemote` récupère les branches de l'autre repository.
+    3. `git checkout nomBranche` se place sur la branche `nomBranche`.
+    4. `git rebase nomAutreRemote\nomBrancheDésirée` applique les commits de notre branche à la suite de ceux de `nomBrancheDésirée`.
+    5. `git push -f origin nomBranche` si on peine à pusher notre branche ayant subit le rebase.
 * Méthode :
     1. Coder sa branche et faire ses commits.
     2. `git pull --rebase origin master` récupère les commits de la master manquants et place nos commits à la suite, modifiant l'historique chronologique.

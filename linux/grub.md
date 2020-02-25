@@ -1,5 +1,8 @@
 # Grub
 
+* [rentry.co](https://rentry.co/hpxxg)
+    * Edit code: fAYSZNzF
+
 ## Changer le timeout à 1 seconde
 
 * Editer le fichier `/etc/default/grub`.

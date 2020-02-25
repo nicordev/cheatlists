@@ -92,6 +92,39 @@
 
         const circleFromConstructor = new Circle(999); // Si on oublie le new, alors 'this' correspondra à l'objet 'Window' dans un navigateur ou 'global' dans node
         ```
+* `Object.keys(nomVariable);` retourne un tableaux contenant les noms des propriétés et méthodes de l'objet `nomVariable` :
+    ```js
+    let circle = new Circle(700);
+    let circleKeys = Object.keys(circle);
+    ```
+* `nomPropriétéOuMéthode in nomVariable` retourne `true` si `nomVariable` contient `nomPropriétéOuMéthode` :
+    ```js
+    for (let key in nomVariable) {
+        console.log(nomVariable[key]);
+    }
+    ```
+* Propriétés privées et closures :
+    ```js
+    function PrivateCircle(radius) {
+        // Private
+        let defaultLocation = {
+            x: 2,
+            y: 4
+        }
+        let computeOptimumLocation = function (factor) {
+            console.log(factor, defaultLocation.x, defaultLocation.y); // Closure can acess private variables.
+        }
+
+        // Public
+        this.radius = radius;
+        this.draw = function () {
+            computeOptimumLocation('zog');
+            console.log('draw...');
+        }
+    }
+    ```
+
+**53:25** https://www.youtube.com/watch?v=PFmuCDHHpwk
 
 ## Exceptions
 

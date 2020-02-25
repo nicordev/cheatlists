@@ -27,6 +27,10 @@ Génère des fausses données.
 
 * Créer un encoder de ce genre :
     ```php
+    <?php
+    
+    namespace App\Helper;
+
     class PasswordEncoder
     {
         private static $encoder;

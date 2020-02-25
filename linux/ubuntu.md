@@ -149,8 +149,13 @@ MOT_CLE_DE_FIN
 ## Variables d'environnement
 
 * `LANG=fr_FR.UTF-8` modifie la variable d'environnement existante `LANG`
-*   ```bash
+* ```bash
     EDITOR=nano
     export EDITOR
     ```
     créé une nouvelle variable d'environnement `EDITOR`. Peut être écrit sur une ligne : `export EDITOR=nano`
+
+## Flush DNS cache
+
+* `sudo systemd-resolve --flush-caches` flush le cache.
+    * `sudo systemd-resolve --statistics` montre que le cache a été vidé.
