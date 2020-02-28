@@ -64,3 +64,20 @@
         * `PWD` l'emplacement du dossier courant.
         * `OLDPWD` l'emplacement du dossier dans lequel on était avant.
     * `export NOM_VARIABLE` transforme une variable existante en variable d'environnement.
+* Conditions :
+    ```bash
+    #!/bin/bash
+
+    if [ $1 = "Bruno" ]
+    then
+            echo "Salut Bruno !"
+    elif [ $1 = "Michel" ]
+    then
+            echo "Bien le bonjour Michel"
+    elif [ $1 = "Jean" ]
+    then
+            echo "Hé Jean, ça va ?"
+    else
+            echo "J'te connais pas, ouste !"
+    fi
+    ```

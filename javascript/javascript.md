@@ -123,8 +123,39 @@
         }
     }
     ```
+* Getters and setters
+    * Méthode 1 :
+        ```js
+        function Shape()
+        {
+            let defaultLocation = {
+                x: 10,
+                y: 20
+            };
 
-**53:25** https://www.youtube.com/watch?v=PFmuCDHHpwk
+
+            Object.defineProperty(this, 'defaultLocation', {
+                get: function () {
+                    return defaultLocation;
+                },
+                set: function (value) {
+                    if (!value.x || !value.y) {
+                        throw Error('Invalid location.');
+                    }
+
+                    defaultLocation = value;
+                }
+            })
+        }
+
+        const Shape = new Shape();
+
+        console.log(Shape.defaultLocation); // Call the getter
+        Shape.defaultLocation = {x: 30, y: 40}; // Call the setter
+        Shape.defaultLocation = 'zog'; // Throw error
+        ```
+
+**55:00** https://www.youtube.com/watch?v=PFmuCDHHpwk
 
 ## Exceptions
 

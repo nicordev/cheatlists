@@ -35,6 +35,24 @@
 
 ## Utilisation
 
+* Récupérer des entités :
+    ```php
+    $repository = ClassRegistry::init('NomDossierEntité.NomEntité');
+    $entities = $repository->find(
+        'all', 
+        [
+            'conditions' => [
+                'id' => [1, 2, 3, 4]
+            ],
+            'fields' => ['id', 'name'] // Limite les attributs à récupérer
+        ]
+    );
+    ```
+* [View helpers](https://book.cakephp.org/2/en/core-libraries/helpers/html.html)
+    * [Créer des liens](https://book.cakephp.org/2/en/core-libraries/helpers/html.html#HtmlHelper::link) :
+        * [*Routing arrays*](https://book.cakephp.org/2/en/appendices/glossary.html#term-routing-array)
+* Controllers
+    * `$this->redirect($this->referer());` redirige vers la page appelante.
 * Debug
     * `pr()` ou `debug()`.
 * Fonctionnement de base

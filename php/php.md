@@ -174,6 +174,8 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `array_combine ( array $keys , array $values ) : array` crée un tableau, dont les clés sont les valeurs de keys, et les valeurs sont les valeurs de values.
 * Opérateur `+` ajoute le tableau de droite au tableau de gauche. Si des clés sont communes, seules les valeurs du tableau de gauche seront conservées
 * `array_unique ( array $array [, int $sort_flags = SORT_STRING ] ) : array` extrait du tableau array les valeurs distinctes, et supprime tous les doublons.
+* `array_key_exists ( mixed $key , array $array ) : bool` retourne TRUE s'il existe une clé du nom de key dans le tableau array. key peut être n'importe quelle valeur valide d'index de tableau. Diffère de `isset()` :
+    * `isset ( mixed $var [, mixed $... ] ) : bool` détermine si une variable est déclarée et est différente de `NULL`.
 
 ## Generator
 
