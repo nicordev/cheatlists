@@ -37,6 +37,7 @@
     * `nomTableau=('valeur0' 'valeur1' 'valeur2')` définit un tableau.
     * `tableau[index]='valeur'` affecte une valeur à une case, quelque soit la valeur de l'index.
     * `${tableau[index]}` accède à la valeur d'une case d'un tableau.
+* `exit nombreOptionel` arrête un script.
 * `echo $nomVariable1$nomVariable2` affiche des variables. 
     * Chaque nom de variable doit être précédée du symbole `$`.
     * `echo ${tableau[*]}` affiche toutes les valeurs d'un tableau.
@@ -65,19 +66,157 @@
         * `OLDPWD` l'emplacement du dossier dans lequel on était avant.
     * `export NOM_VARIABLE` transforme une variable existante en variable d'environnement.
 * Conditions :
+    * Chaînes de caractères :
+        ```bash
+        #!/bin/bash
+
+        if [ $1 = "Bruno" ]
+        then
+                echo "Salut Bruno !"
+        elif [ $1 = "Michel" ]
+        then
+                echo "Bien le bonjour Michel"
+        else
+                echo "J'te connais pas, ouste !"
+        fi
+        ```
+        * Tester si une chaîne est vide :
+            ```bash
+            #!/bin/bash
+
+            if [ -z $1 ]
+            then
+                    echo "C'est vide."
+            fi
+            ```
+        * Tester si une chaîne n'est pas vide :
+            ```bash
+            #!/bin/bash
+
+            if [ -n $1 ]
+            then
+                    echo "C'est plein."
+            fi
+            ```
+    * Nombres :
+        ```bash
+        #!/bin/bash
+
+        if [ $1 -eq 20 ]
+        then
+            echo "20 est égal à $1.";
+        fi
+
+        if [ $1 -ne 20 ]
+        then
+            echo "$1 est différent de 20.";
+        fi
+
+        if [ $1 -lt 20 ]
+        then
+            echo "$1 est inférieur à 20.";
+        fi
+
+        if [ $1 -le 20 ]
+        then
+            echo "$1 est inférieur ou égal à 20.";
+        fi
+
+        if [ $1 -gt 20 ]
+        then
+            echo "$1 est supérieur à 20.";
+        fi
+
+        if [ $1 -ge 20 ]
+        then
+            echo "$1 est supérieur ou égal à 20.";
+        fi
+        ```
+    * Fichiers et dossiers
+        ```bash
+        #!/bin/bash
+        if [ -e $1 ]; then
+            echo "$1 existe."
+        fi
+
+        if [ -d $1 ]; then
+            echo "$1 est un répertoire."
+        fi
+
+        if [ -f $1 ]; then
+            echo "$1 est un fichier."
+        fi
+
+        if [ -L $1 ]; then
+            echo "$1 est un lien symbolique."
+        fi
+
+        if [ -r $1 ]; then
+            echo "$1 est accessible en lecture."
+        fi
+
+        if [ -w $1 ]; then
+            echo "$1 est accessible en écriture."
+        fi
+
+        if [ -x $1 ]; then
+            echo "$1 est exécutable."
+        fi
+
+        if [ $1 -nt $2 ]
+        then
+            echo "$1 est plus récent que $2."
+        fi
+
+        if [ $1 -ot $2 ]
+        then
+            echo "$1 est plus ancien que $2."
+        fi
+        ```
+    * AND `&&` OR `||`
+        ```bash
+        #!/bin/bash
+
+        if [ $# -ge 1 ] && [ $1 = 'koala' ]; then
+            echo 'Quel bel animal !'
+        fi
+
+        if [ $1 = 'fraise' ] || [ $1 = 'framboise' ]; then
+            echo 'Vive les fruits rouges !'
+        fi
+        ```
+    * NOT `!`
+        ```bash
+        #!/bin/bash
+
+        if [ ! -e $1 ]; then
+            echo "Le fichier ou dossier $1 n'existe pas."
+        fi
+        ```
+    * Switch
+        ```bash
+        case $1 in
+            "Bruno" | "Paul" | "Bob")
+                echo "Salut Bob ou Paul ou Bruno !"
+                ;;
+            "Michel")
+                echo "Bien le bonjour Michel"
+                ;;
+            "Jean")
+                echo "Hé Jean, ça va ?"
+                ;;
+            *)
+                echo "J'te connais pas, ouste !"
+                ;;
+        esac
+        ```
+* Fonctions
     ```bash
     #!/bin/bash
+    
+    sayHelloTo() {
+        echo "Hello $1!"
+    }
 
-    if [ $1 = "Bruno" ]
-    then
-            echo "Salut Bruno !"
-    elif [ $1 = "Michel" ]
-    then
-            echo "Bien le bonjour Michel"
-    elif [ $1 = "Jean" ]
-    then
-            echo "Hé Jean, ça va ?"
-    else
-            echo "J'te connais pas, ouste !"
-    fi
+    sayHelloTo "Bob"
     ```

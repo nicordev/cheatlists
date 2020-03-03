@@ -1,5 +1,34 @@
 # Javascript
 
+## Modules
+
+* ``
+* 2 façons d'exporter du code :
+    * Mettre `export default NomClasseAExporter` ou `export { nomFonctionAExporter1, nomFonctionAExporter2 }` à la fin du fichier js.
+        > Il ne peut y avoir qu'un seul élément `export default`.
+    * Ecrire `export default` ou `export` devant la déclaration de l'élément à exporter :
+        ```js
+        export default class User {
+            constructor (name, age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+
+        export function printName(user) {
+            console.log(`User's name is ${user.name}.`);
+        }
+
+        export function printAge(user) {
+            console.log(`User's is ${user.age} years old.`);
+        }
+        ```
+* Import du code :
+    * ```js
+        import User from '/user.js' // Chemin absolu
+        import User from './user.js' // Chemin relatif
+        ```
+
 ## Types
 
 * Primitive types || Value types
@@ -155,7 +184,11 @@
         Shape.defaultLocation = 'zog'; // Throw error
         ```
 
-**55:00** https://www.youtube.com/watch?v=PFmuCDHHpwk
+## Tableaux
+
+* `Array.prototype.slice([début, fin])` renvoie un objet tableau, contenant une copie superficielle (shallow copy) du tableau d'origine ou juste d'une portion [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/slice)
+* `Array.prototype.push()` ajoute un ou plusieurs éléments à la fin d'un tableau et retourne la nouvelle taille du tableau. [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/push)
+* `Array.prototype.unshift()` ajoute un ou plusieurs éléments au début d'un tableau et renvoie la nouvelle longueur du tableau. [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/unshift)
 
 ## Exceptions
 
@@ -207,9 +240,3 @@ param => expression
 let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
 f();
 ```
-
-## Tableaux
-
-* `Array.prototype.slice([début, fin])` renvoie un objet tableau, contenant une copie superficielle (shallow copy) du tableau d'origine ou juste d'une portion [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/slice)
-* `Array.prototype.push()` ajoute un ou plusieurs éléments à la fin d'un tableau et retourne la nouvelle taille du tableau. [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/push)
-* `Array.prototype.unshift()` ajoute un ou plusieurs éléments au début d'un tableau et renvoie la nouvelle longueur du tableau. [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/unshift)
