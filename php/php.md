@@ -1,5 +1,13 @@
 # PHP
 
+## Astuces
+
+* Surcharger une méthode en y ajoutant un paramètre supplémentaire :
+    * Donner une valeur par défaut au paramètre :
+        ```php
+        public function nomMéthode($nomParamètreHérité, $nomParamètreAjouté = 'valeurParDéfaut') { /* ... */ } 
+        ```
+
 ## Variable types
 
 * `gettype($maVariable)` retourne le type de la variable

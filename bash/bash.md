@@ -4,6 +4,7 @@
 
 ## Utilisation
 
+* Exemples présents là : `/usr/share/doc/util-linux/examples`.
 * Créer un script bash
     1. Créer un fichier avec ou sans l'extension `.sh`.
     2. A la première ligne du fichier, écrire où se trouve l'exécutable du shell dans un commentaire : `#!/bin/bash`.
@@ -213,10 +214,26 @@
 * Fonctions
     ```bash
     #!/bin/bash
-    
+
     sayHelloTo() {
         echo "Hello $1!"
     }
 
+    # Scope
+
     sayHelloTo "Bob"
+
+    localVariableDemo() {
+        local nameAsLocalVariable="Sarah"
+        nameAsGlobalVariable="Jean"
+
+        sayHelloTo $nameAsLocalVariable
+        sayHelloTo $nameAsGlobalVariable
+        sayHelloTo $anotherNameAsGlobalVariable
+    }
+
+    anotherNameAsGlobalVariable="Jim"
+
+    localVariableDemo
+    sayHelloTo $nameAsLocalVariable # $nameAsLocalVariable is now empty because called outside of its scope.
     ```
