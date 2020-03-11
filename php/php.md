@@ -149,6 +149,7 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 
 * `http_response_code(404);` set the http response code
 * `header('Content-Type: text/html');` set a header
+* `get_headers ( string $url [, int $format = 0 [, resource $context ]] ) : array` retourne un tableau avec les en-têtes envoyés par le serveur en réponse à une requête HTTP.
 
 ## Binary
 
@@ -207,7 +208,9 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 
 ## Dates
 
-* `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante
+* `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante.
+* `(new DateTime())->format("W")` génère une string MySQL représentant le numéro de la semaine courante.
+* `(new DateTime())->getTimestamp();` retourne le timestamp actuel.
 
 ## Input
 
