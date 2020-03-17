@@ -73,3 +73,43 @@
             }
         });
         ```
+* Modifier les classes CSS d'une balise HTML :
+    * HTML :
+        ```html
+        <div :class="{ nomClasse: nomVariableBooléenne }">ZogZog</div>
+        ```
+    * JS :
+        ```js
+        var app = new Vue({
+            el: '#app',
+            data: {
+                nomVariableBooléenne: true
+            }
+        });
+        ```
+* Modifier le style d'une balise HTML :
+    * HTML :
+        ```html
+        <div :style="[nomObjetStyle1, nomObjetStyle2]">
+        <div :style="nomObjetStyle3">
+        ```
+    * JS :
+        ```js
+        var app = new Vue({
+            el: '#app',
+            data: {
+                nomObjetStyle1: {
+                    nomPropriétéCSS: 'valeur'
+                },
+                nomObjetStyle2: {
+                    'box-shadow': '5px 5px 5px 0px #656565',
+                    'border-radius': '5px'
+                },
+                nomObjetStyle3: {
+                    secondaryColor: 'grey',
+                    padding: '1rem',
+                    margin: '1rem'
+                }
+            }
+        });
+        ```
