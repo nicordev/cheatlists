@@ -1,4 +1,10 @@
-https://stackoverflow.com/questions/39974833/composer-the-requested-package-exists-as-but-these-are-rejected-by-your-constrhttps://stackoverflow.com/questions/39974833/composer-the-requested-package-exists-as-but-these-are-rejected-by-your-constr# Git
+# Git
+
+## GUI
+
+* [GitKraken](https://www.gitkraken.com/)
+* [GitAhead](https://gitahead.github.io/gitahead.com/)
+
 
 ## Principe
 

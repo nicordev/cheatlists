@@ -144,6 +144,7 @@ $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
 * `env PATH="C:\wamp64\bin\php\php7.2.18:$PATH" php bin/console doctrine:schema:create` change la version de php pour l'exécution d'une commande
 * `php -r "echo md5(\"Hello world!\");"` exécute une ligne de code php
 * `php -a` exécuter du code php dans le terminal intéractif
+* `$argv` contient tous les arguments passés au script php. Le premier élément du tableau est le nom du fichier du script.
 
 ## HTTP protocol
 
