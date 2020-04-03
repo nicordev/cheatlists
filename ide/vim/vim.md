@@ -1,4 +1,8 @@
 # VIM
+
+## Installation
+
+* `sudo apt-get install vim-gtk` installe vim et son GUI. Permet au passage d'utiliser le clipboard.
     
 ## Configuration
 
@@ -27,9 +31,10 @@
 ## Utilisation
 
 * Lancer vim
-    * `vi nomFichier` ou `vim nomFichier` ouvre un fichier avec vim.
-    * `vim` ou `vi` lance vim.
+    * `vi` ou `vim` lance vim dans le terminal.
+    * `gvim` lance le GUI de vim.
     * `vimtutor` lance le tutoriel
+    * `vi nomFichier` ou `vim nomFichier` ouvre un fichier avec vim.
 * Changer de mode
     * `Echap` mode normal
     * `i` mode insertion
@@ -48,6 +53,10 @@
     * `:q!` quitte sans enregistrer.
     * `:wq` enregistre et quitte vim.
     * `:x` ou `ZZ` enregistre seulement si des modifications ont été faites.
+* Annuler et refaire
+    * `u` annule la dernière commande.
+    * `U` annule toutes les modifications apportées à la ligne du curseur.
+    * `ctl + r` refait la dernière commande.
 * Navigation *(en mode normal)*
     * Déplacement du curseur en mode normal
         * Déplacement par caractère
@@ -69,6 +78,9 @@
     * Ajout *(en mode normal)*
         * `i` passe en mode *insertion* pour ajouter du texte au niveau du curseur.
         * `A` passe en mode *ajout* pour ajouter du texte à la fin de la ligne du curseur.
+    * Copier / coller depuis le clipboard système *(en mode normal)*
+        * `"+y` + `mouvement` copie.
+        * `"+p` + `mouvement` colle. `p` seul fonctionne aussi.
     * Indentation
         * *(en mode normal)*
             * `>` décale vers la droite.
@@ -87,11 +99,6 @@
         * `dd` efface toute la ligne du curseur.
         * `#dd` efface plusieurs lignes où `#` est le nombre de lignes.
         * `p` coller les dernières lignes effacées
-* Annuler et refaire
-    * `u` annule la dernière commande.
-    * `U` annule toutes les modifications apportées à la ligne du curseur.
-    * `ctl + r` refait la dernière commande.
-    
 * Rechercher *(en mode normal)*
     * `/texteARechercher` cherche vers le bas.
     * `?texteARechercher` cherche vers le haut.

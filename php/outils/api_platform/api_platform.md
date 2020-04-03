@@ -14,6 +14,16 @@
 
 * `composer require api` Depuis un projet Symfony existant
 
+## Fonctionnement
+
+* Event dispatcher `Symfony\Component\EventDispatcher\EventDispatcher` :
+    * Fichier `vendor/symfony/event-dispatcher/EventDispatcher.php`.
+    * Les listeners sont appelés dans `EventDispatcher::doDispatch()` :
+        * > @deprecated since Symfony 4.3, use callListeners() instead
+        * Pour être réellement appelés par `WrappedListener::__invoke()` ici :
+            ```php
+            ($this->optimizedListener ?? $this->listener)($event, $eventName, $dispatcher);
+            ```
 ## En-têtes
 
 * Reqûetes

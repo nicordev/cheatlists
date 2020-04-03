@@ -6,8 +6,11 @@
 
 ## Modules
 
-* ``
-* 2 façons d'exporter du code :
+* HTML :
+    ```html
+    <script type="module" src="nomFichierModule.js"></script>
+    ```
+* JS 2 façons d'exporter du code :
     * Mettre `export default NomClasseAExporter` ou `export { nomFonctionAExporter1, nomFonctionAExporter2 }` à la fin du fichier js.
         > Il ne peut y avoir qu'un seul élément `export default`.
     * Ecrire `export default` ou `export` devant la déclaration de l'élément à exporter :
@@ -27,7 +30,7 @@
             console.log(`User's is ${user.age} years old.`);
         }
         ```
-* Import du code :
+* JS Import du code :
     * ```js
         import User from '/user.js' // Chemin absolu
         import User from './user.js' // Chemin relatif
