@@ -37,6 +37,8 @@
     * `vi nomFichier` ou `vim nomFichier` ouvre un fichier avec vim.
 * Changer de mode
     * `Echap` mode normal
+        * `:` mode commande
+            * `:!` mode commande externe (exemple `ls`)
     * `i` mode insertion
     * `a` mode ajout
 * Mode normal :
@@ -46,8 +48,20 @@
             * `d` : l'opérateur (ici effacer).
             * `2` : le quantificateur.
             * `w` : le mouvement (ici le mot entier).
+    * Mouvements :
+        * `OpérateurOpérateur` applique l'opérateur sur la ligne entière. Exemple : `yy` pour copier la ligne.
+        * `0` va au début de la ligne.
+        * `$` va à la fin de la ligne.
+        * `h` va à gauche.
+        * `j` va en bas.
+        * `k` va en haut.
+        * `l` va à droite.
+        * `gg` va à la première ligne du fichier.
+        * `G` va à la dernière ligne du fichier.
+            * `1987G` va à la ligne numéro 1987.
 * Enregistrer le fichier *(en mode normal)*
     * `:w` enregistre le fichier.
+        * `:w nomFichier` enregistrer sous un nom particulier.
 * Quitter vim *(en mode normal)*
     * `:q` quitte vim si aucun changement n'a été fait.
     * `:q!` quitte sans enregistrer.
@@ -63,6 +77,7 @@
             * Touches fléchées
             * Touches hjkl
             * `0` place le curseur au début de la ligne
+            * `$` place le curseur à la fin de la ligne
         * Déplacement par mot
             * `w` place le curseur en début de mot
             * `e` place le curseur en fin de mot
@@ -73,7 +88,6 @@
             * `2` déplace de 2 lignes vers le bas
             * `3` déplace de 3 lignes vers le bas
             * ...
-    * `G` va à la fin du fichier
 * Edition de texte
     * Ajout *(en mode normal)*
         * `i` passe en mode *insertion* pour ajouter du texte au niveau du curseur.
@@ -99,6 +113,8 @@
         * `dd` efface toute la ligne du curseur.
         * `#dd` efface plusieurs lignes où `#` est le nombre de lignes.
         * `p` coller les dernières lignes effacées
+    * Insertion
+        * `:r nomFichier` insère un fichier à la position du curseur (l'autocomplétion avec `tab` fonctionne !).
 * Rechercher *(en mode normal)*
     * `/texteARechercher` cherche vers le bas.
     * `?texteARechercher` cherche vers le haut.
@@ -110,3 +126,18 @@
     * `#,#s/texteARemplacer/texteDeRemplacement/g` change toutes les occurences du texte entre 2 lignes (remplacer les `#` par des numéros de ligne).
     * `%s/texteARemplacer/texteDeRemplacement/g` change toutes les occurences du texte dans tout le fichier.
     * `%s/texteARemplacer/texteDeRemplacement/gc` change toutes les occurences du texte dans tout le fichier avec demande de confirmation pour chaque remplacement.
+* Diviser l'écran
+    * `:sp` divise l'écran horizontalement.
+        * `:sp nomFichier` divise l'écran horizontalement et ouvre un fichier dans la partie haute.
+    * `:vsp` divise l'écran verticalement.
+        * `:vsp nomFichier` divise l'écran verticalement et ouvre un fichier dans la partie gauche.
+    * `ctl` + `w` passe en mode action :
+        * `w` change de viewport.
+        * `h` ou `j` ou `k` ou `l` change de viewport selon la direction de la touche utilisée.
+        * `+` agrandit le viewport actuel.
+        * `-` réduit le viewport actuel.
+        * `=` égalise les dimensions des viewports.
+        * `r` ou `R` change la position des viewports.
+        * `q` ferme le viewport actuel.
+        
+        
