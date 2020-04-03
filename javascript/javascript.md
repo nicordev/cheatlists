@@ -6,8 +6,11 @@
 
 ## Modules
 
-* ``
-* 2 façons d'exporter du code :
+* HTML :
+    ```html
+    <script type="module" src="nomFichierModule.js"></script>
+    ```
+* JS 2 façons d'exporter du code :
     * Mettre `export default NomClasseAExporter` ou `export { nomFonctionAExporter1, nomFonctionAExporter2 }` à la fin du fichier js.
         > Il ne peut y avoir qu'un seul élément `export default`.
     * Ecrire `export default` ou `export` devant la déclaration de l'élément à exporter :
@@ -27,7 +30,7 @@
             console.log(`User's is ${user.age} years old.`);
         }
         ```
-* Import du code :
+* JS Import du code :
     * ```js
         import User from '/user.js' // Chemin absolu
         import User from './user.js' // Chemin relatif
@@ -63,6 +66,11 @@
     `Hello ${name}!
     What's up?`
     ```
+* `"Mon super texte".length` donne le nombre de caractères d'une chaîne.
+* `"Mon super texte"[0]` donne le premier caractère d'une chaîne.
+* `nomChaîne[nomChaîne.length - 1]` donne le dernier caractère de la chaîne `nomChaîne`.
+* Concaténation
+    * `"A " + animalName + " is running."`
 
 ## Objects
 

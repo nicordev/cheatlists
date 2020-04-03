@@ -16,6 +16,21 @@
 
 ## Utilisation
 
+* Convertir le camelCase en `nom-propriété` dans les noms d'attribut HTML. Exemple :
+    * JS :
+        ```js
+        Vue.component('product', {
+            props: {
+                productDetails: { type: Array },
+                // ...
+            },
+            // ...
+        });
+        ```
+    * HTML :
+        ```html
+        <product v-bind:product-details="socksDetails"></product>
+        ```
 * `Vue` instance :
     * Côté HTML :
         ```html
@@ -113,3 +128,115 @@
             }
         });
         ```
+* Propriétés calculées (computed properties) :
+    * Calculées 1 fois puis mis en cache jusqu'à ce qu'une des propriétés servant au calcul est modifiée.
+    * HTML :
+        ```html
+        <h1>{{ title }}</h1>
+        ```
+    * JS :
+        ```js
+        var app = new Vue({
+            el: '#app',
+            data: {
+                brand: 'Vue Zog Master',
+                product: 'Socks'
+            },
+            computed: {
+                title() {
+                    return `${this.brand} ${this.product}`;
+                }
+            }
+        });
+        ```
+* Composants (components) :
+    * HTML :
+        ```html
+        <product message="Hello!"></product>
+        ```
+    * JS :
+        ```js
+        Vue.component('product', {
+            props: {
+                message: {
+                    type: String,
+                    required: true,
+                    default: 'Hi!'
+                } // Ou juste [message] si on n'a pas besoin de validation.
+            },
+            template: `<div>
+                <h1>Product</h1>
+                <p>{{ message }}</p>
+            </div>`,
+            data() {
+                return {
+                    // ...
+                }
+            }
+        });
+        ```
+* `v-model="nomPropriété"` permet de lié un attribut HTML à une propriété JS dans les 2 sens : modifier la propriété modifiera l'attribut et inversement. Exemple d'un composant :
+    * JS :
+        ```js
+        Vue.component('nom-composant', {
+            template: `<input type="text" v-model="nomPropriété">`,
+            data() {
+                return {
+                    nomPropriété: null
+                }
+            }
+        });
+        ```
+    * HTML :
+        ```html
+        <nom-composant></nom-composant>
+        ```
+* Formulaires :
+    * Exemple d'un composant :
+        * HTML :
+            ```html
+            <div id="note-app">
+                <notepad></notepad>
+            </div>
+            ```
+        * JS :
+            ```js
+            Vue.component('notepad', {
+                template: `
+                    <div class="notepad">
+                        <ul>
+                            <li v-for="note in notes">
+                                <p>{{ note.title }}</p>
+                            </li>
+                        </ul>
+
+                        <form class="note-form" @submit.prevent="onSubmit">
+                            <input type="text" id="note-title" v-model="title">
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                `,
+                data() {
+                    return {
+                        notes: [],
+                        title: null
+                    };
+                },
+                methods: {
+                    onSubmit() {
+                        let note = {
+                            title: this.title
+                        };
+                        this.notes.push(note);
+                        this.title = null;
+                    }
+                }
+            });
+
+            var app = new Vue({
+                el: '#note-app'
+            });
+            ```
+    * Dans un sous-composant :
+        * Appeler une méthode lors de l'évènement `submit`.
+        * Emettre un évènement custom pour modifier le composant parent.

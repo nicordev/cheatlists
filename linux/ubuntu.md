@@ -148,6 +148,7 @@ MOT_CLE_DE_FIN
 
 ## Variables d'environnement
 
+* Editer le fichier `~/.profile`.
 * `LANG=fr_FR.UTF-8` modifie la variable d'environnement existante `LANG`
 * ```bash
     EDITOR=nano
