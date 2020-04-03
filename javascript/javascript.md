@@ -66,6 +66,11 @@
     `Hello ${name}!
     What's up?`
     ```
+* `"Mon super texte".length` donne le nombre de caractères d'une chaîne.
+* `"Mon super texte"[0]` donne le premier caractère d'une chaîne.
+* `nomChaîne[nomChaîne.length - 1]` donne le dernier caractère de la chaîne `nomChaîne`.
+* Concaténation
+    * `"A " + animalName + " is running."`
 
 ## Objects
 
