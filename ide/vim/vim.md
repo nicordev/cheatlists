@@ -6,7 +6,29 @@
     
 ## Configuration
 
+* Pour l'instance de vim en cours *(en mode normal)* :
+    * `:set NomOption?` affiche l'état de l'option `NomOption`;
+    * `:set NomOption` active l'option `NomOption`.
+        * `:set NomOption=valeurOption` affecte la valeur `valeurOption` à l'option `NomOption`.
+    * `:set noNomOption` désactive l'option `NomOption`.
 * `~/.vimrc` fichier de configuration de VIM
+    * Récupérer la version d'exemple `/etc/vim/vimrc` :
+        ```bash
+        cp /etc/vim/vimrc  ~/.vimrc
+        ```
+    * Quelques options pratiques :
+        ```
+        set mouse=a		" Enable mouse usage (all modes)
+        set number      " Show line numbers
+        set showcmd		" Show (partial) command in status line.
+        set showmatch		" Show matching brackets.
+        set background=dark " Dark background
+        "set ignorecase		" Do case insensitive matching
+        "set smartcase		" Do smart case matching
+        "set incsearch		" Incremental search
+        "set autowrite		" Automatically save before commands like :next and :make
+        "set hidden		" Hide buffers when they are abandoned
+        ```
     * Indentation
         ```
         filetype plugin indent on

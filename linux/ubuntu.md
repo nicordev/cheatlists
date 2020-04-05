@@ -7,6 +7,35 @@ Liste réalisée à partir [du cours de mateo21 sur OpenClassrooms](https://open
 * `ctl + alt + flèche haut/bas` change de bureau.
 * `ctl + alt + shift + flèche haut/bas` déplace l'application en cours sur un autre bureau.
 
+## Changer l'action de la touche poweroff
+
+> [Réponse](https://askubuntu.com/questions/580902/how-to-change-mapping-for-the-poweroff-key-on-keyboard)
+
+1. Mettre *Settings > Power::Power Button Action* à *Nothing*.
+1. `sudo apt install xdotool`
+1. `sudo touch /etc/acpi/events/power` créé le fichier power et mettre ce contenu :
+    ```
+    event=button/power
+    action=/etc/acpi/power.sh "%e"
+    ```
+1. `sudo touch /etc/acpi/power.sh && sudo chmod +x /etc/acpi/power.sh` créé le script power.sh et mettre ce code :
+    ```bash
+    #!/bin/sh
+    xdotool key End
+    ```
+    ou directement :
+    ```bash
+    sudo echo "#!/bin/sh \
+    xdotool key End" > /etc/acpi/power.sh && sudo chmod +x /etc/acpi/power.sh
+    ```
+sudo echo '#!/bin/sh \
+echo Hello world!' > /opt/sandbox/hello.zog && sudo chmod +x /opt/sandbox/hello.zog
+1. `sudo acpid restart`
+1. Ajouter à la fin de `/etc/pam.d/common-session` :
+    ```
+    session optional pam_exec.so /usr/sbin/acpid restart
+    ```
+
 ## Invite de commande
 
 * `nomUtilisateur@nomOrdinateur:~$`
