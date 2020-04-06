@@ -1,5 +1,11 @@
 # Operateurs PHP
 
+## Classe
+
+[doc](https://www.php.net/manual/fr/language.operators.type.php)
+
+`$monObjet instanceof MaClasse` retourne `true` si `$monObjet` est une instance de `MaClasse`.
+
 ## Arithmétiques
 
 [doc](https://www.php.net/manual/fr/language.operators.arithmetic.php)
@@ -13,7 +19,7 @@ $a - $b  | Soustraction   | Différence de $a et $b.
 $a * $b  | Multiplication | Produit de $a et $b.
 $a / $b  | Division       | Quotient de $a et $b. int / int = int (ou double si division incomplète).
 $a % $b  | Modulus        | Reste de $a divisé par $b.
-$a ** $b | Exponentielle  | Résultat de l'élévation de $a à la puissance $b. Introduit en PHP 5.6.
+$a ** $b | Puissance      | Résultat de l'élévation de $a à la puissance $b. Introduit en PHP 5.6.
 
 Pour obtenir uniquement le quotient de la division, utiliser `intdiv($dividende, $diviseur)`.
 Pour obtenir le reste de la division sous forme de double, utiliser `fmod($dividende, $diviseur)`.
@@ -116,9 +122,3 @@ $a === $b | Identique     | TRUE si $a et $b contiennent les mêmes paires clés
 $a != $b  | Inégalité     | TRUE si $a n'est pas égal à $b.
 $a <> $b  | Inégalité     | TRUE si $a n'est pas égal à $b.
 $a !== $b | Non-identique | TRUE si $a n'est pas identique à $b.
-
-## Classe
-
-[doc](https://www.php.net/manual/fr/language.operators.type.php)
-
-`$monObjet instanceof MaClasse` retourne `true` si `$monObjet` est une instance de `MaClasse`.

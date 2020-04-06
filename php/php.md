@@ -5,13 +5,17 @@
 * Surcharger une méthode en y ajoutant un paramètre supplémentaire :
     * Donner une valeur par défaut au paramètre :
         ```php
-        public function nomMéthode($nomParamètreHérité, $nomParamètreAjouté = 'valeurParDéfaut') { /* ... */ } 
+        public function nomMéthode($nomParamètreHérité, $nomParamètreAjouté = 'valeurParDéfaut') { /* ... */ }
+
+## CLI
+
+* [Documentation](https://www.php.net/manual/en/features.commandline.php)
+* `php -r "echo \"Hello world!\";"` exécute une ligne de code php
+* `php -a` exécuter du code php dans le terminal intéractif
+* `$argv` contient tous les arguments passés au script php. Le premier élément du tableau est le nom du fichier du script.
+* `php -S 127.0.0.1:8000 -t public/` lance un serveur local
+* `env PATH="C:\wamp64\bin\php\php7.2.18:$PATH" php bin/console doctrine:schema:create` change la version de php pour l'exécution d'une commande
         ```
-
-## Variable types
-
-* `gettype($maVariable)` retourne le type de la variable
-
 
 ### Exécution de script shell
 
@@ -20,20 +24,23 @@
 * `` $resultat = `du code shell genre ls -al`; `` exécute le code shell entre `` ` `` et assigne le résultat à `$resultat`
 * `shell_exec ( string $cmd ) : string` est la fonction équivalente à l'utilisation des `` ` ``
 
-## CLI
+## Input / Output
 
-* [Documentation](https://www.php.net/manual/en/features.commandline.php)
-* `php -S 127.0.0.1:8000 -t public/` lance un serveur local
-* `env PATH="C:\wamp64\bin\php\php7.2.18:$PATH" php bin/console doctrine:schema:create` change la version de php pour l'exécution d'une commande
-* `php -r "echo md5(\"Hello world!\");"` exécute une ligne de code php
-* `php -a` exécuter du code php dans le terminal intéractif
-* `$argv` contient tous les arguments passés au script php. Le premier élément du tableau est le nom du fichier du script.
+> Un flux est un fichier.
+> Une ressource est une variable spéciale, contenant une référence vers une ressource externe. Une ressource peut être un fichier.
 
-## HTTP protocol
+* `STDIN` Un flux déjà ouvert vers stdin. Ceci évite de l'ouvrir explicitement avec `$stdin = fopen('php://stdin', 'r');`
+* `STDOUT` Un flux déjà ouvert vers stdout. Ceci évite de l'ouvrir explicitement avec `$stdout = fopen('php://stdout', 'r');`
+* `STDERR` Un flux déjà ouvert vers stderr. Ceci évite de l'ouvrir explicitement avec `$stderr = fopen('php://stderr', 'r');`
+* `fgets ( resource $file [, int $length ] ) : string` récupère la ligne courante sur laquelle se trouve le pointeur du fichier.
+    * `fgets(STDIN)` lit la ligne entrée au clavier.
 
-* `http_response_code(404);` set the http response code
-* `header('Content-Type: text/html');` set a header
-* `get_headers ( string $url [, int $format = 0 [, resource $context ]] ) : array` retourne un tableau avec les en-têtes envoyés par le serveur en réponse à une requête HTTP.
+## Variables
+
+* Type
+    * `gettype($maVariable)` retourne le type de la variable
+* Variables super globales
+    * `filter_input ( int $type , string $variable_name [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed` récupère une variable externe et la filtre avec `$type` parmi `INPUT_GET`, `INPUT_POST`, `INPUT_COOKIE`, `INPUT_SERVER` ou `INPUT_ENV`.
 
 ## Binary
 
@@ -93,20 +100,5 @@
 ## Dates
 
 * `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante.
-* `(new DateTime())->format("W")` génère une string MySQL représentant le numéro de la semaine courante.
+* `(new DateTime())->format("W")` génère une string représentant le numéro de la semaine courante.
 * `(new DateTime())->getTimestamp();` retourne le timestamp actuel.
-
-## Input
-
-> Un flux est un fichier.
-> Une ressource est une variable spéciale, contenant une référence vers une ressource externe. Une ressource peut être un fichier.
-
-* `STDIN` Un flux déjà ouvert vers stdin. Ceci évite de l'ouvrir explicitement avec `$stdin = fopen('php://stdin', 'r');`
-* `STDOUT` Un flux déjà ouvert vers stdout. Ceci évite de l'ouvrir explicitement avec `$stdout = fopen('php://stdout', 'r');`
-* `STDERR` Un flux déjà ouvert vers stderr. Ceci évite de l'ouvrir explicitement avec `$stderr = fopen('php://stderr', 'r');`
-* `fgets ( resource $file [, int $length ] ) : string` récupère la ligne courante sur laquelle se trouve le pointeur du fichier.
-    * `fgets(STDIN)` lit la ligne entrée au clavier.
-
-## Variables super globales
-
-* `filter_input ( int $type , string $variable_name [, int $filter = FILTER_DEFAULT [, mixed $options ]] ) : mixed` récupère une variable externe et la filtre avec `$type` parmi `INPUT_GET`, `INPUT_POST`, `INPUT_COOKIE`, `INPUT_SERVER` ou `INPUT_ENV`.
