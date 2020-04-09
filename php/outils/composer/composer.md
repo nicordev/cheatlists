@@ -11,6 +11,24 @@
     ```
 * `sudo mv composer.phar /usr/local/bin/composer` déplace le fichier de composer pour utiliser la commande `composer`.
 
+## Configuration
+
+* `~/.config/composer/config.json` fichier de configuration de composer :
+    ```json
+    {
+        "config": {
+            "secure-http": true 
+        },
+        "repositories": {
+            "packagist": {
+                "type": "composer",
+                "url": "packagist.org"
+            }
+        }
+    }
+    ```
+    * `"secure-http": true` active https pour communiquer avec packagist. Par défaut à `true`.
+
 ## Utilisation
 
 * Soit via la commande `composer` si composer est installé globalement, soit via `php composer.phar` si on a le fichier `composer.phar` dans le dossier du projet.

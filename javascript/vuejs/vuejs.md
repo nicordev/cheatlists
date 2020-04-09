@@ -13,6 +13,12 @@
     * `<script src="https://cdn.jsdelivr.net/npm/vue"></script>` version production
 * Via NPM :
     * `npm install vue`
+* Via vue CLI :
+    * `npm install -g @vue/cli`
+    * `vue --version` affiche la version installée.
+    * `vue create nomProjet -d` créé un nouveau projet vue.js. `-d` rempli les options par défaut automatiquement.
+    * `cd nomProjet`
+    * `yarn serve` lance le projet.
 
 ## Utilisation
 
