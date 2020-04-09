@@ -122,12 +122,13 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
     * Par exemple pour ajouter dans une branche A les mises à jour que vous avez faites dans une autre branche B, on se place dans la branche A avant d'exécuter la commande `git merge brancheB`
 * `git blame nomDuFichier` Liste toutes les modifications qui ont été faites sur le fichier ligne par ligne. À chaque modification est associé le début du sha du commit correspondant.
 * `git show debutCommitSHA` Affiche les détails du commit recherché en saisissant le début de son sha.
-* `git stash` met de côté les modifications en cours qui n'ont pas fait l'objet d'un commit pour pouvoir faire d'autres modifications, par exemple lorsque quelqu'un nous demande de régler un bug qui n'a rien à voir avec ce sur quoi on travaille actuellement. On stash notre travail, on règle le bug, on commit les modifications apportées pour régler le bug et on revient sur notre travail avec `git stash pop` ou `git stash apply`.
+* `git stash` met de côté les modifications en cours qui n'ont pas fait l'objet d'un commit pour pouvoir faire d'autres modifications, par exemple lorsque quelqu'un nous demande de régler un bug qui n'a rien à voir avec ce sur quoi on travaille actuellement. On stash notre travail, on règle le bug, on commit les modifications apportées pour régler le bug et on revient sur notre travail avec `git stash pop` ou `git stash apply`. [Documentation](https://www.git-scm.com/docs/git-stash) :
     * `git stash list` affiche la liste des stash créés.
     * `git stash apply` applique les modifications situées dans le dernier stash créé.
         * `git stash apply numéroDuStash` applique les modifications d'un stash particulier.
     * `git stash pop` applique les modifications et les efface du stash.
         * `git stash pop numéroDuStash` applique les modifications d'un stash particulier.
+    * `git stash push [-m message] [cheminVers/fichierCible1 cheminVers/fichierCible2 ...]` permet d'ajouter un message à notre stash et de cibler les fichiers contenant les modifications à mettre de côté.
 
 ### Merge
 
