@@ -35,6 +35,22 @@
         ```bash
         alias phpstan='docker run -v $PWD:/app --rm phpstan/phpstan'
         ```
+- En utilisant l'image docker [jakzal/phpqa](https://hub.docker.com/r/jakzal/phpqa) :
+    - Contient déjà des extensions de phpstan.
+    - Contient d'autres outils comme phpunit et infection.
+
+## Intégration dans GitLab CI/CD
+
+Configurer un job dans le fichier `.gitlab-ci.yml` :
+```yaml
+job:phpstan:
+  tags:
+    - docker
+  image: jakzal/phpqa # Image qui contient aussi des extensions de PHPStan et d'autres outils
+  stage: tests
+  script: phpstan analyse --level 8 src tests
+  allow_failure: true # A mettre à false pour que l'analyse de phpstan bloque la MR si le code contient des erreurs.
+```
 
 ## Utilisation
 
@@ -73,7 +89,7 @@ Si le paramètre `--configuration` est omis, la commande va chercher dans l'ordr
 
 ### Baseline
 
-Il est possible d'ignorer des erreurs en créant une `baseline` avec le paramètre `--generate-baseline` :
+Il est possible d'ignorer des erreurs qu'on ne souhaite pas traiter en créant une `baseline` avec le paramètre `--generate-baseline` :
 ```
 phpstan analyse --generate-baseline [NomFichier]
 ```
@@ -93,4 +109,74 @@ parameters:
 
 > [Documentation](https://phpstan.org/config-reference)
 
-On peut combiner plusieurs fichiers de configuration avec le paramètre `include`.
+Un fichier de configuration doit utiliser le format neon, similaire au yaml.
+
+- Préciser le niveau d'exigence :
+    ```yaml
+    parameters:
+        level: 8
+    ```
+- Préciser les dossiers à analyser :
+    ```yaml
+    parameters:
+        path:
+            - src
+            - tests
+    ```
+- Exclure certains fichiers de l'analyse :
+    ```yaml
+    parameters:
+        excludes_analyse:
+            - src/Migrations/*
+    ```
+- Combiner plusieurs fichiers de configuration avec le paramètre `include` :
+    ```yaml
+    includes:
+	- nomFichierConfigurationParent1
+    - nomFichierConfigurationParent2
+    - ...
+
+    parameters:
+        # ...
+    ```
+- Ignorer des erreurs :
+    > Il est préférable d'utiliser une Baseline comme expliqué plus tôt.
+    - Version basique :
+        ```yaml
+        parameters:
+            ignoreErrors:
+                - '#Call to an undefined method [a-zA-Z0-9\\_]+::doFoo\(\)#'
+                - '#Call to an undefined method [a-zA-Z0-9\\_]+::doBar\(\)#'
+        ```
+    - Avec messages d'erreur et limité à certains fichiers :
+        ```yaml
+        parameters:
+            ignoreErrors:
+                -
+                    message: '#Call to an undefined method [a-zA-Z0-9\\_]+::doFoo\(\)#'
+                    path: some/dir/SomeFile.php
+                -
+                    message: '#Call to an undefined method [a-zA-Z0-9\\_]+::doBar\(\)#'
+                    paths:
+                        - some/dir/*
+                        - other/dir/*
+                - '#Other error to ignore everywhere#'
+        ```
+
+## Problèmes possibles
+
+- `Class PHPUnit\Framework\TestCase not found and could not be autoloaded.`
+    - Modifier le fichier de configuration :
+        ```yaml
+        parameters:
+            autoload_directories:
+                - bin/.phpunit/phpunit-8.3-0/src/Framework
+        ```
+- `Class PHPUnit\Exception not found and could not be autoloaded.`
+    - Modifier le fichier de configuration :
+        ```yaml
+        parameters:
+            autoload_files:
+                - bin/.phpunit/phpunit-8.3-0/src/Exception.php
+                - bin/.phpunit/phpunit-8.3-0/src/Framework/Exception/Exception.php
+        ```

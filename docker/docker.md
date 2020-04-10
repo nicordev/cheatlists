@@ -53,7 +53,7 @@
         * l'ensemble des images Docker non utilisées ;
         * l'ensemble des caches utilisés pour la création d'images Docker.
 
-## Créer un Dockerfile
+## Créer une image avec un Dockerfile
 
 > **Note perso** Un Dockerfile permet de construire une image Dockabout:configer.
 
