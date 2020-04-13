@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bash</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.4.0">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.5159a7ac.css" as="style"><link rel="preload" href="/assets/js/app.3373225f.js" as="script"><link rel="preload" href="/assets/js/2.17c583f6.js" as="script"><link rel="preload" href="/assets/js/7.b48a6734.js" as="script"><link rel="prefetch" href="/assets/js/10.b4d1b3a3.js"><link rel="prefetch" href="/assets/js/11.c8f7aace.js"><link rel="prefetch" href="/assets/js/12.7bd12b35.js"><link rel="prefetch" href="/assets/js/13.1054897d.js"><link rel="prefetch" href="/assets/js/14.5ee88194.js"><link rel="prefetch" href="/assets/js/15.1739ae11.js"><link rel="prefetch" href="/assets/js/16.70d6836b.js"><link rel="prefetch" href="/assets/js/17.e327651c.js"><link rel="prefetch" href="/assets/js/18.c8a9cd5f.js"><link rel="prefetch" href="/assets/js/19.d569a6b8.js"><link rel="prefetch" href="/assets/js/20.d5338874.js"><link rel="prefetch" href="/assets/js/21.d0e8934a.js"><link rel="prefetch" href="/assets/js/22.74aae183.js"><link rel="prefetch" href="/assets/js/23.843502c9.js"><link rel="prefetch" href="/assets/js/24.64901516.js"><link rel="prefetch" href="/assets/js/25.ab42496d.js"><link rel="prefetch" href="/assets/js/26.76ed493d.js"><link rel="prefetch" href="/assets/js/27.9abfd0b1.js"><link rel="prefetch" href="/assets/js/28.fb506986.js"><link rel="prefetch" href="/assets/js/29.b38c8826.js"><link rel="prefetch" href="/assets/js/3.38b4e726.js"><link rel="prefetch" href="/assets/js/30.ca31aff0.js"><link rel="prefetch" href="/assets/js/31.23152b20.js"><link rel="prefetch" href="/assets/js/32.a0ea3cae.js"><link rel="prefetch" href="/assets/js/33.b0f2f58c.js"><link rel="prefetch" href="/assets/js/34.9d011658.js"><link rel="prefetch" href="/assets/js/35.f72e4b5e.js"><link rel="prefetch" href="/assets/js/36.3d759a34.js"><link rel="prefetch" href="/assets/js/37.9143ce42.js"><link rel="prefetch" href="/assets/js/38.17248f95.js"><link rel="prefetch" href="/assets/js/39.10590b9f.js"><link rel="prefetch" href="/assets/js/4.5367d2a1.js"><link rel="prefetch" href="/assets/js/40.a9c3549a.js"><link rel="prefetch" href="/assets/js/41.14f648fc.js"><link rel="prefetch" href="/assets/js/42.d05fc50d.js"><link rel="prefetch" href="/assets/js/43.4b611c11.js"><link rel="prefetch" href="/assets/js/44.ea4c08ee.js"><link rel="prefetch" href="/assets/js/45.be37999b.js"><link rel="prefetch" href="/assets/js/46.181b4e79.js"><link rel="prefetch" href="/assets/js/47.2ad16c82.js"><link rel="prefetch" href="/assets/js/48.a0f2fed1.js"><link rel="prefetch" href="/assets/js/49.b0082922.js"><link rel="prefetch" href="/assets/js/5.b3addb3d.js"><link rel="prefetch" href="/assets/js/50.70074ebd.js"><link rel="prefetch" href="/assets/js/51.b4e90c5f.js"><link rel="prefetch" href="/assets/js/52.bd52113d.js"><link rel="prefetch" href="/assets/js/53.33165c0e.js"><link rel="prefetch" href="/assets/js/54.94b641d3.js"><link rel="prefetch" href="/assets/js/55.385667fb.js"><link rel="prefetch" href="/assets/js/56.005ec3a6.js"><link rel="prefetch" href="/assets/js/57.e0b13271.js"><link rel="prefetch" href="/assets/js/58.cf024cc5.js"><link rel="prefetch" href="/assets/js/59.5e9a48b7.js"><link rel="prefetch" href="/assets/js/6.94c105d3.js"><link rel="prefetch" href="/assets/js/60.0c338712.js"><link rel="prefetch" href="/assets/js/61.93dea659.js"><link rel="prefetch" href="/assets/js/62.6b94a7b9.js"><link rel="prefetch" href="/assets/js/63.1b413e17.js"><link rel="prefetch" href="/assets/js/64.cfa33430.js"><link rel="prefetch" href="/assets/js/65.5d0961ea.js"><link rel="prefetch" href="/assets/js/66.60cc065e.js"><link rel="prefetch" href="/assets/js/67.093ef777.js"><link rel="prefetch" href="/assets/js/68.80f668b9.js"><link rel="prefetch" href="/assets/js/69.d1822ce6.js"><link rel="prefetch" href="/assets/js/70.763b2a8c.js"><link rel="prefetch" href="/assets/js/71.5f6cc4dc.js"><link rel="prefetch" href="/assets/js/72.c8e75422.js"><link rel="prefetch" href="/assets/js/73.36373111.js"><link rel="prefetch" href="/assets/js/74.55e3933c.js"><link rel="prefetch" href="/assets/js/75.3c0a41e5.js"><link rel="prefetch" href="/assets/js/76.dd5d50bc.js"><link rel="prefetch" href="/assets/js/77.6abc6cb7.js"><link rel="prefetch" href="/assets/js/78.5016d529.js"><link rel="prefetch" href="/assets/js/79.705bb7a0.js"><link rel="prefetch" href="/assets/js/8.2093c426.js"><link rel="prefetch" href="/assets/js/80.b6308448.js"><link rel="prefetch" href="/assets/js/81.822c6e6d.js"><link rel="prefetch" href="/assets/js/82.61b82f6b.js"><link rel="prefetch" href="/assets/js/83.03baebdf.js"><link rel="prefetch" href="/assets/js/84.21336b08.js"><link rel="prefetch" href="/assets/js/85.0174bfd9.js"><link rel="prefetch" href="/assets/js/86.7705d264.js"><link rel="prefetch" href="/assets/js/87.0c450438.js"><link rel="prefetch" href="/assets/js/88.57afb038.js"><link rel="prefetch" href="/assets/js/89.902f0f2f.js"><link rel="prefetch" href="/assets/js/9.4224ed44.js"><link rel="prefetch" href="/assets/js/90.d2d107f3.js"><link rel="prefetch" href="/assets/js/91.132ef2df.js"><link rel="prefetch" href="/assets/js/92.79578481.js"><link rel="prefetch" href="/assets/js/93.3e021e53.js"><link rel="prefetch" href="/assets/js/94.53ca2856.js"><link rel="prefetch" href="/assets/js/95.30947a04.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.5159a7ac.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="bash"><a href="#bash" class="header-anchor">#</a> Bash</h1> <blockquote><p>Bourne Again SHell</p></blockquote> <h2 id="utilisation"><a href="#utilisation" class="header-anchor">#</a> Utilisation</h2> <ul><li>Exemples présents là : <code>/usr/share/doc/util-linux/examples</code>.</li> <li>Créer un script bash
+<ol><li>Créer un fichier avec ou sans l'extension <code>.sh</code>.</li> <li>A la première ligne du fichier, écrire où se trouve l'exécutable du shell dans un commentaire : <code>#!/bin/bash</code>.</li> <li>Ecrire le reste des commandes désirées. Exemple :<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token comment"># Ceci est un commentaire.</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'Hello world!'</span> <span class="token comment"># Et echo une commande, tout comme pwd, ls, cat...</span>
+</code></pre></div></li></ol></li> <li>Exécuter un script bash
+<ul><li>Soit en utilisant le chemin relatif ou absolu vers l'emplacement du fichier :
+<ul><li><code>cheminVersMonScript/nomScript.sh nomParamètre1 nomParamètre2</code> exécute le script.</li></ul></li> <li>Soit comme une commande :
+<ol><li><code>echo $PATH</code> affiche les dossiers contenant les commandes.</li> <li>Copier ou déplacer le fichier du script dans l'un des dossiers affiché.</li> <li>Exécuter directement <code>nomScript.sh</code> n'importe où. La classe !</li></ol></li></ul></li> <li>Paramètres d'un script :
+<ul><li><code>$#</code> contient le nombre de paramètres passés au script.</li> <li><code>$0</code> contient le nom du script.</li> <li><code>$1</code>, <code>$2</code>, [...] <code>$9</code> contient la valeur d'un des 9 premiers paramètres.</li> <li><code>shift</code> décale les variables <code>$1</code> à <code>$9</code> d'un paramètre (exemple : <code>$1</code> contient maintenant le 2ème paramètre).</li></ul></li> <li>Variables :
+<ul><li><code>nomVariable=valeurVariable</code> affecte une valeur à une variable. Attention à ne pas mettre d'espace autour du signe <code>=</code>.</li> <li><code>$nomVariable</code> permet d'accéder à la valeur de la variable.</li></ul></li> <li>Quotes :
+<ul><li><code>'Hello $nom!'</code> les simples quotes <code>''</code> stockent la chaîne telle quelle. Ici : <code>Hello $nom!</code>.</li> <li><code>'Hello $nom!'</code> les doubles quotes <code>&quot;&quot;</code> stockent la chaîne avec les valeurs des variables qu'elle contient. Ici : <code>Hello Bob!</code>.</li> <li><code>nomCommande</code> les backticks <code>`</code> exécutent la commande.</li></ul></li> <li>Tableaux :
+<ul><li><code>nomTableau=('valeur0' 'valeur1' 'valeur2')</code> définit un tableau.</li> <li><code>tableau[index]='valeur'</code> affecte une valeur à une case, quelque soit la valeur de l'index.</li> <li><code>${tableau[index]}</code> accède à la valeur d'une case d'un tableau.</li></ul></li> <li><code>exit nombreOptionel</code> arrête un script.</li> <li><code>echo $nomVariable1$nomVariable2</code> affiche des variables.
+<ul><li>Chaque nom de variable doit être précédée du symbole <code>$</code>.</li> <li><code>echo ${tableau[*]}</code> affiche toutes les valeurs d'un tableau.</li> <li><code>-e</code> active les retours à la ligne avec le caractère <code>\n</code> (même dans des simples quotes). Exemple : <code>echo -e 'Hello\nworld!'</code></li></ul></li> <li><code>read nomVariable1 nomVariable2</code> demande la saisie de valeurs pour des variables.
+<ul><li><code>read -p 'Entrez une valeur puis une autre : ' nomVariable1 nomVariable2</code> affiche un message avant de demander la saisie (prompt).</li> <li><code>-n nombreCaractèresMax nomVariable</code> limite le nombre de caractère maximum à stocker. Exemple : <code>read -p 'Entrez une valeur (5 caractères max) : ' -n 5 nomVariable</code>.</li> <li><code>-t nombreSecondes</code> limite le temps autorisé pour la saisie. Exemple : <code>read -p 'Entrez le code de désamorçage de la bombe (vous avez 5 secondes) : ' -t 5 code</code>.</li> <li><code>-s nomVariable</code> masque les caractères entrés. Exemple : <code>read -p 'Entrez votre mot de passe : ' -s pass</code>.</li></ul></li> <li><code>let &quot;expression&quot;</code> effectue des calculs sur des entiers. Exemples :<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">let</span> <span class="token string">&quot;a = 5 * 3&quot;</span> <span class="token comment"># echo $a affiche 15</span>
+<span class="token builtin class-name">let</span> <span class="token string">&quot;a = 4 ** 2&quot;</span> <span class="token comment"># echo $a affiche 16 (4 au carré)</span>
+<span class="token builtin class-name">let</span> <span class="token string">&quot;a = 8 / 2&quot;</span> <span class="token comment"># echo $a affiche 4</span>
+<span class="token builtin class-name">let</span> <span class="token string">&quot;a = 10 / 3&quot;</span> <span class="token comment"># echo $a affiche 3 (la partie flottante est enlevée)</span>
+<span class="token builtin class-name">let</span> <span class="token string">&quot;a = 10 % 3&quot;</span> <span class="token comment"># echo $a affiche 1</span>
+</code></pre></div></li> <li>Variables d'environnement :
+<ul><li>Variables utilisables depuis n'importe quel programme (variables globales).</li> <li><code>env</code> affiche les variables d'environnement (leur nom et leur valeur). Exemples :
+<ul><li><code>SHELL</code> le shell en cours d'utilisation.</li> <li><code>PATH</code> la liste des répertoires contenant des programmes pouvant être lancé en entrant le nom de leur fichier directement dans la console.</li> <li><code>EDITOR</code> le nom de l'éditeur de texte par défaut.</li> <li><code>HOME</code> l'emplacement du dossier <code>home</code>.</li> <li><code>PWD</code> l'emplacement du dossier courant.</li> <li><code>OLDPWD</code> l'emplacement du dossier dans lequel on était avant.</li></ul></li> <li><code>export NOM_VARIABLE</code> transforme une variable existante en variable d'environnement.</li></ul></li> <li>Conditions :
+<ul><li>Chaînes de caractères :<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> <span class="token string">&quot;Bruno&quot;</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;Salut Bruno !&quot;</span>
+<span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> <span class="token string">&quot;Michel&quot;</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;Bien le bonjour Michel&quot;</span>
+<span class="token keyword">else</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;J'te connais pas, ouste !&quot;</span>
+<span class="token keyword">fi</span>
+</code></pre></div><ul><li>Tester si une chaîne est vide :<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -z <span class="token variable">$1</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;C'est vide.&quot;</span>
+<span class="token keyword">fi</span>
+</code></pre></div></li> <li>Tester si une chaîne n'est pas vide :<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token variable">$1</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;C'est plein.&quot;</span>
+<span class="token keyword">fi</span>
+</code></pre></div></li></ul></li> <li>Nombres :<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -eq <span class="token number">20</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;20 est égal à <span class="token variable">$1</span>.&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -ne <span class="token number">20</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est différent de 20.&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -lt <span class="token number">20</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est inférieur à 20.&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -le <span class="token number">20</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est inférieur ou égal à 20.&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -gt <span class="token number">20</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est supérieur à 20.&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -ge <span class="token number">20</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est supérieur ou égal à 20.&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">fi</span>
+</code></pre></div></li> <li>Fichiers et dossiers<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -e <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> existe.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -d <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est un répertoire.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -f <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est un fichier.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -L <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est un lien symbolique.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -r <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est accessible en lecture.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -w <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est accessible en écriture.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -x <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est exécutable.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -nt <span class="token variable">$2</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est plus récent que <span class="token variable">$2</span>.&quot;</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -ot <span class="token variable">$2</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$1</span> est plus ancien que <span class="token variable">$2</span>.&quot;</span>
+<span class="token keyword">fi</span>
+</code></pre></div></li> <li>AND <code>&amp;&amp;</code> OR <code>||</code><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$#</span> -ge <span class="token number">1</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> <span class="token string">'koala'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">'Quel bel animal !'</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> <span class="token string">'fraise'</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> <span class="token string">'framboise'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">'Vive les fruits rouges !'</span>
+<span class="token keyword">fi</span>
+</code></pre></div></li> <li>NOT <code>!</code><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -e <span class="token variable">$1</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;Le fichier ou dossier <span class="token variable">$1</span> n'existe pas.&quot;</span>
+<span class="token keyword">fi</span>
+</code></pre></div></li> <li>Switch<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
+    <span class="token string">&quot;Bruno&quot;</span> <span class="token operator">|</span> <span class="token string">&quot;Paul&quot;</span> <span class="token operator">|</span> <span class="token string">&quot;Bob&quot;</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;Salut Bob ou Paul ou Bruno !&quot;</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token string">&quot;Michel&quot;</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;Bien le bonjour Michel&quot;</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token string">&quot;Jean&quot;</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;Hé Jean, ça va ?&quot;</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    *<span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;J'te connais pas, ouste !&quot;</span>
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span>
+</code></pre></div></li></ul></li> <li>Fonctions<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token function-name function">sayHelloTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello <span class="token variable">$1</span>!&quot;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># Scope</span>
+
+sayHelloTo <span class="token string">&quot;Bob&quot;</span>
+
+<span class="token function-name function">localVariableDemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">nameAsLocalVariable</span><span class="token operator">=</span><span class="token string">&quot;Sarah&quot;</span>
+    <span class="token assign-left variable">nameAsGlobalVariable</span><span class="token operator">=</span><span class="token string">&quot;Jean&quot;</span>
+
+    sayHelloTo <span class="token variable">$nameAsLocalVariable</span>
+    sayHelloTo <span class="token variable">$nameAsGlobalVariable</span>
+    sayHelloTo <span class="token variable">$anotherNameAsGlobalVariable</span>
+<span class="token punctuation">}</span>
+
+<span class="token assign-left variable">anotherNameAsGlobalVariable</span><span class="token operator">=</span><span class="token string">&quot;Jim&quot;</span>
+
+localVariableDemo
+sayHelloTo <span class="token variable">$nameAsLocalVariable</span> <span class="token comment"># $nameAsLocalVariable is now empty because called outside of its scope.</span>
+</code></pre></div></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.3373225f.js" defer></script><script src="/assets/js/2.17c583f6.js" defer></script><script src="/assets/js/7.b48a6734.js" defer></script>
+  </body>
+</html>
