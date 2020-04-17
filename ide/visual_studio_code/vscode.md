@@ -28,9 +28,23 @@
 * Raccourcis clavier
     * `alt + click gauche` ajoute des curseurs (`ctl + click gauche` peut être sélectionné dans *Selection > Switch to Ctrl+Click for Multi-Cursor*).
     * `ctl + shift + flèche haut/bas` ajoute des curseurs.
+    * `ctl + d` ajoute un curseur sur le prochain mot similaire à la sélection en cours et l'ajoute à la sélection.
 
 ## Configuration
 
 * Sauvegarde automatique `File > Preferences > Settings > Files: Auto Save > after delay`
 * Raccourcis clavier `File > Preferences > Keyboard Shortcuts` :
-    * `View: Toggle Integrated Terminal` affiche ou masque le terminal (`ctl + ù`)
+    * `View: Toggle Integrated Terminal` affiche ou masque le terminal (`ctl + ù`).
+    * `openInTerminal` ouvre le fichier en cours dans un terminal.
+    * `workbench.action.terminal.kill` arrête le terminal en cours.
+* Modifier le fichier `settings.json` :
+    * Entrer `settings.json` dans la barre de recherche et cliquer sur le lien.
+    * Utiliser Emmet dans d'autres fichiers que html (ici `.vue`, `.js` et `.twig`) :
+        ```json
+        "emmet.includeLanguages": {
+            "twig": "html",
+            "vue": "html",
+            "javascript":"javascriptreact"
+        },
+        "emmet.triggerExpansionOnTab": true
+        ```

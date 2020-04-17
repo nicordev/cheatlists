@@ -16,3 +16,9 @@ https://enrolment.supinfo.com/NewCandidate.aspx?lang=fr
 * `ctl x2` ouvre un prompt qui sauvegarde les commandes saisies.
 * `shift + Echap` ferme la fenêtre du bas (terminal, debug...).
 * `alt + shift + click gauche + glisser la souris` ajoute des curseurs.
+
+## Inspection du code
+
+- Installer le plugin **Php Inspections (EA Extended)**
+- *Settings > Editor > Inspections* pour choisir les règles à utiliser.
+- *Code > Run inspection by name* pour lancer une règle en particulier.

@@ -45,6 +45,7 @@
             <p>{{ nomVariable2 }}</p>
         </div>
         ```
+        On pourrait aussi utiliser `v-text="nomVariable1"` mais c'est moins courant.
     * Côté JS :
         ```js
         var app = new Vue({
@@ -52,6 +53,18 @@
             data: {
                 nomVariable1: 'Socks',
                 nomVariable2: 'Nice green socks!'
+            }
+        });
+        ```
+        ou
+        ```js
+        var app = new Vue({
+            el: '#nomIdBaliseHtml', // Attribut id de la balise HTML ciblée.
+            data() {
+                return {
+                    nomVariable1: 'Socks',
+                    nomVariable2: 'Nice green socks!'
+                };
             }
         });
         ```
@@ -246,3 +259,12 @@
     * Dans un sous-composant :
         * Appeler une méthode lors de l'évènement `submit`.
         * Emettre un évènement custom pour modifier le composant parent.
+* Style :
+    * `scoped` indique que la balise `style` s'applique uniquement au composant où elle se trouve. En son absence, elle s'appliquera partout.
+
+        Ici en prime on importe un fichier `scss` :
+        ```html
+        <style lang="scss" scoped>
+            @import '@/design/index.scss';
+        </style>
+        ```
