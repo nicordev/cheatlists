@@ -162,32 +162,93 @@
     }
     ```
 
-    Pour passer des valeurs à un composant enfant :
-    ```html
-    <NomComposant v-bind:nom-attribut-enfant1="nomAttributParent" />
-    ```
+    - Pour passer des valeurs à un composant enfant, on utilise `props` :
+        ```html
+        <NomComposant v-bind:nom-attribut-enfant1="nomAttributParent" />
+        ```
 
-    ```js
-    export default {
-        name: 'nomComposantEnfant',
-        props: {
-            nomAttributEnfant1: {
-                type: Object,
-                default: () => {},
-                required: true,
-            },
-            nomAttributEnfant2: {
-                type: Number,
-                default: 1987,
-                validator: function (value) {
-                    return ['apple', 'peach', 'cherry'].indexOf(value) !== -1;
+        ```js
+        export default {
+            name: 'nomComposantEnfant',
+            props: {
+                nomAttributEnfant1: {
+                    type: Object,
+                    default: () => {},
+                    required: true,
                 },
-                required: false,
+                nomAttributEnfant2: {
+                    type: Number,
+                    default: 1987,
+                    validator: function (value) {
+                        return ['apple', 'peach', 'cherry'].indexOf(value) !== -1;
+                    },
+                    required: false,
+                }
+            },
+            data() {}
+        }
+        ```
+
+    - Pour passer des valeurs d'un composant enfant à un composant parent, on utilise des événements :
+
+        - Dans `NomComposantParent.vue` :
+            ```html
+            <nomComposantEnfant
+                @nomEvénement="nomMéthodeComposantParent"
+            />
+            ```
+
+            ```js
+            methods: {
+                nomMéthodeComposantParent(nomAttribut) {
+                    // Ici le composant enfant passera nomPropriétéComposantEnfant dans nomAttribut.
+                }
             }
-        },
-        data() {}
-    }
-    ```
+            ```
+
+        - Dans `NomComposantEnfant.vue` :
+            ```js
+            methods: {
+                nomMéthodeLançantEvénement() {
+                    this.$emit("nomEvénement", this.nomPropriétéComposantEnfant)
+                }
+            }
+            ```
+- Mixins :
+
+    Permet de partager des fonctionnalités entre des composants.
+
+    Ressemble aux traits de PHP.
+
+    En cas de conflit avec les élements du composant :
+    - Les éléments déjà présents dans le composant ne seront pas remplacés par les mixins.
+    - S'il s'agit de watchers ou de licecycle hooks, alors les éléments du mixin seront exécutés avant ceux du composant.
+
+    Exemple :
+    - `nomFichierMixins.js` :
+        ```js
+        export const nomMix = {
+            // Lifecycle hook
+            created() {
+                // ...
+            },
+            // Methods
+            methods: {
+                nomMéthode() {
+                    // ...
+                }
+            }
+        }
+        ```
+    - `NomComposant.vue` :
+        ```js
+        import { nomMix } from './cheminVers/nomFichierMixins.js'
+        export default {
+            // ...
+            mixins: [nomMix],
+            // ...
+        }
+        ```
 
 ## VSCode snippets
 
