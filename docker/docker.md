@@ -9,6 +9,11 @@
 * Ajouter l'utilisateur au groupe `docker` pour éviter d'utiliser `sudo` à tout va en exécutant :
     * `sudo usermod -aG docker nomUtilisateur`
 
+## Erreurs
+
+- **Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?**
+    - `sudo dockerd` relance le daemon.
+
 ## Utilisation
 
 * Général

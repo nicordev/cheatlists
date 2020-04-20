@@ -1,3 +1,11 @@
+# Vue.js
+
+## Commandes
+
+- `yarn install` installe les dépendances du projet.
+- `yarn serve` lance un serveur de développement.
+- `yarn dev`
+
 ## Quick reference
 
 - `v-text` alias `{{  }}` modifie le contenu d'une balise :
@@ -248,6 +256,54 @@
             mixins: [nomMix],
             // ...
         }
+        ```
+- Variables d'environnement :
+
+    Fichiers à la racine du site :
+    - `/.env` :
+        ```
+        NODE_ENV=production
+        VUE_APP_API=www.zogzog.com/api
+        ```
+    - `/.env.development` :
+        ```
+        NODE_ENV=development
+        VUE_APP_API=api
+        ```
+
+    Fichier de configuration :
+    - `/shared/config.js` :
+        ```js
+        export const API = process.env.VUE_APP_API;
+        ```
+    - `/shared/index.js` :
+        ```js
+        export * from './config';
+        ```
+    
+    Fichier utilisant la constante `API` du fichier `/shared/config.js` :
+    - `/shared/data.js` :
+        ```js
+        import * as axios from 'axios';
+        import { format } from 'date-fns';
+        import { inputDateFormat } from './constants';
+        import { API } from "./config";
+
+        const getHeroes = async function() {
+            const response = await axios.get(`${API}/heroes.json`);
+            const heroes = response.data.map(hero => {
+                hero.originDate = format(hero.originDate, inputDateFormat);
+            
+                return hero;
+        });
+
+        return heroes;
+        }
+
+        export const data = {
+            getHeroes,
+        };
+
         ```
 
 ## VSCode snippets

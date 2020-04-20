@@ -43,10 +43,10 @@
 
 Configurer un job dans le fichier `.gitlab-ci.yml` :
 ```yaml
-job:phpstan:
+phpstan:
   tags:
     - docker
-  image: jakzal/phpqa # Image qui contient aussi des extensions de PHPStan et d'autres outils
+  image: jakzal/phpqa
   stage: tests
   script: phpstan analyse --level 8 src tests
   allow_failure: true # A mettre à false pour que l'analyse de phpstan bloque la MR si le code contient des erreurs.
@@ -139,6 +139,12 @@ Un fichier de configuration doit utiliser le format neon, similaire au yaml.
     parameters:
         # ...
     ```
+- PhpDoc :
+    - Désactiver l'analyse stricte des types :
+        ```yaml
+        parameters:
+            treatPhpDocTypesAsCertain: false
+        ```
 - Ignorer des erreurs :
     > Il est préférable d'utiliser une Baseline comme expliqué plus tôt.
     - Version basique :
@@ -180,3 +186,49 @@ Un fichier de configuration doit utiliser le format neon, similaire au yaml.
                 - bin/.phpunit/phpunit-8.3-0/src/Exception.php
                 - bin/.phpunit/phpunit-8.3-0/src/Framework/Exception/Exception.php
         ```
+
+## Corriger les erreurs
+
+- `Parameter #1 $argument of class ReflectionClass constructor expects class-string<T of object>|T of object, string given.`
+
+    Se produit lorsqu'on utilise une chaîne de caractère pour instancier une classe.
+    
+    `class-string` correspond à une chaîne de caractère dont on a préalablement vérifié qu'elle correspond à un nom de classe.
+    
+    Pour qu'une `string` devienne une `class-string` :
+    - Préciser `class-string` dans un phpdoc :
+        ```php
+        /**
+        * @var class-string
+        */
+        ```
+    - Utiliser `class_exists()` :
+        ```php
+        if (!class_exists($filterClass)) {
+            throw new \InvalidArgumentException("$filterClass is not a valid class name.");
+        }
+        ```
+- `Cannot call method nomMéthode() on nomNamespace\nomClasse|null.`
+    
+    - Vérifier que l'objet n'est pas nul avant d'appeler la méthode :
+        ```php
+        if (null !== $nomObjet) {
+            $nomObjet->nomMéthode();
+        }
+        ```
+    - Dans les tests, faire des `$this->assertNotNull($nomVariable);`
+
+## Ajouter des règles personnalisées
+
+> - [Documentation](https://phpstan.org/developing-extensions/rules)
+> - [Exemples](https://github.com/phpstan/phpstan-src/tree/master/src/Rules)
+
+1. Créer une classe héritant de `PHPStan\Rules\Rule`
+1. Spécifier cette classe dans le fichier de configuration :
+    ```yaml
+    services:
+        -
+            class: NomNamespace\NomNouvelleRègle
+            tags:
+                - phpstan.rules.rule
+    ```
