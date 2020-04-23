@@ -303,8 +303,80 @@
         export const data = {
             getHeroes,
         };
-
         ```
+- Router :
+    - Installation : 
+        1. `vue add router` ajoute le router.
+        1. Dans le fichier `main.js` :
+            ```js
+            import Vue from 'vue';
+            import App from '@/app.vue';
+            import router from './router';
+
+            new Vue({
+                router,
+                render: h => h(App)
+            }).$mount('#app');
+            ```
+        1. Dans le fichier `router.js` :
+            ```js
+            Vue.use(Router);
+            
+            export default new Router({
+                mode: 'history',
+                base: process.env.BASE_URL,
+                routes: [
+                    {
+                        path: '/',
+                        redirect: '/heroes'
+                    },
+                    {
+                        path: '/heroes',
+                        name: 'heroes',
+                        // component: Heroes // Eager loading: nécessite un import.
+                        component: () => import(/* webpackChunkName: "bundle-heroes" */ './views/heroes.vue'), // Lazy loading: webpack fait le job grâce au commentaire.
+                    },
+                    { 
+                        path: '/heroes/:id', 
+                        name: 'hero-detail', 
+                        component: HeroDetail,
+                        props: route => ({ id: parseInt(route.params.id) }), // On aurait pu mettre juste true, mais on aurait eu des erreurs quand l'utilisateur rafraîchit la page (l'id serait alors une string).
+                    },
+                    { 
+                        path: '*', 
+                        component: NotFound 
+                    }
+                ]
+            })
+            ```
+        1. Dans le fichier `app.vue` :
+            ```html
+            <template>
+                <router-link to="/heroes">Heroes</router-link>
+                <router-link to="/about">About</router-link>
+                <router-link 
+                    :to="{ name: 'hero-detail', params: { id: hero.id } }"
+                    tag="button"
+                    class="link card-footer-item"
+                  >
+                      <i class="fas fa-check"></i>
+                      <span>Select</span>
+                  </router-link>
+                <router-view></router-view>
+            </template>
+            ```
+        1. Dans les méthodes d'un composant :
+            ```js
+            methods: {
+                nomMéthode() {
+                    this.$router.push({ name: 'nomRoute' }); // Ici l'appel à la méthode nomMéthode va rediriger l'utilisateur vers 'nomRoute'.
+                },
+                async saveHero() {
+                    await dataService.updateHero(this.hero);
+                    this.$router.push({ name: 'heroes' });
+                },
+            },
+            ```
 
 ## VSCode snippets
 

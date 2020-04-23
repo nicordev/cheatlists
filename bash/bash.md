@@ -237,3 +237,10 @@
     localVariableDemo
     sayHelloTo $nameAsLocalVariable # $nameAsLocalVariable is now empty because called outside of its scope.
     ```
+* Boucles
+    ```bash
+    # Boucle qui affiche tous les fichiers commençant par 'zog' du répertoire courant et de ses sous-répertoires.
+    for filePath in */zog*; do
+        echo $filePath
+    done
+    ```
