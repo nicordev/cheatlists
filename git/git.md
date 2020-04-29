@@ -130,6 +130,14 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
         * `git stash pop numéroDuStash` applique les modifications d'un stash particulier.
     * `git stash push [-m message] [cheminVers/fichierCible1 cheminVers/fichierCible2 ...]` permet d'ajouter un message à notre stash et de cibler les fichiers contenant les modifications à mettre de côté.
 
+### Tag
+
+- `git tag -d nomTag` supprime un tag en local
+- Changer la version d'une branche (tag) :
+    1. Se placer sur la branche désirée.
+    1. `git tag nomTag` ajoute le tag `nomTag`.
+    1. `git push --tags` envoi le nouveau tag sur le repository.
+
 ### Merge
 
 1. Coder sa branche et faire ses commits
