@@ -2,12 +2,19 @@
 
 Liste réalisée en partie à partir [du cours de mateo21 sur OpenClassrooms](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux)
 
-## Utiliser sudo sans avoir à taper son mot de passe
+## `sudoers`
 
-Modifier le fichier `/etc/sudoers` en super utilisateur en ajoutant à la fin :
-```bash
-nomUtilisateur ALL=(ALL) NOPASSWD:ALL
-```
+- Utiliser sudo sans avoir à taper son mot de passe :
+
+    Modifier le fichier `/etc/sudoers` en super utilisateur en ajoutant à la fin :
+    ```bash
+    nomUtilisateur ALL=(ALL) NOPASSWD:ALL
+    ```
+- Réparer le fichier `/etc/sudoers` :
+
+    ```bash
+    pkexec visudo
+    ```
 
 ## Bureau Gnome
 
