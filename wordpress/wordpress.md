@@ -20,9 +20,7 @@
 1. Copier les fichiers `functions.php` et `style.css` présents dans `wp-content/themes/nomThèmeParent` dans le dossier du thème enfant.
 1. Modifier le bloc de commentaire du fichier `style.css` du thème enfant :
     ```css
-    /*
-    Theme Name: nomDossierThèmeEnfant
-    Template: nomDossierThèmeParent
+    /*p";i:2;s:23:"wordfence/wordfence.php";i:3;s:33:"wps-hide-login/wps-hide-login.php";}
     ```
 1. Remplacer le contenu du fichier `functions.php` du thème enfant par :
     ```php
