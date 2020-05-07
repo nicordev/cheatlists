@@ -373,8 +373,22 @@
 * Validation
     * Comme pour un projet Symfony classique avec les annotations `@Assert\` : [doc](https://symfony.com/doc/current/reference/constraints.html).
 * Authentification
-    * JWT avec le [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#getting-started) : [doc](https://api-platform.com/docs/core/jwt/#jwt-authentication)
-        * Exemple de firewalls dans le fichier `security.yaml` :
+    * JWT avec le [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#getting-started) : [doc](https://api-platform.com/docs/core/jwt/#jwt-authentication) :
+        1. `composer require jwt-auth` installe le bundle.
+        1. ```bash
+            mkdir -p config/jwt
+            openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+            openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
+            ```
+        1. Dans `config/packages/lexik_jwt_authentication.yaml` :
+            ```yaml
+            lexik_jwt_authentication:
+                secret_key:       '%kernel.project_dir%/config/jwt/private.pem' # required for token creation
+                public_key:       '%kernel.project_dir%/config/jwt/public.pem'  # required for token verification
+                pass_phrase:      'your_secret_passphrase' # required for token creation, usage of an environment variable is recommended
+                token_ttl:        3600
+            ```
+        1. Dans `config/packages/security.yaml` :
             ```yaml
             security:
                 firewalls:
@@ -412,6 +426,11 @@
                         - { path: ^/api/customers, roles: IS_AUTHENTICATED_FULLY }
                         - { path: ^/api/invoices, roles: IS_AUTHENTICATED_FULLY }
                         - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [GET, PUT, DELETE] }
+            ```
+        1. Dans `config/routes.yaml` :
+            ```yaml
+            api_login_check:
+                path: /api/login_check
             ```
 * Agir sur les entités pendant les opérations POST, PUT, PATCH ou DELETE avec les **Data Persisters**
     * [doc](https://api-platform.com/docs/core/data-persisters/)
