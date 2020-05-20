@@ -98,6 +98,7 @@
 * `substr(string $string, int $start [, int $length ]): string` retourne le segment de string défini par start et length.
 * `substr_replace(mixed $string, mixed $replacement, mixed $start [, mixed $length ]): mixed` remplace un segment de la chaîne string par la chaîne replacement. Le segment est délimité par start et éventuellement par length.
 * `substr_count(string $haystack, string $needle [, int $offset = 0 [, int $length ]]): int` retourne le nombre d'occurrences de needle dans la chaîne haystack. Notez que needle est sensible à la casse.
+* `str_repeat ( string $input , int $multiplier ) : string` retourne la chaîne `$input` répétée `$multiplier` fois.
 
 ## Serialize, deserialize
 
