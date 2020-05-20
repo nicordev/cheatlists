@@ -489,3 +489,7 @@
             private $grantedCompanies;
         }
         ```
+
+## Documentation OpenApi
+
+[doc](https://api-platform.com/docs/core/swagger/)
