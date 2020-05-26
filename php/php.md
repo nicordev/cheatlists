@@ -20,6 +20,7 @@
 * `php -r "echo \"Hello world!\";"` exécute une ligne de code php
 * `php -a` exécuter du code php dans le terminal intéractif
 * `$argv` contient tous les arguments passés au script php. Le premier élément du tableau est le nom du fichier du script.
+* `$argc` contient le nombre d'arguments passés au script php.
 * `php -S 127.0.0.1:8000 -t public/` lance un serveur local
 * `env PATH="C:\wamp64\bin\php\php7.2.18:$PATH" php bin/console doctrine:schema:create` change la version de php pour l'exécution d'une commande
 * `php -m` affiche les modules (extensions) installés.

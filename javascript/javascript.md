@@ -255,3 +255,9 @@ param => expression
 let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
 f();
 ```
+
+## URL
+
+```js
+let url = window.location.href;
+```
