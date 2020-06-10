@@ -34,7 +34,9 @@
 * Soit via la commande `composer` si composer est installé globalement, soit via `php composer.phar` si on a le fichier `composer.phar` dans le dossier du projet.
 * `compsoer intall` lit le fichier `composer.json`, créé un fichier `composer.lock` et installe les paquets.
 * `composer update` met à jour les paquets installés selon le fichier `composer.json` et met à jour le fichier `composer.lock`.
-* `composer require nomPackage [--dev]` ajoute un paquet au fichier `composer.json`. Ajouter `--dev` pour que le paquet soit utilisé dans la partie développement `require-dev` du fichier `composer.json`.
+* `composer require nomPackage [--dev]` ajoute un paquet au fichier `composer.json`.
+    * Ajouter `--dev` pour que le paquet soit utilisé dans la partie développement `require-dev` du fichier `composer.json`.
+    * `composer require nomUtilisateur/nomPackage:numéroVersion` spécifie une version. Par exemple : `nicordev/phprocks:^0.3.2`
 * `composer dump-autoload` recré l'autoload de composer.
 
 ## Versions
