@@ -110,3 +110,19 @@ CACHE_EXPIRATION='+10 minutes'
 1. kernel.finish_request
 1. kernel.terminate
 1. kernel.exception
+
+## Repository
+
+- `findOneByNomPropriété` récupère une entité à partir d'une propriété. C'est une méthode magique, il est inutile de l'écrire dans la classe du repository de l'entité.
+
+## Sérialisation
+
+- [Renommer une propriété](https://symfony.com/blog/new-in-symfony-4-2-simpler-custom-serialized-names) :
+
+    ```php
+    class Person
+    {
+        /** @SerializedName("customer_name") */
+        private $firstName;
+    }
+    ```

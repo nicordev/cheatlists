@@ -1,5 +1,11 @@
 # Docker
 
+## Quick reference
+
+- `docker build -t nomImage -f nomFichierDockerfile cheminVersLeDossierContenantLeDockerfile`
+- `docker run --name nomConteneur nomImage` lance un conteneur à partir d'une image et nomme le conteneur.
+- `docker-compose up` lance les conteneurs selon le fichier `docker-compose.yaml`.
+
 ## Installation
 
 * [Doc officielle](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
@@ -63,7 +69,12 @@
 > **Note perso** Un Dockerfile permet de construire une image Dockabout:configer.
 
 1. Créer un fichier `Dockerfile` à la racine du projet contenant les instructions suivantes :
-    * `FROM nomImageDeBase` défini l'image à utiliser comme base.
+    * `FROM nomImageDeBase` défini l'image à utiliser comme base. On peut en mettre plusieurs :
+        ```
+        FROM composer
+        FROM php:7.4-fpm-alpine
+        COPY --from=composer /usr/bin/composer /usr/local/bin/composer
+        ```
     * `RUM commandesLinux` exécute des commandes. Mieux vaut regrouper les commandes avec `&&` pour limiter le nombre d'instructions `RUN` et ainsi limiter le nombre de *layers* et la taille de l'image.
     * `ADD dossierContenantLesSources dossierDeDestinationDansLImage` copie ou télécharge des fichiers dans l'image.
     * `WORKDIR nomDossierDansLImage` modifie le répertoire courant utilisé dans  l'image.
