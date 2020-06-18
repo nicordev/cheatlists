@@ -18,7 +18,7 @@ On peut aussi utiliser le `Makefile` pour créer des alias de commandes.
 
 ```bash
 .SILENT: # Empêche les commandes exécutées via make d'apparaître dans le terminal.
-.PHONY: nomCommandeMake
+.PHONY: nomCommandeMake # Regroupe les noms de commande qui ne sont pas en rapport avec un fichier ou un dossier.
 
 .DEFAULT_GOAL := help
 NOM_PARAMETRE='valeurParamètre'

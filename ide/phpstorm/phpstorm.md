@@ -22,3 +22,7 @@ https://enrolment.supinfo.com/NewCandidate.aspx?lang=fr
 - Installer le plugin **Php Inspections (EA Extended)**
 - *Settings > Editor > Inspections* pour choisir les règles à utiliser.
 - *Code > Run inspection by name* pour lancer une règle en particulier.
+
+## xdebug
+
+- *Settings > Language & Frameworks > PHP > Servers* bidouiller le mapping jusqu'à ce que ça fonctionne.

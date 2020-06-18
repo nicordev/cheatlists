@@ -137,6 +137,7 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
     1. Se placer sur la branche désirée.
     1. `git tag nomTag` ajoute le tag `nomTag`.
     1. `git push --tags` envoi le nouveau tag sur le repository.
+- `git fetch --tags` récupère tous les tags.
 
 ### Merge
 
