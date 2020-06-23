@@ -2,7 +2,11 @@
 
 ## Installation
 
-* [Ubuntu](https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-18-04/)
+- [VSCodium](https://vscodium.com/)
+    1. `wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -`
+    1. `echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list`
+    1. `sudo apt update && sudo apt install codium`
+* [vscode pour Ubuntu](https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-18-04/)
     1. First, update the packages index and install the dependencies by typing:
         ```
         sudo apt update
@@ -21,6 +25,13 @@
         sudo apt update
         sudo apt install code
         ```
+
+## Extension
+
+- Installer une extension manuellement :
+    1. Chercher l'extension sur le [marketplace](https://marketplace.visualstudio.com/VSCode).
+    1. Cliquer sur *Resources > Download extension* dans le panneau de droite.
+    1. Dans le menu extension de VSCodium : *... > Install from VSIX*
 
 ## Utilisation
 
