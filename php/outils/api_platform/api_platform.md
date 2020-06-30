@@ -489,6 +489,26 @@
             private $grantedCompanies;
         }
         ```
+- Activer des filtres
+    - *config/ackages/api_platform*, créer un fichier par ressource :
+        ```yaml
+        resources:
+            App\Entity\NomEntité:
+                attributes:
+                    filters:
+                        - nom_entité.nom_filtre
+        ```
+    - *config/services.yaml* :
+        ```yaml
+        services:
+            nom_entité.nom_filtre:
+                parent: 'api_platform.doctrine.orm.search_filter'
+                arguments: [{ nomPropriété: 'nomStratégie' }]
+                tags: ['api_platform.filter']
+                autowire: false
+                autoconfigure: false
+                public: false
+        ```
 
 ## Documentation OpenApi
 
