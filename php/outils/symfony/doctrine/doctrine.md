@@ -16,6 +16,9 @@
 
 ## Utilisation
 
+* Base de données
+    * `php bin/console doctrine:database:create` créé la base de données définie dans les fichiers `.env` ou `.env.local`.
+    * `php bin/console doctrine:database:drop --force` supprime la base de données.
 * Migrations
     * `php bin/console doctrine:migrations:diff` créé un fichier de migration par rapport à l'état de la base de données utilisée.
     * `php bin/console doctrine:migrations:migrate` exécute les fichiers de migrations.
