@@ -111,3 +111,18 @@
 * `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante.
 * `(new DateTime())->format("W")` génère une string représentant le numéro de la semaine courante.
 * `(new DateTime())->getTimestamp();` retourne le timestamp actuel.
+
+## break
+
+```php
+for ($i = 0; $i < 20; $i++) {
+    switch ($i) {
+        case 5:
+            echo "At 5<br />\n";
+            break 1;  /* Termine uniquement le switch. */
+        case 10:
+            echo "At 10; quitting<br />\n";
+            break 2;  /* Termine le switch et la boucle for. */
+    }
+}
+```

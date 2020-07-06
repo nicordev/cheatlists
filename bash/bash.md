@@ -23,10 +23,12 @@
         2. Copier ou déplacer le fichier du script dans l'un des dossiers affiché.
         3. Exécuter directement `nomScript.sh` n'importe où. La classe !
 * Paramètres d'un script :
+    * `$@` contient les arguments passés à une fonction.
     * `$#` contient le nombre de paramètres passés au script.
     * `$0` contient le nom du script.
     * `$1`, `$2`, [...] `$9` contient la valeur d'un des 9 premiers paramètres.
     * `shift` décale les variables `$1` à `$9` d'un paramètre (exemple : `$1` contient maintenant le 2ème paramètre).
+    * `$?` contient le dernier code retourné par une commande.
 * Variables :
     * `nomVariable=valeurVariable` affecte une valeur à une variable. Attention à ne pas mettre d'espace autour du signe `=`.
     * `$nomVariable` permet d'accéder à la valeur de la variable.
@@ -243,4 +245,15 @@
     for filePath in */zog*; do
         echo $filePath
     done
+    ```
+- Regex :
+    
+    Utiliser `=~` et `[[]]` :
+
+    ```bash
+    Email=me@example.com
+    if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+    then
+        echo "Valid email!"
+    fi
     ```
