@@ -6,6 +6,10 @@ Permet de modifier le texte d'un fichier.
 
 > Important : `sed` ne modifie pas le fichier d'origine, sauf si on ajoute `-i`.
 
+- Paramètres :
+    - `-d` supprime une ligne
+    - `-p` affiche une ligne
+    - `-s` remplace une ligne
 - Remplacer une chaîne par une autre :
     
     - Changer uniquement la première occurence d'une chaîne :

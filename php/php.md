@@ -126,3 +126,22 @@ for ($i = 0; $i < 20; $i++) {
     }
 }
 ```
+
+## Constantes
+
+> [Documentation](https://www.php.net/manual/fr/reserved.constants.php)
+
+- `PHP_SAPI` décrit le type d'interface utilisée par PHP :
+    - `cli` Common Line Interface
+    - `cgi` Common Gateway Interface
+    - `cli-server` php built-in webserver
+    - `srv` hhvm
+
+    Fonction pour récupérer la valeur de cette constante :
+
+    ```php
+    php_sapi_name();
+    ```
+- `PHP_EOL` indique le symbole de retour à la ligne `\n` ou `\r\n`.
+- `PHP_INT_MAX`
+- `PHP_INT_MIN`

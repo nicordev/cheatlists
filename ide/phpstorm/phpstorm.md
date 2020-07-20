@@ -26,3 +26,4 @@ https://enrolment.supinfo.com/NewCandidate.aspx?lang=fr
 ## xdebug
 
 - *Settings > Language & Frameworks > PHP > Servers* bidouiller le mapping jusqu'à ce que ça fonctionne.
+- `ctl + shift + F8` affiche les points d'arrêts.
