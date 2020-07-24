@@ -111,6 +111,7 @@
 * `(new DateTime())->format("Y-m-d HH:ii:ss")` génère une string MySQL représentant la date et l'heure courante.
 * `(new DateTime())->format("W")` génère une string représentant le numéro de la semaine courante.
 * `(new DateTime())->getTimestamp();` retourne le timestamp actuel.
+- `$date = new DateTime("@$timestamp");` construit un objet DateTime à partir d'un timestamp
 
 ## break
 

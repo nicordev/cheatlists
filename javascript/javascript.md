@@ -36,6 +36,16 @@
         import User from './user.js' // Chemin relatif
         ```
 
+## Erreurs
+
+```js
+try {
+    // code susceptible à l'erreur ici
+} catch (error) {
+    // réaction aux erreurs ici
+}
+```
+
 ## Types
 
 * Primitive types || Value types
@@ -195,6 +205,42 @@
         Shape.defaultLocation = {x: 30, y: 40}; // Call the setter
         Shape.defaultLocation = 'zog'; // Throw error
         ```
+- Classes
+
+    ```js
+    class BankAccount {
+        constructor(owner, balance) {
+            this.owner = owner;
+            this.balance = balance;
+        }
+        
+        showBalance() {
+            console.log("Solde: " + this.balance + " EUR");
+        }
+        
+        deposit(amount) {
+            console.log("Dépôt de " + amount + " EUR");
+            this.balance += amount;
+            this.showBalance();
+        }
+        
+        withdraw(amount) {
+            if (amount > this.balance) {
+                console.log("Retrait refusé !");
+            } else {
+                console.log("Retrait de " + amount + " EUR");
+                this.balance -= amount;
+                this.showBalance();
+            }
+        }
+
+        static getRandomRate() {
+            return Math.floor(Math.random() * 100);
+        }
+    }
+
+    console.log(BankAccount.getRandomRate());
+    ```
 
 ## Tableaux
 
@@ -204,6 +250,50 @@
 * `Array.prototype.unshift()` ajoute un ou plusieurs éléments au début d'un tableau et renvoie la nouvelle longueur du tableau.
 * `Array.prototype.pop()` supprime le dernier élément d'un tableau et retourne cet élément.
 * `Array.prototype.shift()` retire le premier élément d'un tableau et renvoi cet élément.
+- Parcourir un tableau :
+
+    `for in` et `for of` :
+
+    ```js
+    const passengers = [
+    "Will Alexander",
+    "Sarah Kate'",
+    "Audrey Simon",
+    "Tao Perkington"
+    ];
+
+    for (let i in passengers) {
+        console.log("Embarquement du passager " + passengers[i]);
+    }
+
+    for (let passenger of passengers) {
+        console.log("Embarquement du passager " + passenger);
+    }
+    ```
+
+## Set
+
+Liste d'éléments uniques pouvant être construite à partir d'un itérable.
+
+[MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Set)
+
+Enlever les doublons d'un tableaux: 
+
+```js
+const nombres = [2,3,4,4,2,2,2,4,4,5,5,6,6,7,5,32,3,4,5];
+console.log([...new Set(nombres)]);
+// affichera [2, 3, 4, 5, 6, 7, 32]
+```
+
+## Map
+
+[MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map)
+
+Représente un dictionnaire clé => valeur.
+
+```js
+const map = new Map(nomItérable)
+```
 
 ## Exceptions
 
