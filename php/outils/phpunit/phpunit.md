@@ -1,5 +1,25 @@
 # PHPUnit
 
+## Principes
+
+- Mock : simule un objet et ses méthodes tout en faisant des assertions 
+
+## Méthodes utiles
+
+- Mock partiel de la classe qu'on veut tester :
+    ```php
+    $openApiExportCommandRunner = $this->createPartialMock(
+        OpenApiExportCommandRunner::class, 
+        ['run'] // Tableau contenant les noms des méthodes qu'on veut mock
+    );
+    $openApiExportCommandRunner->expects(self::once())
+        ->method('run')
+        ->with($application, $arguments)
+        ->willReturn($commandOutput)
+    ;
+    $result = $openApiExportCommandRunner->fetchDocumentation($application, $arguments);
+    ```
+
 ## Installation pour Symfony
 
 * `composer require --dev symfony/phpunit-bridge` installe juste phpunit

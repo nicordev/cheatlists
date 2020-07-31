@@ -30,8 +30,17 @@ nomFichierOuDossierCible: nomDépendance1 nomDépendance2
 
 nomCommandeMake: nomDépendance1 nomDépendance2 ## Description nomCommandeMake affichée par `help`
 
-help:
-    @grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
+unPeuDeBash:
+	@if [ -z $(DATABASE) ]; then \
+		echo "No database URL set in .env file. Skipping database generation."; \
+		exit; \
+	else \
+		echo 'zogzog'; \
+	fi
+	@echo 'will be executed nonetheless'
+
+help: # Code qui affiche les descriptions après les ##
+    @grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/' # Le @ permet d'empêcher l'affichage du code de la commande exécutée. Néanmoins la sortie de la commande sera toujours affichée.
 ```
 
 - On utilise des tabulations et non des espaces.
