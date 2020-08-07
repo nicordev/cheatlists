@@ -61,6 +61,13 @@ echo Hello world!' > /opt/sandbox/hello.zog && sudo chmod +x /opt/sandbox/hello.
     * `$` Niveau d'autorisation
         * `$` Normal
         * `#` Super utilisateur (pseudonyme *root*)
+- Exécuter une commande :
+    
+    ```bash
+    nomCommande valeur --nomOption valeur -p valeur -- valeur
+    ```
+
+    Le `--` indique la fin des options. Tout ce qui est écrit ensuite sera traité comme des valeurs.
 
 ## Utilisateurs et les droits
 
