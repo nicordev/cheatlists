@@ -4,6 +4,10 @@
 
 > [Théorie](http://crestweb.cs.ucl.ac.uk/resources/mutation_testing_repository/theory.php)
 
+## Conseils
+
+- Lancer en entier une première fois pour créer le dossier de coverage puis cibler un fichier à la fois pour améliorer des tests existants sereinement.
+
 ## Installation
 
 ```bash
@@ -13,6 +17,8 @@ chmod +x infection.phar # pour le fun
 ```
 
 ## Utilisation
+
+## En local
 
 Utiliser tous les threads disponibles :
 
@@ -54,6 +60,24 @@ Cibler des fichiers source spécifiques :
 
     ```sh
     php ./infection.phar --coverage='nomDossierCoverage/' --filter=NomFichier1.php,NomFichier2.php
+    ```
+
+Lire les résultats dans le fichier `infection.log`
+
+### Dans la CI
+
+> [Documentation](https://infection.github.io/guide/using-with-ci.html)
+
+Appliquer un seuil minimum :
+- Pour le MSI :
+
+    ```sh
+    php ./infection.phar --min-msi=nombreEntierEntre0Et100
+    ```
+
+- Pour le Covered Code MSI :
+    ```sh
+    php ./infection.phar --min-msi=nombreEntierEntre0Et100
     ```
 
 ## Indicateurs
