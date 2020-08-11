@@ -6,7 +6,13 @@
 
 ## Conseils
 
-- Lancer en entier une première fois pour créer le dossier de coverage puis cibler un fichier à la fois pour améliorer des tests existants sereinement.
+- Cibler un fichier à la fois pour éviter d'avoir un fichier de log trop long.
+
+## Problèmes
+
+- Un test coince alors que je ciblais un fichier qui n'a rien à voir :
+
+    La valeur du paramètre filter est peut-être mal écrite. On doit écrire un nom de fichier avec son extension.
 
 ## Installation
 

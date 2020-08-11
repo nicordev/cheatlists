@@ -101,6 +101,18 @@
                     echo "C'est plein."
             fi
             ```
+        - Regex :
+            
+            Utiliser `=~` et `[[]]` :
+
+            ```bash
+            Email=me@example.com
+            
+            if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
+            then
+                echo "Valid email!"
+            fi
+            ```
     * Nombres :
         ```bash
         #!/bin/bash
@@ -213,7 +225,25 @@
                 ;;
         esac
         ```
-* Fonctions
+- Fonctions :
+
+    Paramètres :
+
+    - `$#` nombre de paramètres passés à la fonction (ou au script si appelé en dehors d'une fonction).
+    - `$@` regroupe tous les paramètres dans un tableau.
+    - `$*` concatène tous les paramètres dans une string.
+    - `$?` contient la dernière valeur de retour générée par une fonction ou une commande.
+    - `$_` contient le dernier paramètre passé à la dernière fonction ou à défaut le nom de la fonction.
+    - `$0` nom du script.
+    - `$1` contient la valeur du premier paramètre passé à la fonction.
+    - `shift` retire un paramètre dans l'ordre croissant (d'abord le 1er, puis le 2ème, etc...)
+
+    Trucs chelou :
+
+    - `$!` Gives the process ID of the last job placed into the background.
+    - `$$` Expands to the process ID of the shell or invoking shell in case of subshell.
+    - `$-` List special parameters set for bash.
+
     ```bash
     #!/bin/bash
 
@@ -239,21 +269,42 @@
     localVariableDemo
     sayHelloTo $nameAsLocalVariable # $nameAsLocalVariable is now empty because called outside of its scope.
     ```
+
+    Booléens :
+
+    ```bash
+    #!/bin/bash
+
+    filter=$1
+
+    isPhpFile() {
+        [[ "$filter" =~ .+\.php ]]
+    }
+
+    if isPhpFile; then
+        echo "It's a php file!"
+    fi
+    ```
+
+    Boucle sur les arguments :
+
+    ```bash
+    shiftArguments() {
+        while [ ! -z $1 ]; do
+            echo "Remaining arguments: $#"
+            echo "Shifting $1"
+            shift
+        done
+        echo "Remaining arguments: $#"
+    }
+
+    shiftArguments bob sarah jim
+    ```
+
 * Boucles
     ```bash
     # Boucle qui affiche tous les fichiers commençant par 'zog' du répertoire courant et de ses sous-répertoires.
     for filePath in */zog*; do
         echo $filePath
     done
-    ```
-- Regex :
-    
-    Utiliser `=~` et `[[]]` :
-
-    ```bash
-    Email=me@example.com
-    if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
-    then
-        echo "Valid email!"
-    fi
     ```
