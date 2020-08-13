@@ -171,6 +171,8 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
 
     > Nos commits deviennent les plus récents.
 
+- `git rebase --onto nomNouvelleBrancheDeBase nomBrancheDeBaseDeLaBrancheAModifier nomBrancheAModifier` change la branche de base d'une branche et lance un rebase en évitant les commits de l'ancienne branche de base.
+
 ### git clone dans un répertoire non vide
 
 1. `git clone urlRepo nomDossierProjet/nomDossierTemporaire` clone le projet dans un dossier temporaire à l'intérieur du dossier du projet.

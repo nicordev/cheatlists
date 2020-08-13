@@ -2,8 +2,24 @@
 
 ## Quick reference
 
-- `docker build -t nomImage -f nomFichierDockerfile cheminVersLeDossierContenantLeDockerfile`
-- `docker run --name nomConteneur nomImage` lance un conteneur à partir d'une image et nomme le conteneur.
+- Construire une image:
+
+    ```
+    docker build -t nomImage cheminVers/DossierContenant/Dockerfile
+    ```
+
+    En spécifiant un dockerfile particulier :
+    
+    ```
+    docker build -t nomImage -f nomFichierDockerfile cheminVersLeDossierContenantLeDockerfile
+    ```
+- Créer un conteneur à partir d'une image :
+
+    Lance un conteneur en arrière plan (avec `-d`) et nomme le conteneur :
+
+    ```bash
+    docker run -d --name nomConteneur nomImage
+    ```
 - `docker-compose up` lance les conteneurs selon le fichier `docker-compose.yaml`.
 
 ## Installation
