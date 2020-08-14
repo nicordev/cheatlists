@@ -120,6 +120,7 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
     * `git branch -m nouveauNomDeLaBrancheActive` Renomme la branche active
 * `git merge nomDeLaBrancheAFusionner` Permet de fusionner la branche indiquée dans la branche active
     * Par exemple pour ajouter dans une branche A les mises à jour que vous avez faites dans une autre branche B, on se place dans la branche A avant d'exécuter la commande `git merge brancheB`
+    - `git merge --abort` abandonne le merge en cours.
 * `git blame nomDuFichier` Liste toutes les modifications qui ont été faites sur le fichier ligne par ligne. À chaque modification est associé le début du sha du commit correspondant.
 * `git show debutCommitSHA` Affiche les détails du commit recherché en saisissant le début de son sha.
 * `git stash` met de côté les modifications en cours qui n'ont pas fait l'objet d'un commit pour pouvoir faire d'autres modifications, par exemple lorsque quelqu'un nous demande de régler un bug qui n'a rien à voir avec ce sur quoi on travaille actuellement. On stash notre travail, on règle le bug, on commit les modifications apportées pour régler le bug et on revient sur notre travail avec `git stash pop` ou `git stash apply`. [Documentation](https://www.git-scm.com/docs/git-stash) :

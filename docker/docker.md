@@ -11,7 +11,7 @@
     En spécifiant un dockerfile particulier :
     
     ```
-    docker build -t nomImage -f nomFichierDockerfile cheminVersLeDossierContenantLeDockerfile
+    docker build -t nomImage -f nomFichierDockerfileSouhaité cheminVersLeDossierContenantLeDockerfile
     ```
 - Créer un conteneur à partir d'une image :
 
