@@ -147,6 +147,7 @@
                 volumes:
                     - /dossier/sur_ordinateur_hôte:/chemin/dossier_des_données_à_persister # Garde les données du dossier du conteneur sur la machine hôte
                     - db_data:/chemin/dossier_des_données_à_persister # Garde les données du dossier du conteneur sur la machine hôte sans spécifier l'emplacement exact
+                    - /dossier/sur_ordinateur_hôte2:/chemin/dossier_conteneur:ro # :ro pour read-only, empêche les modifications du dossier.
                 restart: always # Redémarre le conteneur en cas d'erreur
                 environment:
                     NOM_VARIABLE_ENVIRONNEMENT: valeurVariableEnvironnement
