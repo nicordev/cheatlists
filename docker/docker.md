@@ -1,18 +1,157 @@
 # Docker
 
-## Quick reference
+## Docker Quick reference
 
-- Construire une image:
+### Commandes relatives aux conteneurs :
 
+> [Documentation](https://docs.docker.com/engine/reference/commandline/container/)
+
+```bash
+docker container nomCommande
+```
+
+- Lister les conteneurs :
+
+    ```bash
+    docker container ls
     ```
+
+- Supprimer des conteneurs :
+
+    ```bash
+    docker container rm
+    ```
+
+- Démarrer un conteneur :
+
+    ```bash
+    docker container start
+    ```
+
+- Arrêter un conteneur :
+
+    ```bash
+    docker container stop
+    ```
+
+- Supprimer les conteneurs arrêtés :
+
+    ```bash
+    docker container prune
+    ```
+
+- Détruire des conteneurs :
+
+    ```bash
+    docker container kill
+    ```
+
+- Exécuter une commande dans un conteneur actif :
+
+    ```bash
+    docker container exec nomCommande
+    ```
+
+- Créé un conteneur et lance une commande dedans :
+
+    ```bash
+    docker container run nomCommande
+    ```
+
+- Copie de fichiers dans un conteneur :
+
+    ```bash
+    docker container cp cheminCôtéMachine/fichierOuDossier cheminCôtéConteneur/fichierOuDossier
+    ```
+
+### Commandes relatives aux images :
+
+> [Documentation](https://docs.docker.com/engine/reference/commandline/image/)
+
+```bash
+docker image nomCommande
+```
+
+    ```bash
+    docker image 
+    ```
+
+- Construire une image :
+
+    ```bash
+    docker image build
+    ```
+
+- Créer un tag pour une image :
+
+    ```bash
+    docker image tag nomImageOrigine:nomTagOrigine nomImageDestination:nomTagDestination
+    ```
+
+- Lister les images :
+
+    ```bash
+    docker image ls
+    ```
+
+- Supprimer les images inutilisées :
+
+    ```bash
+    docker image prune
+    ```
+
+- Récupérer une image d'un registry docker hub :
+
+    ```bash
+    docker image pull nomImage
+    ```
+
+- Envoyer une image vers un registry docker hub :
+
+    ```bash
+    docker image push nomImage
+    ```
+
+- Supprimer des images :
+
+    ```bash
+    docker image rm nomImage1 nomImage2
+    ```
+
+- Enregistrer des images dans une archive `.tar` :
+
+    ```bash
+    docker image save nomImage1 nomImage2
+    ```
+
+- Créer une image à partir d'une archive `.tar` :
+
+    ```bash
+    docker image import nomFichier.tar
+    ```
+
+### Commandes relatives aux network :
+
+> [Documentation](https://docs.docker.com/engine/reference/commandline/network/)
+
+```bash
+docker network nomCommande
+```
+
+### Commandes générales
+
+- Construire une image :
+
+    ```bash
     docker build -t nomImage cheminVers/DossierContenant/Dockerfile
     ```
 
     En spécifiant un dockerfile particulier :
     
-    ```
+    ```bash
     docker build -t nomImage -f nomFichierDockerfileSouhaité cheminVersLeDossierContenantLeDockerfile
     ```
+
 - Créer un conteneur à partir d'une image :
 
     Lance un conteneur en arrière plan (avec `-d`) et nomme le conteneur :
@@ -20,6 +159,51 @@
     ```bash
     docker run -d --name nomConteneur nomImage
     ```
+
+- Ouvrir un shell bash dans un contenur :
+
+    ```bash
+    docker exec -ti idOuNomConteneur bash
+    ```
+
+- Afficher les logs d'un conteneur :
+
+    ```bash
+    docker logs idOuNomConteneur
+    ```
+
+- Lister tous les conteneurs :
+
+    ```bash
+    docker ps -a
+    ```
+
+- Supprimer tous les éléments inutilisés :
+
+    - Supprimer tous les conteneurs, les images et les networks :
+
+        ```bash
+        docker system prune --all
+        ```
+
+    - Supprimer aussi les volumes :
+
+        ```bash
+        docker system prune --volumes
+        ```
+      
+    - Cibler certains éléments :
+
+        ```bash
+        docker system prune --filter label=nomLabel
+        docker system prune --filter label=nomLabel=valeurLabel
+        docker system prune --filter label!=nomLabel
+        docker system prune --filter label!=nomLabel=valeurLabel
+        docker system prune --filter until=timestamp
+        ```
+
+## Docker-compose Quick reference
+
 - `docker-compose up` lance les conteneurs selon le fichier `docker-compose.yaml`.
 
 ## Installation
@@ -116,6 +300,9 @@
 
         CMD npm run start
         ``` 
+    
+    > Chaque instruction RUN, ADD etc. constitue une couche pour docker correspondant chacune à un step qu'on voit lors d'un build.
+    
 2. Créer un fichier `.dockerignore` contenant par exemple :
     ```
     .git
