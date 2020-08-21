@@ -1,6 +1,6 @@
 # Docker
 
-## Docker Quick reference
+## Commandes docker
 
 ### Commandes relatives aux conteneurs :
 
@@ -9,6 +9,12 @@
 ```bash
 docker container nomCommande
 ```
+
+- Créer une nouvelle image à partir d'un conteneur :
+
+    ```bash
+    docker container commit nomConteneur nomImageACréer
+    ```
 
 - Lister les conteneurs :
 
@@ -71,10 +77,6 @@ docker container nomCommande
 ```bash
 docker image nomCommande
 ```
-
-    ```bash
-    docker image 
-    ```
 
 - Construire une image :
 
@@ -202,7 +204,7 @@ docker network nomCommande
         docker system prune --filter until=timestamp
         ```
 
-## Docker-compose Quick reference
+## Commandes docker-compose
 
 - `docker-compose up` lance les conteneurs selon le fichier `docker-compose.yaml`.
 
@@ -268,7 +270,7 @@ docker network nomCommande
 
 > **Note perso** Un Dockerfile permet de construire une image Dockabout:configer.
 
-1. Créer un fichier `Dockerfile` à la racine du projet contenant les instructions suivantes :
+1. Créer un fichier `Dockerfile` à la racine du projet comme suit :
     * `FROM nomImageDeBase` défini l'image à utiliser comme base. On peut en mettre plusieurs :
         ```
         FROM composer
@@ -276,11 +278,13 @@ docker network nomCommande
         COPY --from=composer /usr/bin/composer /usr/local/bin/composer
         ```
     * `RUM commandesLinux` exécute des commandes. Mieux vaut regrouper les commandes avec `&&` pour limiter le nombre d'instructions `RUN` et ainsi limiter le nombre de *layers* et la taille de l'image.
-    * `ADD dossierContenantLesSources dossierDeDestinationDansLImage` copie ou télécharge des fichiers dans l'image.
-    * `WORKDIR nomDossierDansLImage` modifie le répertoire courant utilisé dans  l'image.
-    * *Optionel* `EXPOSE numéroDuPort` indique le port sur lequel l'application écoute.
-    * *Optionel* `VOLUME nomDossierAPartager` indique quel répertoire partager avec le host.
+    * `ADD nomDossierHôte nomDossierImage` copie ou télécharge des fichiers de l'hôte (l'ordinateur qu'on utilise ou un serveur distant) dans l'image.
+    * `COPY nomDossierHôte nomDossierImage` copie ou télécharge des fichiers de l'hôte (l'ordinateur qu'on utilise ou un serveur distant) dans l'image.
+    * `WORKDIR nomDossierImage` modifie le répertoire courant utilisé dans  l'image.
+    * *Optionel* `EXPOSE numéroPort` indique le port sur lequel l'application écoute.
+    * *Optionel* `VOLUME nomDossierAPartager` indique quel répertoire partager avec le host. Les modifications apportées dans le host seront répercutées dans le dossier du conteneur.
     * `CMD commandeAExecuterAuDémarrage` indique quelle commande exécuter au démarrage du conteneur.
+    * `ENTRYPOINT commandeAExecuterAuDémarrage` indique quelle commande exécuter au démarrage du conteneur.
     * Exemple :
         ```
         FROM debian:9
