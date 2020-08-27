@@ -2,6 +2,18 @@
 
 Permet de modifier le texte d'un fichier.
 
+## Exemple rapide
+
+```bash
+echo 'I have three dogs and two cats' | sed -e 's#dog#cat#g' -e 's#cat#elephant#gw nomFichier'
+```
+
+Où :
+- `-e` permet d'appliquer des modifications successives.
+- `s#chaîneARemplacer#chaîneDeRemplacement#flags` remplace des chaînes de caractères par d'autres :
+    - flag `g` modifie toutes les occurences
+    - flag `w nomFichier` permet d'enregistrer les modifications dans un fichier.
+
 ## Utilisation
 
 > **Important : `sed` ne modifie pas le fichier d'origine, sauf si on ajoute `-i`.**
