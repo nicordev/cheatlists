@@ -82,6 +82,11 @@ echo Hello world!' > /opt/sandbox/hello.zog && sudo chmod +x /opt/sandbox/hello.
 * Groupes #
     * `usermod -aG nomGroupe nomUtilisateur` Ajoute l'utilisateur au groupe voulu
     * `newgrp nomGroupe` Activer des changements précedemments opérés sur le groupe
+- Afficher les utilisateurs :
+
+    ```bash
+    cat /etc/passwd
+    ```
 
 ## Paquets
 
@@ -129,6 +134,7 @@ MOT_CLE_DE_FIN
     * `ps -ef` Lister tous les processus de tous les utilisateurs de toutes les consoles
     * `ps -ejH` Afficher l'arborescence des processus
     * `ps -u nomUtilisateur` Lister les processus d'un utilisateur
+    - `ps -aux`
 * `top` Lister dynamiquement les processus
     * *q* quitter
     * *h* aide
