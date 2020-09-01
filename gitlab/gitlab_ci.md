@@ -34,6 +34,18 @@
         allow_failure: true # Optionel : pour que ce job ne soit pas bloquant
     ```
 
+## Jobs
+
+Ignorer un job :
+
+Préfixer le nom du job par un point :
+
+```yaml
+.hidden_job:
+  script:
+    - run test
+```
+
 ## Paramètres globaux
 
 Les clés `default` et `variables` contiennent les paramètres communs à tous les jobs.
