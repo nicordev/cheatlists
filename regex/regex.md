@@ -13,3 +13,18 @@
         `?<=` is for positive look behind
         `?<!` is for negative look behind
     * Exemple: `^application\/(?:.+\+)?json$`
+
+## PCRE
+
+Mot de passe :
+
+- 8 caractères minimum
+- 1 caractère spécial
+- 1 caractère en majuscule
+- 1 caractère en minuscule
+- 1 chiffre
+
+```
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z1-9]).{8,}$
+^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$
+```
