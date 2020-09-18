@@ -3,16 +3,28 @@
 ## Astuces
 
 * Surcharger une méthode en y ajoutant un paramètre supplémentaire :
-    * Donner une valeur par défaut au paramètre :
-        ```php
-        public function nomMéthode($nomParamètreHérité, $nomParamètreAjouté = 'valeurParDéfaut') { /* ... */ }
+    
+    Donner une valeur par défaut au paramètre :
+
+    ```php
+    public function nomMéthode($nomParamètreHérité, $nomParamètreAjouté = 'valeurParDéfaut') { /* ... */ }
+    ```
+
 * Après une boucle `foreach` utilisant des références, toujours `unset` la variable de la boucle :
+
     ```php
     foreach ($someValues as &$value) { }
     unset($value);
     foreach ($someValues as $value) { }
     ```
+
     Sinon `$value` pointerait toujours sur le dernier élément de `$someValues` et le second `foreach` modifierait le dernier élément de `$someValues`.
+
+- Récupérer le body d'une requête POST :
+
+    ```php
+    $body = file_get_contents('php://input');
+    ```
 
 ## CLI
 

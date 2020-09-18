@@ -2,6 +2,8 @@
 
 [Documentation](https://docs.gitlab.com/ee/ci/introduction/index.html)
 
+[Variables d'environnements prédéfinies](https://docs.gitlab.com/12.10/ee/ci/variables/predefined_variables.html#variables-reference)
+
 ## Utilisation
 
 1. Créer un repository dans GitLab.
