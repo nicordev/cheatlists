@@ -1,9 +1,15 @@
 # Clés USB
 
-## Afficher les clés présentes
+## Identifier les clés présentes
 
 ```bash
 sudo fdisk -l
+```
+
+ou
+
+```bash
+lsblk
 ```
 
 La première clé est `sdb`, la 2ème `sdc`, etc...
@@ -75,3 +81,41 @@ Une fois le fichier image `.iso` de la distribution téléchargé, faire :
     ```bash
     dd if=cheminVers/fichierImage.iso of=/dev/sdb
     ```
+
+## Créer une clé bootable persistante avec `mkusb`
+
+> [Info](https://www.howtogeek.com/howto/14912/create-a-persistent-bootable-ubuntu-usb-flash-drive/)
+
+> Si on créé la clé depuis une autre clé bootable :
+>
+> ```bash
+> sudo add-apt-repository universe
+> ```
+
+1. Installer `mkusb` :
+    
+    ```bash
+    sudo add-apt-repository ppa:mkusb/ppa
+    sudo apt-get update
+    sudo apt install --install-recommends mkusb mkusb-nox usb-pack-efi
+    ```
+
+1. Identifier la clé usb : 
+
+    ```bash
+    lsblk
+    ```
+
+    > sdb, sdc...
+
+1. Lancer `mkusb` :
+
+    ```bash
+    mkusb
+    ```
+
+1. Choisir `Install (make a boot device)`.
+1. Choisir `Persistent live`.
+1. Choisir le fichier `.iso` à utiliser.
+1. Choisir `usb-pack-efi (default grub from ISO file)`
+1. Choisir la proportion de mémoire de la clé à allouer au système de persistence des données.
