@@ -1,8 +1,84 @@
 # Docker
 
-## Commandes docker
+## Commandes générales
 
-### Commandes relatives aux conteneurs :
+- Afficher les infos d'un objet docker (image, container, network) au format JSON :
+
+    > [Documentation](https://docs.docker.com/engine/reference/commandline/inspect/)
+
+    ```bash
+    docker inspect nomOuIdObjetDocker
+    ```
+
+    Formatter la sortie de la commande en utilisant un template *go* :
+    
+    ```bash
+    docker inspect --format='{{template go ici}}' nomOuIdObjetDocker
+    ```
+
+- Construire une image :
+
+    ```bash
+    docker build -t nomImage cheminVers/DossierContenant/Dockerfile
+    ```
+
+    En spécifiant un dockerfile particulier :
+    
+    ```bash
+    docker build -t nomImage -f nomFichierDockerfileSouhaité cheminVersLeDossierContenantLeDockerfile
+    ```
+
+- Créer un conteneur à partir d'une image :
+
+    Lance un conteneur en arrière plan (avec `-d`) et nomme le conteneur :
+
+    ```bash
+    docker run -d --name nomConteneur nomImage
+    ```
+
+- Ouvrir un shell bash dans un contenur :
+
+    ```bash
+    docker exec -ti idOuNomConteneur bash
+    ```
+
+- Afficher les logs d'un conteneur :
+
+    ```bash
+    docker logs idOuNomConteneur
+    ```
+
+- Lister tous les conteneurs :
+
+    ```bash
+    docker ps -a
+    ```
+
+- Supprimer tous les éléments inutilisés :
+
+    - Supprimer tous les conteneurs, les images et les networks :
+
+        ```bash
+        docker system prune --all
+        ```
+
+    - Supprimer aussi les volumes :
+
+        ```bash
+        docker system prune --volumes
+        ```
+      
+    - Cibler certains éléments :
+
+        ```bash
+        docker system prune --filter label=nomLabel
+        docker system prune --filter label=nomLabel=valeurLabel
+        docker system prune --filter label!=nomLabel
+        docker system prune --filter label!=nomLabel=valeurLabel
+        docker system prune --filter until=timestamp
+        ```
+
+## Commandes relatives aux conteneurs :
 
 > [Documentation](https://docs.docker.com/engine/reference/commandline/container/)
 
@@ -70,7 +146,7 @@ docker container nomCommande
     docker container cp cheminCôtéMachine/fichierOuDossier cheminCôtéConteneur/fichierOuDossier
     ```
 
-### Commandes relatives aux images :
+## Commandes relatives aux images :
 
 > [Documentation](https://docs.docker.com/engine/reference/commandline/image/)
 
@@ -132,81 +208,13 @@ docker image nomCommande
     docker image import nomFichier.tar
     ```
 
-### Commandes relatives aux network :
+## Commandes relatives aux network :
 
 > [Documentation](https://docs.docker.com/engine/reference/commandline/network/)
 
 ```bash
 docker network nomCommande
 ```
-
-### Commandes générales
-
-- Construire une image :
-
-    ```bash
-    docker build -t nomImage cheminVers/DossierContenant/Dockerfile
-    ```
-
-    En spécifiant un dockerfile particulier :
-    
-    ```bash
-    docker build -t nomImage -f nomFichierDockerfileSouhaité cheminVersLeDossierContenantLeDockerfile
-    ```
-
-- Créer un conteneur à partir d'une image :
-
-    Lance un conteneur en arrière plan (avec `-d`) et nomme le conteneur :
-
-    ```bash
-    docker run -d --name nomConteneur nomImage
-    ```
-
-- Ouvrir un shell bash dans un contenur :
-
-    ```bash
-    docker exec -ti idOuNomConteneur bash
-    ```
-
-- Afficher les logs d'un conteneur :
-
-    ```bash
-    docker logs idOuNomConteneur
-    ```
-
-- Lister tous les conteneurs :
-
-    ```bash
-    docker ps -a
-    ```
-
-- Supprimer tous les éléments inutilisés :
-
-    - Supprimer tous les conteneurs, les images et les networks :
-
-        ```bash
-        docker system prune --all
-        ```
-
-    - Supprimer aussi les volumes :
-
-        ```bash
-        docker system prune --volumes
-        ```
-      
-    - Cibler certains éléments :
-
-        ```bash
-        docker system prune --filter label=nomLabel
-        docker system prune --filter label=nomLabel=valeurLabel
-        docker system prune --filter label!=nomLabel
-        docker system prune --filter label!=nomLabel=valeurLabel
-        docker system prune --filter until=timestamp
-        ```
-
-## Commandes docker-compose
-
-- `docker-compose up` lance les conteneurs selon le fichier `docker-compose.yaml`.
 
 ## Installation
 
@@ -321,71 +329,3 @@ docker network nomCommande
 2. `docker tag nomImage:tagImage nomUtilisateurDockerHub/nomRepository:tagImage` ou `docker tag idImage nomUtilisateurDockerHub/nomRepository:tagImage` créé un lien entre l'image créée en local et l'image à envoyer sur le Docker Hub.
 3. Se connecter avec la commande `docker login`.
 4. `docker push nomUtilisateur/nomRepository:tagImage` envoi l'image locale vers le repository. `:tagImage` est par défaut `:latest`.
-
-## Docker compose
-
-* [Installation](https://docs.docker.com/compose/install/)
-    * `sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose && sudo chmod +x /usr/bin/docker-compose` installe Docker compose sur Linux. Modifier la commande en fonction de la dernière version.
-
-* Fichier `docker-compose.yaml` :
-    * Fichier à créer qui contiendra le descriptif des conteneurs à générer.
-    * Contenu du fichier :
-        ```yaml
-        version: 'numéroVersionFormatFichierDockerCompose'
-        services:
-            nomServiceA:
-                image: nomImage:tagImage
-                volumes:
-                    - /dossier/sur_ordinateur_hôte:/chemin/dossier_des_données_à_persister # Garde les données du dossier du conteneur sur la machine hôte
-                    - db_data:/chemin/dossier_des_données_à_persister # Garde les données du dossier du conteneur sur la machine hôte sans spécifier l'emplacement exact
-                    - /dossier/sur_ordinateur_hôte2:/chemin/dossier_conteneur:ro # :ro pour read-only, empêche les modifications du dossier.
-                restart: always # Redémarre le conteneur en cas d'erreur
-                environment:
-                    NOM_VARIABLE_ENVIRONNEMENT: valeurVariableEnvironnement
-            nomServiceB:
-                depends_on: # Les dépendances entre conteneurs
-                    - nomServiceA # Le service A sera lancé avant le B
-                ports:
-                    - numéroPortHôte:NuméroPortConteneur # Expose un port de la machine hôte vers le conteneur et ainsi le rendre accessible depuis l'extérieur. Par exemple 8000:80 signifie que le port 8000 de la machine hôte permettera d'utiliser le port 80 du conteneur.
-        volumes:
-            db_data: {} # TODO je ne sais pas à quoi ça sert
-        ```
-    * [Exemple](https://openclassrooms.com/fr/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker/6211677-creez-un-fichier-docker-compose-pour-orchestrer-vos-conteneurs) :
-        ```yaml
-        version: "3"
-        services:
-            db:
-                image: mysql:5.7
-                volumes:
-                    - db_data:/var/lib/mysql
-                restart: always
-                environment:
-                    MYSQL_ROOT_PASSWORD: somewordpress
-                    MYSQL_DATABASE: wordpress
-                    MYSQL_USER: wordpress
-                    MYSQL_PASSWORD: wordpress
-            wordpress:
-                depends_on:
-                    - db
-                image: wordpress:latest
-                ports:
-                    - "8000:80"
-                restart: always
-                environment:
-                    WORDPRESS_DB_HOST: db:3306
-                    WORDPRESS_DB_USER: wordpress
-                    WORDPRESS_DB_PASSWORD: wordpress
-                    WORDPRESS_DB_NAME: wordpress
-        volumes:
-            db_data: {}
-        ```
-* Utilisation
-    * `docker-compose --version` affiche la version.
-    * `docker-compose config` vérifie la syntaxe du fichier `docker-compose.yml`.
-    * `docker-compose pull` récupère les images nommées dans le fichier `docker-compose.yaml`.
-    * `docker-compose up` lance la création des conteneurs définis dans le fichier `docker-compose.yaml`.
-        * `docker-compose up -d` exécute les conteneurs en tâche de fond.
-    * `docker-compose stop` arrête les conteneurs actifs.
-    * `docker-compose down` détruit les conteneurs.
-    * `docker-compose ps` affiche la liste des conteurs actifs.
-    * `docker-compose logs -f --tail 5` affiche les 5 dernières lignes des logs des conteneurs.
