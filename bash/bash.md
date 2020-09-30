@@ -22,6 +22,18 @@
         1. `echo $PATH` affiche les dossiers contenant les commandes.
         2. Copier ou déplacer le fichier du script dans l'un des dossiers affiché.
         3. Exécuter directement `nomScript.sh` n'importe où. La classe !
+    - En utilisant le même shell que le terminal actuel :
+        
+        ```bash
+        . nomScript.sh
+        ```
+        
+        ou
+
+        ```bash
+        source nomScript.sh
+        ```
+
 * Paramètres d'un script :
     * `$@` contient les arguments passés à une fonction.
     * `$#` contient le nombre de paramètres passés au script.
@@ -225,6 +237,17 @@
                 ;;
         esac
         ```
+    - Select
+        
+        ```bash
+        select v in data_list
+        do
+            statement1
+            Statement2
+            Statement3
+        done
+        ```
+
 - Fonctions :
 
     Paramètres :
