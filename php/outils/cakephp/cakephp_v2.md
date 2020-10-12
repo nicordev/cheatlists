@@ -36,6 +36,9 @@
 ## Utilisation
 
 * Récupérer des entités :
+
+    > [Doc](https://book.cakephp.org/2/en/models/retrieving-your-data.html)
+
     ```php
     $repository = ClassRegistry::init('NomDossierEntité.NomEntité');
     $entities = $repository->find(
