@@ -28,11 +28,14 @@ Liste réalisée en partie à partir [du cours de mateo21 sur OpenClassrooms](ht
 1. Mettre *Settings > Power::Power Button Action* à *Nothing*.
 1. `sudo apt install xdotool`
 1. `sudo touch /etc/acpi/events/power` créé le fichier power et mettre ce contenu :
+
     ```
     event=button/power
     action=/etc/acpi/power.sh "%e"
     ```
+
 1. `sudo touch /etc/acpi/power.sh && sudo chmod +x /etc/acpi/power.sh` créé le script power.sh et mettre ce code :
+
     ```bash
     #!/bin/sh
     xdotool key End
@@ -42,10 +45,10 @@ Liste réalisée en partie à partir [du cours de mateo21 sur OpenClassrooms](ht
     sudo echo "#!/bin/sh \
     xdotool key End" > /etc/acpi/power.sh && sudo chmod +x /etc/acpi/power.sh
     ```
-sudo echo '#!/bin/sh \
-echo Hello world!' > /opt/sandbox/hello.zog && sudo chmod +x /opt/sandbox/hello.zog
+    
 1. `sudo acpid restart`
 1. Ajouter à la fin de `/etc/pam.d/common-session` :
+
     ```
     session optional pam_exec.so /usr/sbin/acpid restart
     ```
@@ -97,6 +100,11 @@ echo Hello world!' > /opt/sandbox/hello.zog && sudo chmod +x /opt/sandbox/hello.
 
 ## Fichiers et dossiers
 
+- `pwd` afficher le répertoire courant (present working directory).
+- `cd` changer le répertoire courant (change directory) :
+    - `cd cheminDossier` sélectionner le dossier `cheminDossier`.
+    - `cd` sélectionner le dossier `$HOME` ou `~`.
+    - `cd -` retourner au dossier précédent.
 * `touch nomDuFichier` Créer un fichier
 * `mdkir nomDuDossier` Créer un dossier
 * `cat nomDuFichier` Afficher le contenu d'un fichier

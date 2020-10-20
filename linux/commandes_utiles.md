@@ -1,5 +1,11 @@
 # Commandes
 
+- `cd` change de répertoire courant :
+
+    ```bash
+    cd chemin/nomDossier
+    ```
+
 - `seq` Générer une série de nombres :
 
     ```bash
@@ -26,5 +32,9 @@
         rm -v !(nomfichierAConserver) nomDossier1 nomDossier2
         ```
 
-- Lister le contenu d'un dossier :
+- Afficher un calendrier :
+
+    ```bash
+    cal
+    ```
 

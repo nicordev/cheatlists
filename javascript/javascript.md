@@ -67,7 +67,7 @@ try {
         greet('bob'); // 'bob' est un argument
         ```
 
-## Strings
+## String
 
 * Exemples :
     ```js
@@ -82,7 +82,19 @@ try {
 * Concaténation
     * `"A " + animalName + " is running."`
 
-## Objects
+## Number
+
+- Arrondir :
+
+    ```js
+    Number.toFixed(nombreDécimales)
+    13.123421.toFixed(2) // Donne "13.12"
+    13.125421.toFixed(2) // Donne "13.13"
+    ```
+
+    > Transforme en String.
+
+## Object
 
 * Notation:
     ```js
