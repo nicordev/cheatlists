@@ -25,7 +25,7 @@
 * `\?` affiche les commandes de `psql`.
 * `\h nomCommande` affiche de l'aide sur une commande.
 * `\g` répète la commande précédente.
-* `\i filename` exécute les commandes d'un fichier.
+* `\i fileName` exécute les commandes d'un fichier.
 * `\e` ouvre l'éditeur de texte par défaut pour entrer une commande qui sera exécuté à la fermeture de l'éditeur.
 * `\q` quitte `psql`.
 * Utilisateurs
