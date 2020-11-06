@@ -1,6 +1,61 @@
 # sed
 
-Permet de modifier le texte d'un fichier.
+[scripts sed](http://sed.sourceforge.net/#scripts)
+
+Permet d'afficher ou de modifier le texte d'un fichier.
+
+```bash
+sed [option] 'action1;action2;action3' [fileName]
+```
+
+`option` :
+- `-i` modifier le fichier `fileName`
+- `-n` afficher uniquement les lignes ciblées. *Pratique pour l'action `p`*
+- `-e` faire plusieurs actions à la suite. *Répêter `-e` devant chaque action*
+- `-f` utiliser du code sed écrit dans un fichier. *Utile pour le shebang d'un script sed : `#! /usr/bin/sed -f`*
+
+`action` :
+
+`'[targets][!]actionLetter[pattern][flags]'`
+
+- `targets` lignes ciblées :
+    - `1` cibler la première ligne
+    - `$` cibler la dernière ligne
+    - `lineNumber1;lineNumber2` cibler plusieurs lignes
+    - `lineNumberStart,lineNumberEnd` cibler plusieurs lignes consécutives
+    - `/hint1\|hint2/` cibler les lignes comportant les chaînes `hint1` ou `hint2` :
+        - *Penser à échapper le pipe : `\|`*
+        - Les caractères `/` sont obligatoires. *On ne peut pas les remplacer par un autre caractère comme il est possible de le faire avec le pattern.*
+    - `/^$/` cible les lignes vides
+
+    On peut intégrer des actions dans certaines cibles :
+
+    ```bash
+    sed '1,6{/Linux/d;}' sed-demo.txt
+    ```
+
+    va supprimer les lignes contenant Linux seulement si elles sont entre la 1ère et la 6ème ligne.
+
+    Dans la même veine, on peut supprimer la ligne suivante :
+
+    ```bash
+    sed '/System/{N;d;}' sed-demo.txt
+    ```
+
+- `!` pour inverser la cible :
+    
+    Exemple : supprimer tout sauf les lignes 3 à 10
+
+    ```bash
+    sed '3,10!d'
+    ```
+
+- `actionLetter` exécute une action :
+    - `d` supprimer
+    - `p` afficher :
+        - uniquement les lignes ciblées avec l'option `-n`
+        - tout le contenu avec les lignes ciblées en double
+    - `s` remplacer
 
 ## Exemple rapide
 
@@ -18,13 +73,50 @@ Où :
 
 > **Important : `sed` ne modifie pas le fichier d'origine, sauf si on ajoute `-i`.**
 
-Paramètres :
+Supprimer une ligne avec `sed <pattern>d` :
 
-- `-d` supprime une ligne
-- `-p` affiche une ligne
-- `-s` remplace une ligne
+- Supprimer la première ligne :
+    
+    ```bash
+    sed '1d' nomFichier
+    ```
 
-Remplacer une chaîne par une autre :
+- Supprimer la dernière ligne :
+
+    ```bash
+    sed '$d' nomFichier
+    ```
+
+- Supprimer plusieurs lignes non-consécutives :
+    
+    ```bash
+    sed '34d;64d;231d' nomFichier
+    ```
+
+    Supprime les lignes 34, 64 et 231 du fichier.
+
+- Supprimer plusieurs lignes consécutives :
+
+    ```bash
+    sed '<numéroLigneDébut>,<numéroLigneFin>d' nomFichier
+    ```
+
+    Exemple :
+
+    ```bash
+    sed '5,134d' nomFichier
+    ```
+
+    Supprime les lignes 5 à 134
+
+- Combiner le tout :
+
+    ```bash
+    sed '1;35;223,2264;$d' nomFichier
+    ```
+
+
+Remplacer une chaîne par une autre avec `s` :
     
 - Changer uniquement la première occurence d'une chaîne :
 
@@ -54,16 +146,6 @@ Remplacer une chaîne par une autre :
     ```
 
     - `g` pour *global*, va appliquer la modification sur toutes les occurences de la `chaîneAModifier`.
-
-- Modifier le fichier d'origine :
-
-    > Attention : on ne peut pas annuler cette modification.
-
-    ```bash
-    sed -i 's/chaîneAModifier/chaîneModifiée/' nomFichier
-    ```
-
-    - `-i` pour `inline`. Signifie qu'on va modifier le fichier.
 
 Récupérer des lignes par leur numéro :
 
