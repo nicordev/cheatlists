@@ -59,3 +59,7 @@
         },
         "emmet.triggerExpansionOnTab": true
         ```
+
+## Snippet
+
+> [FreeCodeCamp](https://www.freecodecamp.org/news/definitive-guide-to-snippets-visual-studio-code/)

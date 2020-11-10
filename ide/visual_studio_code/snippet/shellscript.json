@@ -50,5 +50,22 @@
 			"",
 			"$@"
 		]
+	},
+	"Bash shebang": {
+		"prefix": "shebang for bash",
+		"body": [
+			"#! /bin/bash",
+			"",
+			""
+		],
+		"description": "Write a Bash shebang."
+	},
+	"Loop through files": {
+		"prefix": "loop through files",
+		"body": [
+			"for file in ${1:./*}; do",
+			"    ${2:echo \\$file}",
+			"done"
+		]
 	}
 }
