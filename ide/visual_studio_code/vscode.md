@@ -31,7 +31,7 @@
     ```
 
     And enable the Visual Studio Code repository by typing:
-    
+
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
     ```
@@ -42,6 +42,8 @@
     sudo apt update
     sudo apt install code
     ```
+
+[Passer de vscode à vscodium](https://dev.to/0xdonut/why-and-how-you-should-to-migrate-from-visual-studio-code-to-vscodium-j7d)
 
 ## Extension
 
