@@ -119,3 +119,5 @@ Pour Docker :
 ## Snippet
 
 > [FreeCodeCamp](https://www.freecodecamp.org/news/definitive-guide-to-snippets-visual-studio-code/)
+
+Emplacement des fichiers contenant les snippets : `~/.config/Code/User/snippets/nomLangage.json`
