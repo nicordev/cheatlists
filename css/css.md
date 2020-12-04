@@ -1,5 +1,38 @@
 # CSS
 
+## background
+
+[`background-image`](https://developer.mozilla.org/fr/docs/Web/CSS/background-image) :
+```css
+background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)), 
+                  url("../../media/examples/lizard.png");
+```
+
+[background-size](https://developer.mozilla.org/fr/docs/Web/CSS/background-size) :
+```css
+background-size: contain;
+background-size: cover;
+background-size: 200px 100px;
+```
+
+[background-repeat](https://developer.mozilla.org/fr/docs/Web/CSS/background-repeat) :
+```css
+background-repeat: no-repeat;
+```
+
+[background-position](https://developer.mozilla.org/fr/docs/Web/CSS/background-position) :
+```css
+background-position: center;
+background-position: bottom 50px right 100px;
+```
+
+## filter
+
+Noir et blanc :
+```css
+filter: grayscale(100%);
+```
+
 ## Variables
 
 [MDN](https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties)
