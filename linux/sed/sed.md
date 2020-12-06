@@ -39,15 +39,7 @@ sed [option] 'action1;action2;action3' [fileName]
     Dans la même veine, on peut supprimer la ligne suivante :
 
     ```bash
-    sed '/System/{N;d;}' sed-demo.txtHello,
-
-J'espère que ça roule toujours bien chez vous, chez moi ça roule, la cicatrice est bien refermée et les agrafes ont pu toutes être enlevées sans soucis.
-
-J'ai juste une grosse bosse dans le dos remplie de liquide, c'est très chelou, je ressemble à un dromadaire, c'est un peu pénible quand je m'allonge sur le dos mais ce n'est pas douloureux. Il paraît que ça peut mettre des mois à se dissiper, affaire à suivre.
-
-La semaine prochaine j'attaque le kiné et je retournerai voir le chirurgien.
-
-Des bisous, bon weekend et @Coline bon courage pour le bouleversement qui arrive !
+    sed '/System/{N;d;}' sed-demo.txt
     ```
 
 - `!` pour inverser la cible :
