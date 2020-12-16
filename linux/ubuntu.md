@@ -112,7 +112,7 @@ Liste réalisée en partie à partir [du cours de mateo21 sur OpenClassrooms](ht
 
 ## Flux de redirection
 
-* `\>`, `>>` et `|` Rediriger les résultats d'une commande
+* `>`, `>>` et `|` Rediriger les résultats d'une commande
     * `commande` Dans la console (par défaut)
     * `commande > nomFichier` Dans un fichier existant ou un nouveau
     * `commande >> nomFichier` A la suite d'un fichier existant ou un nouveau

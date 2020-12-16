@@ -1,4 +1,13 @@
-# Robots
+# Robot
+
+## Multimètre
+
+Mesure de la tension continue :
+![Image multimètre]()
+
+Mesure de la résistance :
+![Image multimètre]()
+
 
 ## Détecteur de mouvement HCSR501
 

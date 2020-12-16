@@ -33,7 +33,7 @@ Ecrire un script bash :
 
     # Paramètres du script :
     $@ # Contient tous les paramètres passés au script
-    $0 # Contient le nom du fichier du script
+    $0 # Contient le nom du fichier du script avec le chemin complet. Utiliser $(basename $0) pour retirer le chemin.
     $1 # Contient le premier paramètre
     $# # Contient le nombre de paramètres passés au script
 
