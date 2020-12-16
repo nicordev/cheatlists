@@ -31,13 +31,37 @@
 
 ## Utilisation
 
-* Soit via la commande `composer` si composer est installé globalement, soit via `php composer.phar` si on a le fichier `composer.phar` dans le dossier du projet.
-* `compsoer intall` lit le fichier `composer.json`, créé un fichier `composer.lock` et installe les paquets.
-* `composer update` met à jour les paquets installés selon le fichier `composer.json` et met à jour le fichier `composer.lock`.
-* `composer require nomPackage [--dev]` ajoute un paquet au fichier `composer.json`.
-    * Ajouter `--dev` pour que le paquet soit utilisé dans la partie développement `require-dev` du fichier `composer.json`.
-    * `composer require nomUtilisateur/nomPackage:numéroVersion` spécifie une version. Par exemple : `nicordev/phprocks:^0.3.2`
-* `composer dump-autoload` recré l'autoload de composer.
+Soit via la commande `composer` si composer est installé globalement, soit via `php composer.phar` si on a le fichier `composer.phar` dans le dossier du projet.
+
+`composer intall` lit le fichier `composer.json`, créé un fichier `composer.lock` et installe les paquets.
+
+`composer update` met à jour les paquets installés selon le fichier `composer.json` et met à jour le fichier `composer.lock`.
+
+`composer require nomPackage [--dev]` ajoute un paquet au fichier `composer.json`.
+* Ajouter `--dev` pour que le paquet soit utilisé dans la partie développement `require-dev` du fichier `composer.json`.
+* `composer require nomUtilisateur/nomPackage:numéroVersion` spécifie une version. Par exemple : `nicordev/phprocks:^0.3.2`
+
+Autoloader :
+1. Dans le fichier `composer.json` :
+
+    ```json
+    {
+        "autoload": {
+            "psr-4": {
+                "App\\": "src/"
+            }
+        }
+    }
+    ```
+
+1. `composer dump-autoload` créé l'autoload de composer.
+1. Dans le contrôleur frontal `index.php` :
+
+    ```php
+    <?php
+    
+    require dirname(__DIR__).'/vendor/autoload.php';
+    ```
 
 ## Versions
 
