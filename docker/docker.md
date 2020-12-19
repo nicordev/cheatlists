@@ -160,10 +160,10 @@ docker image nomCommande
     docker image build
     ```
 
-- Créer un tag pour une image :
+- Renommer une image ou créer un tag pour une image :
 
     ```bash
-    docker image tag nomImageOrigine:nomTagOrigine nomImageDestination:nomTagDestination
+    docker image tag idImageOuCoupleNomImage:nomTag nouveauNomImage:nouveauTag
     ```
 
 - Lister les images :
