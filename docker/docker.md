@@ -136,8 +136,11 @@ docker container nomCommande
 
 - Créé un conteneur et lance une commande dedans :
 
+    - Lance `create`, `start` et `exec` à la fois
+    - Similaire à `docker run`
+
     ```bash
-    docker container run nomCommande
+    docker container run nomImage nomCommande
     ```
 
 - Copie de fichiers dans un conteneur :
