@@ -279,7 +279,7 @@ docker network nomCommande
 
 ## Créer une image avec un Dockerfile
 
-> **Note perso** Un Dockerfile permet de construire une image Dockabout:configer.
+> **Note perso** Un Dockerfile permet de construire une image Docker.
 
 1. Créer un fichier `Dockerfile` à la racine du projet comme suit :
     * `FROM nomImageDeBase` défini l'image à utiliser comme base. On peut en mettre plusieurs :
@@ -318,11 +318,15 @@ docker network nomCommande
     
     > Chaque instruction RUN, ADD etc. constitue une couche pour docker correspondant chacune à un step qu'on voit lors d'un build.
     
-2. Créer un fichier `.dockerignore` contenant par exemple :
+2. Créer un fichier `.dockerignore` pour limiter la taille de l'image
+
+    Exemple :
+
     ```
     .git
     node_modules
     ```
+
 3. `docker build -t nomImageACréer nomDossierOùSeTrouveLeDockerfile` créé l'image Docker correspondant au projet. `-t` permet de donner un nom à l'image. Exemple : `docker build -t maSuperAppli .` dans le cas où l'on est dans le dossier du `Dockerfile`.
 4. `docker run -d -p 2368:2368 nomImageCréée` lance le conteneur sur le port 2368.
 

@@ -2,6 +2,9 @@
 
 > Bourne Again SHell
 
+Ressources externes :
+- [Closures](https://gist.github.com/forestbaker/63960a80536dff501f2d)
+
 ## Utilisation
 
 Exemples présents là : `/usr/share/doc/util-linux/examples`.
