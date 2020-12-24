@@ -2,6 +2,8 @@
 
 [Regex](https://regex101.com/)
 
+Sélectionner tous les caractères sauf certains : `[^caractèresAEviter]`
+
 * `?=`, `?!`, `?:`
     * The difference between ?= and ?! is that the former requires the given expression to match and the latter requires it to not match. For example a(?=b) will match the "a" in "ab", but not the "a" in "ac". Whereas a(?!b) will match the "a" in "ac", but not the "a" in "ab".
 
