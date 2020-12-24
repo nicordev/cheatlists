@@ -4,8 +4,6 @@
 
 * [GitKraken](https://www.gitkraken.com/)
 * [GitAhead](https://gitahead.github.io/gitahead.com/)
-
-
 ## Principe
 
 Git gère les versions de vos travaux locaux à travers 3 zones locales majeures :
@@ -22,32 +20,51 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
 * `git config --list` Liste les paramètres
 * `git config --global user.name "Nom utilisateur"` Configure le nom de l'utilisateur de manière globale
 * `git config --global user.email email.utilisateur@domain.com` Configure l'email de l'utilisateur de manière globale
-* Fichier `.gitignore` Fichier à créer à la racine du projet. Il doit contenir les noms des fichiers à ignorer (par exemple des fichiers contenant des mots de passe).  
-    * Exemple de contenu du fichier `.gitignore` :
-        ```
-            nomDossierAExclure/
-            nomDossier/monFichierA.exclure
-            nomFichierA.exclure
-        ```
-* Eviter que Git ne demande le nom d'utilisateur et le mot de passe tout le temps
-    * Sources :
-        * [site](https://stackoverflow.com/a/12240995)
-        * [site](https://stackoverflow.com/a/14528360)
-    * En passant en SSH avec `git remote set-url origin git@github.com:username/repo.git`
-    * Ou en enregistrant les identifiants:
-        1. `git config --global credential.helper store`
-        2. `git config --global credential.helper cache`
-        3. (Optionel) `git config --global credential.helper 'cache --timeout=600'` pour mettre une limite de temps
-* Créer des alias pour aller plus vite (par exemple pouvoir faire `git st` au lieu de `git status`)
-    *   Ouvrir le fichier de configuration de Git `.gitconfig` situé dans le répertoire personnel (`C:\Users\nomDeLUtilisateur` sous windows)
-    *   Ajouter à la fin les alias
-        ```
-            [alias]
-                ci = commit
-                co = checkout
-                st = status
-                br = branch
-        ```
+
+Fichier `.gitignore` Fichier à créer à la racine du projet. Il doit contenir les noms des fichiers à ignorer (par exemple des fichiers contenant des mots de passe) : 
+* Exemple de contenu du fichier `.gitignore` :
+
+    ```
+    nomDossierAExclure/
+    nomDossier/monFichierA.exclure
+    nomFichierA.exclure
+    ```
+
+Ignorer des fichiers/dossiers globalement :
+1. `git config --get core.excludesfile` voir où se situe le fichier global (par exemple `~/.gitignore_global`)
+1. Ajouter les fichiers et dossiers à ignorer dans ce fichier comme dans un fichier `.gitignore` classique :
+
+    ```
+    .phpunit.result.cache
+    .scannerwork/
+    .idea/
+    .vscode/
+
+    please_nicor.sh
+    .draft/
+    ```
+1. (optionel) `git config --global core.excludesFile 'nomFichier'` change le fichier global par `nomFichier`
+
+Eviter que Git ne demande le nom d'utilisateur et le mot de passe tout le temps :
+* Sources :
+    * [site](https://stackoverflow.com/a/12240995)
+    * [site](https://stackoverflow.com/a/14528360)
+* En passant en SSH avec `git remote set-url origin git@github.com:username/repo.git`
+* Ou en enregistrant les identifiants:
+    1. `git config --global credential.helper store`
+    2. `git config --global credential.helper cache`
+    3. (Optionel) `git config --global credential.helper 'cache --timeout=600'` pour mettre une limite de temps
+
+Créer des alias pour aller plus vite (par exemple pouvoir faire `git st` au lieu de `git status`)
+*   Ouvrir le fichier de configuration de Git `.gitconfig` situé dans le répertoire personnel (`C:\Users\nomDeLUtilisateur` sous windows)
+*   Ajouter à la fin les alias
+    ```
+        [alias]
+            ci = commit
+            co = checkout
+            st = status
+            br = branch
+    ```
 
 ## Outils
 
