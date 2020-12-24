@@ -66,6 +66,10 @@
 		],
 		"description": "Write a Bash shebang."
 	},
+	"Bash Regex Match": {
+		"prefix": "bash_regex_match",
+		"body": "${BASH_REMATCH[1]}"
+	},
 	"Loop through files": {
 		"prefix": "loop through files",
 		"body": [
