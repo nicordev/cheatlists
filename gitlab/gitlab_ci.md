@@ -39,14 +39,23 @@
 ## Jobs
 
 Ignorer un job :
+- lors d'un `git push` :
 
-Préfixer le nom du job par un point :
+  > [documentation GitLab](https://docs.gitlab.com/ee/user/project/push_options.html#push-options-for-gitlab-cicd)
 
-```yaml
-.hidden_job:
-  script:
-    - run test
-```
+  ```
+  git push -o ci.variable="NOM_VARIABLE=valeurVariable" origin HEAD
+  ```
+
+- depuis le fichier `.gitlab-ci.yml` :
+
+  Préfixer le nom du job par un point :
+
+  ```yaml
+  .hidden_job:
+    script:
+      - run test
+  ```
 
 ## Paramètres globaux
 
@@ -139,3 +148,40 @@ nom_job2:
         <<: *job_definition
         services: *mysql_definition
     ```
+
+## Règles
+
+> [documentation](https://docs.gitlab.com/ee/ci/yaml/#rules)
+
+```yaml
+docker build:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: delayed
+      start_in: '3 hours'
+      allow_failure: true
+```
+## Condition only / except
+
+> [documentation](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic)
+
+```yaml
+job:
+  # use regexp
+  only:
+    - /^issue-.*$/i
+  # use special keyword
+  except:
+    - branches
+```
+
+## Code coverage
+
+> [documentation](https://docs.gitlab.com/ee/ci/yaml/#coverage)
+
+```
+job1:
+  script: rspec
+  coverage: '/Code coverage: \d+\.\d+/'
+```
