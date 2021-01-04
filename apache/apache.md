@@ -1,5 +1,11 @@
 # Apache
 
+Voir quels répertoires sont utilisés pour la configuration :
+
+```
+php -ini | grep scan
+```
+
 Avoir plusieurs sites web sur le même serveur :
 - dans un fichier `nomSite.conf` :
 
