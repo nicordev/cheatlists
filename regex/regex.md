@@ -16,6 +16,20 @@ Sélectionner tous les caractères sauf certains : `[^caractèresAEviter]`
         `?<!` is for negative look behind
     * Exemple: `^application\/(?:.+\+)?json$`
 
+[Classes de caractères POSIX](https://www.grymoire.com/Unix/Regular.html#uh-13) :
+- `[:alnum:]` Alphanumeric
+- `[:cntrl:]` Control Character
+- `[:lower:]` Lower case character
+- `[:space:]` Whitespace
+- `[:alpha:]` Alphabetic
+- `[:digit:]` Digit
+- `[:print:]` Printable character
+- `[:upper:]` Upper Case Character
+- `[:blank:]` whitespace, tabs, etc.
+- `[:graph:]` Printable and visible characters
+- `[:punct:]` Punctuation
+- `[:xdigit:]` Extended Digit
+
 ## PCRE
 
 Mot de passe :
