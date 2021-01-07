@@ -17,6 +17,12 @@
 
 > [Tutoriels](http://www.postgresqltutorial.com/)
 
+[Extension](https://www.postgresql.org/docs/13/sql-createextension.html) :
+
+```SQL
+CREATE EXTENSION IF NOT EXISTS unaccent
+```
+
 * Lancer le shell
     1. `sudo -iu postgres` lance le shell.
     1. `psql [nomBaseDeDonnées]` lance `psql` [et sélectionne une base de données].
