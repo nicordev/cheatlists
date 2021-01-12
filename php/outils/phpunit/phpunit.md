@@ -57,3 +57,48 @@
             ]
         );
     ```
+
+## Configuration
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.5/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         bootstrap="config/bootstrap.php"
+>
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <server name="APP_ENV" value="test"/>
+        <server name="SHELL_VERBOSITY" value="-1"/>
+        <server name="DATABASE_URL" value="pgsql://postgres:postgres@postgresql:5432/test_database_name_here"/>
+        <server name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+        <server name="SYMFONY_PHPUNIT_VERSION" value="8.3" />
+        <server name="KERNEL_CLASS" value="App\Kernel" />
+    </php>
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src</directory>
+            <exclude>
+                <directory>src/Migrations</directory>
+                <directory>src/DataFixtures</directory>
+                <file>src/Kernel.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+    </listeners>
+</phpunit>
+```
