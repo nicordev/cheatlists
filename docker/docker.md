@@ -336,3 +336,9 @@ docker network nomCommande
 2. `docker tag nomImage:tagImage nomUtilisateurDockerHub/nomRepository:tagImage` ou `docker tag idImage nomUtilisateurDockerHub/nomRepository:tagImage` créé un lien entre l'image créée en local et l'image à envoyer sur le Docker Hub.
 3. Se connecter avec la commande `docker login`.
 4. `docker push nomUtilisateur/nomRepository:tagImage` envoi l'image locale vers le repository. `:tagImage` est par défaut `:latest`.
+
+## Récupérer l'IP d'un conteneur
+
+```bash
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' containerIdHere
+```
