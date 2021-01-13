@@ -21,6 +21,58 @@ Une nouvelle branche ne peut être créée que lorque la branche master existe. 
 * `git config --global user.name "Nom utilisateur"` Configure le nom de l'utilisateur de manière globale
 * `git config --global user.email email.utilisateur@domain.com` Configure l'email de l'utilisateur de manière globale
 
+Utiliser un modèle de message pour les commits :
+1. Créer un fichier .txt contenant le modèle :
+
+    > [source](https://dev.to/timmybytes/keeping-git-commit-messages-consistent-with-a-custom-template-1jkm)
+
+    Les lignes commençant par `#` sont juste des commentaires :
+
+    ```
+
+
+    # ----------------------------------------------------------
+    # Header - type(target): Brief description
+    # ----------------------------------------------------------
+    #   * feat         A new feature
+    #   * fix          A bug fix
+    #   * docs         Changes to documentation only
+    #   * style        Style/format changes (whitespace, etc.)
+    #   * refactor     Changes not related to a bug or feature
+    #   * perf         Changes that affects performance
+    #   * test         Changes that add/modify/correct tests
+    #   * build        Changes to build system (configs, etc.)
+    #   * ci           Changes to CI pipeline/workflow
+    # ----------------------------------------------------------
+
+
+    # ----------------------------------------------------------
+    # Body - More detailed description, if necessary
+    # ----------------------------------------------------------
+    #   * Motivation behind changes, more detail into how 
+    # functionality might be affected, etc.
+    # ----------------------------------------------------------
+
+
+    # ----------------------------------------------------------
+    # Footer - Associated issues, PRs, etc.
+    # ----------------------------------------------------------
+    #   * Ex: Resolves Issue #207, see PR #15, etc.
+    # ----------------------------------------------------------
+    ```
+
+1. Sélectionner le modèle à utiliser pour les commits :
+
+    ```bash
+    git config --global commit.template path/to/your/file.txt
+    ```
+
+1. [hors service] Configurer l'éditeur de texte, ici vim, et commencer à la ligne 14 :
+
+    ```bash
+    git config --global core.editor=vim +14 -c 'startinsert'
+    ```
+
 Fichier `.gitignore` Fichier à créer à la racine du projet. Il doit contenir les noms des fichiers à ignorer (par exemple des fichiers contenant des mots de passe) : 
 * Exemple de contenu du fichier `.gitignore` :
 
