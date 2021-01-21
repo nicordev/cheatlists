@@ -249,3 +249,11 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
 2. `mv nomDossierProjet/nomDossierTemporaire/.git nomDossierProjet/` déplace le dossier caché `.git` dans le dossier du projet.
 3. `rm -rf nomDossierProjet/nomDossierTemporaire` supprime le dossier temporaire et son contenu.
 4. `git reset --hard HEAD` recréé les fichiers et dossiers du projet dans le dossier du projet (git pense qu'ils ont été supprimés et restaure le projet).
+
+### Créer un repository distant
+
+Dans le dossier où l'on veut créer notre repository distant :
+
+```
+git init --bare
+```
