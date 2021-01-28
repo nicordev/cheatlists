@@ -43,7 +43,7 @@ sed [option] 'action1;action2;action3' [fileName]
     ```
 
 - `!` pour inverser la cible :
-    
+
     Exemple : supprimer tout sauf les lignes 3 à 10
 
     ```bash
@@ -73,10 +73,18 @@ Où :
 
 > **Important : `sed` ne modifie pas le fichier d'origine, sauf si on ajoute `-i`.**
 
+Récupérer un fragment d'une chaîne :
+
+```
+cat "$1" | sed 's#.*\"access_token\":\"\([^\"]*\)\".*#\1#'
+```
+
+Ici le groupe de capture `\([^\"]*\)` correspond au `\1`
+
 Supprimer une ligne avec `sed <pattern>d` :
 
 - Supprimer la première ligne :
-    
+
     ```bash
     sed '1d' nomFichier
     ```
@@ -88,7 +96,7 @@ Supprimer une ligne avec `sed <pattern>d` :
     ```
 
 - Supprimer plusieurs lignes non-consécutives :
-    
+
     ```bash
     sed '34d;64d;231d' nomFichier
     ```
@@ -117,13 +125,13 @@ Supprimer une ligne avec `sed <pattern>d` :
 
 
 Remplacer une chaîne par une autre avec `s` :
-    
+
 - Changer uniquement la première occurence d'une chaîne :
 
     ```bash
     sed 's/chaîneAModifier/chaîneModifiée/'
     ```
-    
+
     - `s` pour *substitute*, va appliquer la modification à la première occurence de la `chaîneAModifier` sur toutes les lignes.
     - Il faut 3 délimiteurs. Souvent `/` est utilisé, mais on peut en utiliser d'autres du moment qu'ils tiennent dans 1 byte (exemple : `_`, `#`, `:`).
     - On peut échapper des caractères avec `\`
@@ -138,7 +146,7 @@ Remplacer une chaîne par une autre avec `s` :
         # Ou
         echo chaîneComplète | sed 's/chaîneAModifier/chaîneModifiée/'
         ```
-    
+
 - Remplacer toutes les occurences d'une chaîne :
 
     ```bash
@@ -153,7 +161,7 @@ Récupérer des lignes par leur numéro :
     ```bash
     sed -n "${numéroDébutGroupeDeLignes},${numéroFinGroupeDeLignes}p;${numéroLigne1}p;${numéroLigne2}p" nomFichier
     ```
-    
+
 - Exemples :
     ```bash
     sed -n '1p' nomFichier # Récupère la première ligne du fichier
