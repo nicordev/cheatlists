@@ -1,5 +1,41 @@
 # Génération de badge
 
+## Affichage des badges
+
+Code coverage avec phpunit :
+- Dans *Settings > CI/CD > General Pipelines > Test coverage parsing* :
+  1. Copier/coller la regex correspondant à phpunit : `^\s*Lines:\s*\d+.\d+\%`
+  1. Cliquer sur **Save changes**
+
+Afficher des badges sur la page du repository :
+- Dans *Settings > General > Badges* :
+
+  Code coverage :
+
+  ```
+  # Name
+  coverage
+
+  # Link
+  https://yourGitlabHost.com/%{project_path}/-/commits/%{default_branch}
+
+  # Badge image url
+  https://yourGitlabHost.com/%{project_path}/badges/%{default_branch}/coverage.svg
+  ```
+
+  Mutation Score Indicator :
+
+  ```
+  # Name
+  Mutation MSI
+
+  # Link
+  https://yourGitlabHost.com/%{project_path}/-/commits/%{default_branch}
+
+  # Badge image url
+  https://yourGitlabHost.com/%{project_path}/-/jobs/artifacts/%{default_branch}/raw/badges/mutation_msi.svg?job=job:infection-badges
+  ```
+
 ## Pour infection
 
 > Pour les version d'infection >= 0.17

@@ -33,6 +33,15 @@ def extractAccessToken(keycloakToken)
 end
 
 puts extractAccessToken(token) # Here we print the returned value of the function
+
+# Now with a default value
+def hello(name = 'World')
+    puts "Hello #{name}!"
+end
+
+hello # Hello World!
+hello 'Sarah' # Hello Sarah!
+hello('Jim') # Hello Jim!
 ```
 
 Affichage, Regex, array :

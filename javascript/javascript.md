@@ -96,163 +96,184 @@ try {
 
 ## Object
 
-* Notation:
+Notation:
+
+```js
+const person = {
+    name: 'Bob',
+    age: 30
+}
+```
+
+* Dot notation:
     ```js
-    const person = {
-        name: 'Bob',
-        age: 30
-    }
+    person.name = 'Sarah';
+    console.log(person.name); // Affiche Sarah
     ```
-    * Dot notation:
-        ```js
-        person.name = 'Sarah';
-        console.log(person.name); // Affiche Sarah
-        ```
-    * Bracket notation:
-        ```js
-        person['name'] = 'Anaïs';
-        console.log(person['name']); // Affiche Anaïs. On aurait pu utiliser une variable pour stocker la clé 'name'.
-        ```
-* Ajout / Suppression d'une propriété
-    * `nomObjet.nomNouvellePropriété = valeurNouvellePropriété` ajoute une propriété à un objet.
-    * `delete nomObjet.nomPropriété` retire une propriété à un objet.
-* Création d'objets
-    * On peut instancier des types primitifs comme ça :
-        ```js
-        let isOkay = new Boolean(5); // Toute valeur différente de 0 correspond à > 'true'.
-        let name = new String('Bob');
-        let age = new Number(42);
-        ```
-    * Propriété `constructor` :
+* Bracket notation:
+    ```js
+    person['name'] = 'Anaïs';
+    console.log(person['name']); // Affiche Anaïs. On aurait pu utiliser une variable pour stocker la clé 'name'.
+    ```
 
-        ```js
-        let isOkay = new Boolean(5);
-        isOkay.constructor // Retourne 'function Boolean()'.
-        ```
+Ajout / Suppression d'une propriété
 
-        Tous les objets ont cette propriété. Elle pointe vers la fonction qui a été utilisée pour créer l'objet.
-    * Factory functions:
-        ```js
-        function createCircle(radius) {
-            return {
-                radius,
-                draw: function () {
-                    console.log(`Draw a circle of ${this.radius}`);
-                }
-            }
-        }
+* `nomObjet.nomNouvellePropriété = valeurNouvellePropriété` ajoute une propriété à un objet.
+* `delete nomObjet.nomPropriété` retire une propriété à un objet.
 
-        const circle = createCircle(10);
-        ```
-    * Constructor function:
-        ```js
-        function Circle(radius) {
-            this.radius = radius;
-            this.draw =  function () {
+Création d'objets
+
+* On peut instancier des types primitifs comme ça :
+
+    ```js
+    let isOkay = new Boolean(5); // Toute valeur différente de 0 correspond à > 'true'.
+    let name = new String('Bob');
+    let age = new Number(42);
+    ```
+
+* Propriété `constructor` :
+
+    ```js
+    let isOkay = new Boolean(5);
+    isOkay.constructor // Retourne 'function Boolean()'.
+    ```
+
+    Tous les objets ont cette propriété. Elle pointe vers la fonction qui a été utilisée pour créer l'objet.
+
+* Factory functions:
+
+    ```js
+    function createCircle(radius) {
+        return {
+            radius,
+            draw: function () {
                 console.log(`Draw a circle of ${this.radius}`);
             }
         }
+    }
 
-        const circleFromConstructor = new Circle(999); // Si on oublie le new, alors 'this' correspondra à l'objet 'Window' dans un navigateur ou 'global' dans node
-        ```
-* `Object.keys(nomVariable);` retourne un tableaux contenant les noms des propriétés et méthodes de l'objet `nomVariable` :
-    ```js
-    let circle = new Circle(700);
-    let circleKeys = Object.keys(circle);
+    const circle = createCircle(10);
     ```
-* `nomPropriétéOuMéthode in nomVariable` retourne `true` si `nomVariable` contient `nomPropriétéOuMéthode` :
+
+* Constructor function:
+
+    ```js
+    function Circle(radius) {
+        this.radius = radius;
+        this.draw =  function () {
+            console.log(`Draw a circle of ${this.radius}`);
+        }
+    }
+
+    const circleFromConstructor = new Circle(999); // Si on oublie le new, alors 'this' correspondra à l'objet 'Window' dans un navigateur ou 'global' dans node
+    ```
+
+`Object.keys(nomVariable);` retourne un tableaux contenant les noms des propriétés et méthodes de l'objet `nomVariable` :
+
+```js
+let circle = new Circle(700);
+let circleKeys = Object.keys(circle);
+```
+
+`nomPropriétéOuMéthode in nomVariable` retourne `true` si `nomVariable` contient `nomPropriétéOuMéthode` :
+
+- Boucle sur les propriétés d'un objet :
+
     ```js
     for (let key in nomVariable) {
         console.log(nomVariable[key]);
     }
     ```
-* Propriétés privées et closures :
-    ```js
-    function PrivateCircle(radius) {
-        // Private
-        let defaultLocation = {
-            x: 2,
-            y: 4
-        }
-        let computeOptimumLocation = function (factor) {
-            console.log(factor, defaultLocation.x, defaultLocation.y); // Closure can acess private variables.
-        }
 
-        // Public
-        this.radius = radius;
-        this.draw = function () {
-            computeOptimumLocation('zog');
-            console.log('draw...');
-        }
+Propriétés privées et closures :
+
+```js
+function PrivateCircle(radius) {
+    // Private
+    let defaultLocation = {
+        x: 2,
+        y: 4
     }
-    ```
-* Getters and setters
-    * Méthode 1 :
-        ```js
-        function Shape()
-        {
-            let defaultLocation = {
-                x: 10,
-                y: 20
-            };
+    let computeOptimumLocation = function (factor) {
+        console.log(factor, defaultLocation.x, defaultLocation.y); // Closure can acess private variables.
+    }
 
+    // Public
+    this.radius = radius;
+    this.draw = function () {
+        computeOptimumLocation('zog');
+        console.log('draw...');
+    }
+}
+```
 
-            Object.defineProperty(this, 'defaultLocation', {
-                get: function () {
-                    return defaultLocation;
-                },
-                set: function (value) {
-                    if (!value.x || !value.y) {
-                        throw Error('Invalid location.');
-                    }
+Getters and setters
 
-                    defaultLocation = value;
-                }
-            })
+```js
+function Shape()
+{
+    let defaultLocation = {
+        x: 10,
+        y: 20
+    };
+
+    Object.defineProperty(this, 'defaultLocation', {
+        get: function () {
+            return defaultLocation;
+        },
+        set: function (value) {
+            if (!value.x || !value.y) {
+                throw Error('Invalid location.');
+            }
+
+            defaultLocation = value;
         }
+    })
+}
 
-        const Shape = new Shape();
+const Shape = new Shape();
 
-        console.log(Shape.defaultLocation); // Call the getter
-        Shape.defaultLocation = {x: 30, y: 40}; // Call the setter
-        Shape.defaultLocation = 'zog'; // Throw error
-        ```
-- Classes
+console.log(Shape.defaultLocation); // Call the getter
+Shape.defaultLocation = {x: 30, y: 40}; // Call the setter
+Shape.defaultLocation = 'zog'; // Throw error
+```
 
-    ```js
-    class BankAccount {
-        constructor(owner, balance) {
-            this.owner = owner;
-            this.balance = balance;
-        }
-        
-        showBalance() {
-            console.log("Solde: " + this.balance + " EUR");
-        }
-        
-        deposit(amount) {
-            console.log("Dépôt de " + amount + " EUR");
-            this.balance += amount;
+Classes
+
+```js
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    showBalance() {
+        console.log("Solde: " + this.balance + " EUR");
+    }
+
+    deposit(amount) {
+        console.log("Dépôt de " + amount + " EUR");
+        this.balance += amount;
+        this.showBalance();
+    }
+
+    withdraw(amount) {
+        if (amount > this.balance) {
+            console.log("Retrait refusé !");
+        } else {
+            console.log("Retrait de " + amount + " EUR");
+            this.balance -= amount;
             this.showBalance();
         }
-        
-        withdraw(amount) {
-            if (amount > this.balance) {
-                console.log("Retrait refusé !");
-            } else {
-                console.log("Retrait de " + amount + " EUR");
-                this.balance -= amount;
-                this.showBalance();
-            }
-        }
-
-        static getRandomRate() {
-            return Math.floor(Math.random() * 100);
-        }
     }
 
-    console.log(BankAccount.getRandomRate());
-    ```
+    static getRandomRate() {
+        return Math.floor(Math.random() * 100);
+    }
+}
+
+console.log(BankAccount.getRandomRate());
+```
 
 ## Tableaux
 
@@ -283,13 +304,19 @@ try {
     }
     ```
 
+Transformer un itérable en `Array` :
+
+```js
+const elements = [...document.getElementsByClassName('fruits')];
+```
+
 ## Set
 
 Liste d'éléments uniques pouvant être construite à partir d'un itérable.
 
 [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Set)
 
-Enlever les doublons d'un tableaux: 
+Enlever les doublons d'un tableaux:
 
 ```js
 const nombres = [2,3,4,4,2,2,2,4,4,5,5,6,6,7,5,32,3,4,5];
@@ -327,7 +354,7 @@ throw new Error("Votre navigateur est trop pourri. Veuillez en changer.");  // g
 ```
 ```js
 (param1, param2, …, param2) => expression
-// équivalent à 
+// équivalent à
 (param1, param2, …, param2) => {
   return expression;
 }
@@ -337,7 +364,7 @@ throw new Error("Votre navigateur est trop pourri. Veuillez en changer.");  // g
 param => expression
 ```
 ```js
-// Une fonction sans paramètre peut s'écrire avec un couple 
+// Une fonction sans paramètre peut s'écrire avec un couple
 // de parenthèses
 () => {
   instructions
@@ -348,7 +375,7 @@ param => expression
 (param1, param2, ...reste) => {
   instructions
 }
-(param1 = valeurDefaut1, param2, …, paramN = valeurDefautN) => { 
+(param1 = valeurDefaut1, param2, …, paramN = valeurDefautN) => {
   instructions
 }
 ```
@@ -360,6 +387,9 @@ f();
 
 ## URL
 
+URL de la page en cours :
+
 ```js
 let url = window.location.href;
 ```
+

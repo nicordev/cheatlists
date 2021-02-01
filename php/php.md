@@ -3,7 +3,7 @@
 ## Astuces
 
 * Surcharger une méthode en y ajoutant un paramètre supplémentaire :
-    
+
     Donner une valeur par défaut au paramètre :
 
     ```php
@@ -92,7 +92,7 @@
 * `current ( array $array ) : mixed` retourne l'élément courant d'un tableau, soit le premier élément par défaut [doc](https://www.php.net/manual/fr/function.current.php)
 * `next ( array &$array ) : mixed` avance le pointeur interne du tableau d'un élément, avant de retourner la valeur de l'élément. Cela signifie qu'il retourne la prochaine valeur du tableau et avance le pointeur interne d'un élément.
 * `prev ( array &$array ) : mixed` se comporte exactement comme next(), mais elle fait reculer le pointeur plutôt que de l'avancer.
-* `array_shift ( array &$array ) : mixed` extrait la première valeur du tableau `array` et la retourne, en raccourcissant `array` d'un élément, et en déplaçant tous les éléments vers le bas. Toutes les clés numériques seront modifiées pour commencer à zéro pendant que les clées litérale ne seront pas affectées. 
+* `array_shift ( array &$array ) : mixed` extrait la première valeur du tableau `array` et la retourne, en raccourcissant `array` d'un élément, et en déplaçant tous les éléments vers le bas. Toutes les clés numériques seront modifiées pour commencer à zéro pendant que les clées litérale ne seront pas affectées.
 * `array_unshift ( array &$array [, mixed $élementsAAjouter... ] ) : int` ajoute un ou plusieurs éléments au début d'un tableau. Toutes les clés numériques seront modifiées afin de commencer à partir de zéro, tandis que les clés littérales ne seront pas touchées.
 * `array_flip ( array $array ) : array` retourne un tableau dont les clés sont les valeurs du précédent tableau array, et les valeurs sont les clés
 * `array_combine ( array $keys , array $values ) : array` crée un tableau, dont les clés sont les valeurs de keys, et les valeurs sont les valeurs de values.
@@ -120,7 +120,7 @@
 ## Serialize, deserialize
 
 * `serialize ( mixed $value ) : string` transforme (linéarise) une variable en string (serialize). La string produite est similaire à celle utilisée dans les bases de données (exemple : type array de doctrine).
-* `unserialize ( string $str [, array $options ] ) : mixed` prend une variable linéarisée et la convertit en variable PHP. 
+* `unserialize ( string $str [, array $options ] ) : mixed` prend une variable linéarisée et la convertit en variable PHP.
 
 ## Dates
 

@@ -4,6 +4,7 @@
 
 Ressources externes :
 - [Closures](https://gist.github.com/forestbaker/63960a80536dff501f2d)
+- [Parameter expansion](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Shell-Parameter-Expansion)
 
 ## Utilisation
 
@@ -14,7 +15,7 @@ Ecrire un script bash :
 2. A la première ligne du fichier, écrire où se trouve l'exécutable du shell dans un commentaire (appelé shebang) : `#! /bin/bash`.
 
     Le shebang peut aussi pointer vers d'autres programmes et contenir des paramètres.
-    
+
     Exemple avec sed :
 
     ```bash
@@ -60,11 +61,11 @@ Exécuter un script bash :
     2. Copier ou déplacer le fichier du script dans l'un des dossiers affiché.
     3. Exécuter directement `nomScript.sh` n'importe où. La classe !
 - En utilisant le même shell que le terminal actuel :
-    
+
     ```bash
     . nomScript.sh
     ```
-    
+
     ou
 
     ```bash
@@ -79,7 +80,7 @@ Debug d'un script :
     ```
 
 - Ecrire directement dans le script :
-    
+
     - Activer le debug :
 
         ```bash
@@ -214,17 +215,29 @@ Conditions :
         ```
 
     - Regex :
-        
+
         Utiliser `=~` et `[[]]` :
 
         ```bash
         Email=me@example.com
-        
+
         if [[ "$Email" =~ [a-z]+@[a-z]{2,}\.(com|net|org) ]]
         then
             echo "Valid email!"
             echo "Here is the first capturing group: ${BASH_REMATCH[1]}"
         fi
+        ```
+
+        Groupes de capute :
+
+        ```
+        # Remove digits in current folder folders
+        for folder in "$(pwd)/"*
+        do
+            [[ $folder =~ ([^0-9]*)[0-9]*-(.*) ]]
+            newFolder=${BASH_REMATCH[2]}
+            mv $folder $newFolder
+        done
         ```
 
 * Nombres :
@@ -350,7 +363,7 @@ Conditions :
     ```
 
 - Select :
-    
+
     ```bash
     select v in data_list
     do
@@ -432,6 +445,13 @@ Boucles
     for filePath in */zog*; do
         echo $filePath
     done
+
+    # Boucle dans un interval numérique
+    for i in {0..10}; do
+        echo $i
+    done
+
+    for i in {0..10}; do echo $i; done
     ```
 
 - while
