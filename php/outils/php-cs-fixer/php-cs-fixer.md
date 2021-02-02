@@ -1,6 +1,7 @@
 # PHP CS Fixer
 
-[doc](https://github.com/FriendsOfPhp/PHP-CS-Fixer)
+- [Documentation](https://github.com/FriendsOfPhp/PHP-CS-Fixer)
+- [Règles](https://mlocati.github.io/php-cs-fixer-configurator/#version:2.18)
 
 ## Installation
 
