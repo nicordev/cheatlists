@@ -1,5 +1,9 @@
 # PhpStorm
 
+## Pour n'importe quoi : Double shift > Actions
+
+Afficher le menu View : `view`
+
 ## Obtenir un compte
 
 Inscrit toi sur le site de supinfo, tu vas devenir discovery member, ça va te donner accès a une adresse @supinfo.com

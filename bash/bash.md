@@ -5,6 +5,8 @@
 Ressources externes :
 - [Closures](https://gist.github.com/forestbaker/63960a80536dff501f2d)
 - [Parameter expansion](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Shell-Parameter-Expansion)
+- [Opérateurs](https://linuxhint.com/bash_operator_examples/#o32)
+- [Bonnes pratiques](https://ineumann.developpez.com/tutoriels/linux/bash-bonnes-pratiques/)
 
 ## Utilisation
 
@@ -109,10 +111,29 @@ Variables :
 * `nomVariable=valeurVariable` affecte une valeur à une variable. Attention à ne pas mettre d'espace autour du signe `=`.
 * `$nomVariable` permet d'accéder à la valeur de la variable.
 
-Chaînes de caractères :
+Chaînes de caractères (string) :
 * `'Hello $nom!'` les simples quotes `''` stockent la chaîne telle quelle. Ici : `Hello $nom!`.
 * `'Hello $nom!'` les doubles quotes `""` stockent la chaîne avec les valeurs des variables qu'elle contient. Ici : `Hello Bob!`.
 * ``nomCommande`` les backticks `` ` `` exécutent la commande.
+* `${nomVariable,,}` passe la chaîne en minuscule
+
+    Avec `tr` :
+
+    ```
+    echo "$nomVariable" | tr '[:upper:]' '[:lower:]'
+    ```
+
+    Avec `sed` :
+
+    ```
+    echo "$nomVariable" | sed -e 's/\(.*\)/\L\1/'
+    ```
+
+    Avec `awk` :
+
+    ```
+    echo "$a" | awk '{print tolower($0)}'
+    ```
 
 Tableaux :
 * `nomTableau=('valeur0' 'valeur1' 'valeur2')` définit un tableau.
@@ -176,7 +197,7 @@ Variables d'environnement :
 * `export NOM_VARIABLE` transforme une variable existante en variable d'environnement.
 
 Conditions :
-* Chaînes de caractères :
+* Chaînes de caractères (string) :
 
     ```bash
     #!/bin/bash
