@@ -249,7 +249,7 @@ Conditions :
         fi
         ```
 
-        Groupes de capute :
+        Groupes de capture :
 
         ```
         # Remove digits in current folder folders
@@ -259,6 +259,9 @@ Conditions :
             newFolder=${BASH_REMATCH[2]}
             mv $folder $newFolder
         done
+
+        [[ "$file" =~ ^([0-9-]{3})([0-9]{4}_)bulletin_(de_paie) ]]
+        echo ${BASH_REMATCH[@]} # affiche 03-2020_bulletin_de_paie 03- 2020_ de_paie
         ```
 
 * Nombres :
@@ -477,6 +480,14 @@ Boucles
 
 - while
 
+    Boucle sur les fichiers :
+
+    ```bash
+    ls "${folder}" | while read -r file; do # -r do not allow backslashes to escape any characters
+        echo "$file"
+    done
+    ```
+
     Boucle sur les arguments :
 
     ```bash
@@ -491,3 +502,7 @@ Boucles
 
     shiftArguments bob sarah jim
     ```
+
+## Scope
+
+When you use a command substitution (i.e., the $(...) construct), you are creating a subshell. Subshells inherit variables from their parent shells, but this only works one way: A subshell cannot modify the environment of its parent shell. [StackOverflow](https://stackoverflow.com/questions/23564995/how-to-modify-a-global-variable-within-a-function-in-bash)
