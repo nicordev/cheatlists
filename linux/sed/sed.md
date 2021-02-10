@@ -1,5 +1,9 @@
 # sed
 
+> ```
+> sed -n 's/^[0-9]*) *\([^:]*\):.*/\1/p' nomFichier
+> ```
+
 [scripts sed](http://sed.sourceforge.net/#scripts)
 
 Permet d'afficher ou de modifier le texte d'un fichier.
@@ -10,7 +14,7 @@ sed [option] 'action1;action2;action3' [fileName]
 
 `option` :
 - `-i` modifier le fichier `fileName`
-- `-n` afficher uniquement les lignes ciblées. *Pratique pour l'action `p`*
+- `-n` afficher uniquement les lignes ciblées. *Pratique pour l'action `p` ou pour capturer des fragments avec l'action `s`*
 - `-e` faire plusieurs actions à la suite. *Répêter `-e` devant chaque action*
 - `-f` utiliser du code sed écrit dans un fichier. *Utile pour le shebang d'un script sed : `#! /usr/bin/sed -f`*
 
@@ -57,6 +61,10 @@ sed [option] 'action1;action2;action3' [fileName]
         - tout le contenu avec les lignes ciblées en double
     - `s` remplacer
 
+- `pattern` : une regex
+- `flags` :
+    - `p` affiche le texte remplacé
+
 ## Exemple rapide
 
 ```bash
@@ -76,10 +84,12 @@ Où :
 Récupérer un fragment d'une chaîne :
 
 ```
-cat "$1" | sed 's#.*\"access_token\":\"\([^\"]*\)\".*#\1#'
+cat "$1" | sed --quiet 's#.*\"access_token\":\"\([^\"]*\)\".*#\1#p'
 ```
 
-Ici le groupe de capture `\([^\"]*\)` correspond au `\1`
+- Le groupe de capture `\([^\"]*\)` correspond au `\1`.
+- `--quiet` ou `--silent` ou `-n` pour éviter que sed n'affiche les autres lignes que celles qui nous intéressent
+- `p` pour afficher les lignes modifiées
 
 Supprimer une ligne avec `sed <pattern>d` :
 

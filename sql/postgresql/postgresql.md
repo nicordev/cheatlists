@@ -82,3 +82,12 @@ CREATE EXTENSION IF NOT EXISTS unaccent
 * Types custom
     * `DROP TYPE nom_type cascade;` supprime le type.
     * `CREATE TYPE nom_énumération AS ENUM ('valeur1', 'valeur2', 'valeur3');` créé une nouvelle énumération.
+
+Déconnecter toutes les connexions sauf celle actuelle :
+
+```sql
+SELECT pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = 'database_name_here'
+  AND pid <> pg_backend_pid();
+```

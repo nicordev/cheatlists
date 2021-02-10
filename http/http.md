@@ -31,3 +31,9 @@
         * `image` : `image/gif`, `image/png`, `image/jpeg`, `image/bmp`, `image/webp`, ...
         * `audio` : `audio/midi`, `audio/mpeg`, `audio/webm`, `audio/ogg`, `audio/wav`, ...
         * `video` : `video/webm`, `video/ogg`, ...
+
+## Autres protocoles
+
+FTP : envoi de fichiers
+SMTP : envoi d'emails
+IMAP : réception d'emails

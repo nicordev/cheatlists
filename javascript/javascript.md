@@ -1,5 +1,14 @@
 # Javascript
 
+## Outils
+
+- [yarn](https://yarnpkg.com/) package manager
+- [npm](https://www.npmjs.com/) package manager moins bien
+- [JSLint](https://www.jslint.com/) linter
+- [ESLint](https://eslint.org/) linter
+- [Webpack](https://webpack.js.org/) pour regrouper son code dans un minimum de fichiers
+- [Babel](https://babeljs.io/) pour transformer son code dans une autre version de javascript
+
 ## Scope
 
 * Les variables déclarées sans un mot clé `var`, `let` ou `const` sont déclarées dans le scope global.
