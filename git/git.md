@@ -250,10 +250,19 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
 3. `rm -rf nomDossierProjet/nomDossierTemporaire` supprime le dossier temporaire et son contenu.
 4. `git reset --hard HEAD` recréé les fichiers et dossiers du projet dans le dossier du projet (git pense qu'ils ont été supprimés et restaure le projet).
 
-### Créer un repository distant
+### Créer un remote distant
 
-Dans le dossier où l'on veut créer notre repository distant :
+1. Dans le dossier où l'on veut créer notre remote distant :
 
-```
-git init --bare
-```
+    ```
+    git init --bare
+    ```
+1. Dans le dossier de notre projet :
+
+    ```
+    git remote add nomRemote remoteInfo
+    ```
+
+    Où `remoteInfo` peut être :
+    - en local : `nomUtilisateur@127.0.0.1:cheminRelatifAuRépertoireUtilisateur`
+    - à distance : l'URL du remote
