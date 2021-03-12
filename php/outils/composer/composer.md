@@ -17,7 +17,7 @@
     ```json
     {
         "config": {
-            "secure-http": true 
+            "secure-http": true
         },
         "repositories": {
             "packagist": {
@@ -61,7 +61,7 @@ Autoloader :
 
     ```php
     <?php
-    
+
     require dirname(__DIR__).'/vendor/autoload.php';
     ```
 
@@ -70,7 +70,7 @@ Utiliser un package globalement :
 > [doc](https://getcomposer.org/doc/03-cli.md#global)
 
 1. Identifier l'emplacement du dossier `vendor/bin` global de composer :
-    
+
     ```
     php composer.phar global config bin-dir --absolute
     ```
@@ -81,7 +81,7 @@ Utiliser un package globalement :
     ```
 
 1. Ajouter le package globalement :
-    
+
     ```
     php composer.phar global require nomAuteur/nomPaquet
     ```
@@ -93,6 +93,8 @@ php composer.phar global update
 ```
 
 ## Versions
+
+> [Documentation](https://getcomposer.org/doc/articles/versions.md#tilde-version-range-)
 
 ```
 "require": {

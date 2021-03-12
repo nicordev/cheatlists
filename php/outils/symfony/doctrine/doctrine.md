@@ -33,7 +33,7 @@
                 namespace App\Entity;
 
                 use Doctrine\ORM\Mapping as ORM;
-                
+
                 class TwitList
                 {
                     // ...
@@ -42,7 +42,7 @@
                     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="twitLists")
                     */
                     private $tags;
-                    
+
                     // ...
                 }
                 ```
@@ -98,3 +98,19 @@
                 types:
                     ProductType: App\DBAL\Types\ProductType
         ```
+
+### Dans les tests
+
+```php
+public function testMyMethod(): void
+{
+    /** @var Registry $registry */
+    $registry = self::$container->get('doctrine');
+    /** @var EntityManager $entityManager */
+    $entityManager = $registry->getManagerForClass(Fare::class);
+    $unitOfWork = $entityManager->getUnitOfWork();
+    $originalData = $unitOfWork->getOriginalEntityData($myEntity);
+
+    // ...
+}
+```
