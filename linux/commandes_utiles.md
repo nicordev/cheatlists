@@ -25,7 +25,7 @@
         ```bash
         rm -rf nomDossier1 nomDossier2
         ```
-    
+
     - Supprimer tout sauf un fichier :
 
         ```bash
@@ -38,3 +38,4 @@
     cal
     ```
 
+- `ip a` affiche les ip, la première est celle de la machine

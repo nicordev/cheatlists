@@ -1,5 +1,13 @@
 # ApiPlatform
 
+## Debug
+
+```php
+Symfony\Component\HttpKernel\HttpKernel::handleRaw
+ApiPlatform\Core\EventListener\SerializeListener
+Symfony\Component\Serializer\Serializer
+```
+
 ## Généralités
 
 * 2 contextes : sérialisation et désérialisation

@@ -292,7 +292,8 @@ console.log(BankAccount.getRandomRate());
 * `Array.prototype.unshift()` ajoute un ou plusieurs éléments au début d'un tableau et renvoie la nouvelle longueur du tableau.
 * `Array.prototype.pop()` supprime le dernier élément d'un tableau et retourne cet élément.
 * `Array.prototype.shift()` retire le premier élément d'un tableau et renvoi cet élément.
-- Parcourir un tableau :
+
+Parcourir un tableau :
 
     `for in` et `for of` :
 
@@ -317,6 +318,35 @@ Transformer un itérable en `Array` :
 
 ```js
 const elements = [...document.getElementsByClassName('fruits')];
+```
+
+Aplatir un tableau :
+
+```js
+const coins = [
+    1,
+    2,
+    3,
+    [
+        10,
+        11,
+        12
+    ],
+    [
+        [
+            20,
+            21,
+            22
+        ],
+        [
+            30,
+            31,
+            32
+        ]
+    ]
+]
+
+console.log(coins.flat(3)) // [1, 2, 3, 10, 11, 12, 20, 21, 22, 30, 31, 32]
 ```
 
 ## Set

@@ -268,3 +268,7 @@
             @import '@/design/index.scss';
         </style>
         ```
+
+## Erreurs
+
+- `[Vue warn]: Invalid prop: type check failed for prop "error". Expected Object, got Error`: j'utilise une variable qui n'existe pas.

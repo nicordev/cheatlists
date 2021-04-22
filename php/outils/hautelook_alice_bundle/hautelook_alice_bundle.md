@@ -2,9 +2,14 @@
 
 - [GitHub](https://github.com/hautelook/AliceBundle)
 
+## Debug
+
+```php
+Fidry\AliceDataFixtures\Loader\PersisterLoader::load
+Hautelook\AliceBundle\Loader\DoctrineOrmLoader::loadFixtures
+```
+
 ## Syntaxe
-
-
 
 ```yaml
 # fixtures/dev/myFixtures.yaml
