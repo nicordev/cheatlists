@@ -349,6 +349,24 @@ const coins = [
 console.log(coins.flat(3)) // [1, 2, 3, 10, 11, 12, 20, 21, 22, 30, 31, 32]
 ```
 
+> Note : si je vois `if (!myArray)`, je remplace par `if (0 === myArray.length)` car en JS, `[]` vaut `true` :
+>
+> ```
+> if ([]) {
+>   console.log('plein')
+> } else {
+>   console.log('vide')
+> }
+> // Affiche 'plein'
+> ```
+>
+> Contrairement à PHP :
+>
+> ```
+> if ([]) { echo "plein"; } else { echo "vide"; };
+> // Affiche 'vide'
+> ```
+
 ## Set
 
 Liste d'éléments uniques pouvant être construite à partir d'un itérable.
