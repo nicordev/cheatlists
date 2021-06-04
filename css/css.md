@@ -1,5 +1,12 @@
 # CSS
 
+## Sélecteurs
+
+[`:not()` Qui ne correspond pas à... (une classe par exemple)](https://developer.mozilla.org/en-US/docs/Web/CSS/:not)
+```css
+.myClass:not(.myOtherClass) {}
+```
+
 ## background
 
 [`background-image`](https://developer.mozilla.org/fr/docs/Web/CSS/background-image) :
@@ -8,19 +15,19 @@ background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
                   url("../../media/examples/lizard.png");
 ```
 
-[background-size](https://developer.mozilla.org/fr/docs/Web/CSS/background-size) :
+[`background-size`](https://developer.mozilla.org/fr/docs/Web/CSS/background-size) :
 ```css
 background-size: contain;
 background-size: cover;
 background-size: 200px 100px;
 ```
 
-[background-repeat](https://developer.mozilla.org/fr/docs/Web/CSS/background-repeat) :
+[`background-repeat`](https://developer.mozilla.org/fr/docs/Web/CSS/background-repeat) :
 ```css
 background-repeat: no-repeat;
 ```
 
-[background-position](https://developer.mozilla.org/fr/docs/Web/CSS/background-position) :
+[`background-position`](https://developer.mozilla.org/fr/docs/Web/CSS/background-position) :
 ```css
 background-position: center;
 background-position: bottom 50px right 100px;
