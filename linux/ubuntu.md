@@ -224,3 +224,8 @@ MOT_CLE_DE_FIN
 
 * `sudo systemd-resolve --flush-caches` flush le cache.
     * `sudo systemd-resolve --statistics` montre que le cache a été vidé.
+
+## Packages PPA
+
+- [Packages Ubuntu](https://packages.ubuntu.com/)
+- [ondrej php](https://launchpad.net/~ondrej/+archive/ubuntu/php/+packages?field.name_filter=xdebug&field.status_filter=published&field.series_filter=)
