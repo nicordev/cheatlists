@@ -266,3 +266,22 @@ Nos commits sont intégrés à l'historique de la branche master de manière chr
     Où `remoteInfo` peut être :
     - en local : `nomUtilisateur@127.0.0.1:cheminRelatifAuRépertoireUtilisateur`
     - à distance : l'URL du remote
+
+## squash commits
+
+> [source](https://gitbetter.substack.com/p/how-to-squash-git-commits)
+
+Pour squash les commits d'une branche au merge dans une autre branche :
+
+```bash
+git merge --squash target_branch_name
+```
+
+Pour regrouper (squash) les 3 derniers commits en un seul dans la branche actuelle :
+1. ```bash
+    git rebase -i HEAD~3
+    ```
+1. remplacer `pick` par `squash` pour les 2 plus anciens commits
+1. enregistrer & quitter
+1. entrer le message du commit restant
+1. enregistrer & quitter
