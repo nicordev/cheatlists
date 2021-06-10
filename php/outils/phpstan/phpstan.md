@@ -224,8 +224,21 @@ Un fichier de configuration doit utiliser le format neon, similaire au yaml.
     }
     ```
   - Dans les tests, faire des `$this->assertNotNull($nomVariable);`
+
 - Problème de type de retour :
   - Utiliser `@return mixed` dans la phpdoc.
+
+- Il coince sur une méthode absente d'une interface alors que j'ai bien typehint la variable en commentaire :
+
+  vérifier le type de la variable avant d'appeler la méthode :
+  ```php
+  /* @var MyAwesomeMessage $message */
+  $message = $messageWrapper->getMessage();
+
+  if (!$message instanceof MyAwesomeMessage) {
+      return;
+  }
+  ```
 
 ## Ajouter des règles personnalisées
 
