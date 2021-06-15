@@ -1,20 +1,31 @@
 # make
 
 - `make ` + `tab` + `tab` affiche les commandes possible du `Makefile`
+- cibler un fichier Makefile en particulier :
 
-## Makefile
+    ```bash
+    make --file=customMakefileNameHere targetHere
+    make -f customMakefileNameHere targetHere
+    ```
+
+## Utilisation
 
 > [Tuto GrafikArt](https://www.youtube.com/watch?v=2VV9FAQWHdw)
 
 ### But
 
-Lance des commandes pour créer des fichiers ou dossiers.
+Lance des commandes pour créer des fichiers ou dossiers selon des targets définies dans un fichier `Makefile`.
 
 Ces commandes sont exécutés que si les fichiers ou dossiers auxquelles elles font référence n'existent pas ou ne sont pas à jour.
 
 On peut aussi utiliser le `Makefile` pour créer des alias de commandes.
 
-### Syntaxe
+La commande make va cibler les fichiers Makefile dans cet ordre :
+1. `GNUmakefile`
+1. `makefile`
+1. `Makefile`
+
+### Makefile
 
 ```bash
 .SILENT: # Empêche les commandes exécutées via make d'apparaître dans le terminal.
@@ -30,7 +41,7 @@ nomFichierOuDossierCible: nomDépendance1 nomDépendance2
 
 nomCommandeMake: nomDépendance1 nomDépendance2 ## Description nomCommandeMake affichée par `help`
 
-unPeuDeBash:
+unPeuDeBash: # le @ est optionnel, il masque la commande exécutée dans la console.
 	@if [ -z $(DATABASE) ]; then \
 		echo "No database URL set in .env file. Skipping database generation."; \
 		exit; \
@@ -99,5 +110,5 @@ server: install ## Lance le serveur interne de php.
     php -S localhost:$(PORT) -t public/ -d display_errors=1
 
 cache-clear:
-    @rm -rf ./tmp # @ masque la commande exécutée dans la console.
+    @rm -rf ./tmp # le @ masque la commande exécutée dans la console.
 ```
