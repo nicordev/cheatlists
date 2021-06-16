@@ -77,7 +77,7 @@ Installer une extension depuis un repository :
 
 Pour Bash :
 - [shellman](https://marketplace.visualstudio.com/items?itemName=Remisa.shellman)
-    
+
     avec l'ebook qui va bien : https://github.com/yousefvand/shellman-ebook
 - [Bash debug](https://github.com/rogalmic/vscode-bash-debug)
 
@@ -99,6 +99,10 @@ Pour Docker :
 
 ## Configuration
 
+> `~/.config/VSCodium/User/settings.json`
+
+* Désactiver les suggestions `abc` :
+    `File > Preferences > Settings > Workbench > Settings: Enable Natural Language Search`
 * Sauvegarde automatique `File > Preferences > Settings > Files: Auto Save > after delay`
 * Raccourcis clavier `File > Preferences > Keyboard Shortcuts` :
     * `View: Toggle Integrated Terminal` affiche ou masque le terminal (`ctl + ù`).
@@ -120,4 +124,4 @@ Pour Docker :
 
 > [FreeCodeCamp](https://www.freecodecamp.org/news/definitive-guide-to-snippets-visual-studio-code/)
 
-Emplacement des fichiers contenant les snippets : `~/.config/Code/User/snippets/nomLangage.json`
+Emplacement des fichiers contenant les snippets : `~/.config/VSCodium/User/snippets/nomLangage.json`
