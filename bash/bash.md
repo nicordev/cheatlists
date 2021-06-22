@@ -8,6 +8,15 @@ Ressources externes :
 - [Opérateurs](https://linuxhint.com/bash_operator_examples/#o32)
 - [Bonnes pratiques](https://ineumann.developpez.com/tutoriels/linux/bash-bonnes-pratiques/)
 
+## Autocompletion
+
+Dans le fichier `.bashrc` ou un de ses fichiers source :
+
+```bash
+nomScript_options=$(nomCommandePourRécupérerLesOptionsPossibles)
+complete -W "${nomScript_options}" -o bashdefault -o default 'nomScript'
+```
+
 ## Utilisation
 
 Exemples présents là : `/usr/share/doc/util-linux/examples`.
