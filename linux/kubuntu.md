@@ -14,3 +14,7 @@ Redimensionnement des fenêtres :
 - *System Settings > Shortcuts > Global Shortcuts > KWin* :
     - Maximize window
     - Quick tile window to the left | right | bottom | top
+
+## Corbeille
+
+Ouvrir `dolphin` et choisir `trash` dans le menu de gauche.
