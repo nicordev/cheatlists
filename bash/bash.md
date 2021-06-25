@@ -117,6 +117,7 @@ Paramètres d'un script ou d'une fonction :
 * `$?` contient le code retourné par la dernière commande exécutée.
 
 Variables :
+* **Une variable ne peut pas contenir de `-`**
 * `nomVariable=valeurVariable` affecte une valeur à une variable. Attention à ne pas mettre d'espace autour du signe `=`.
 * `$nomVariable` permet d'accéder à la valeur de la variable.
 

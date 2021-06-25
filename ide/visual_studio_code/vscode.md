@@ -120,6 +120,13 @@ Pour Docker :
         "emmet.triggerExpansionOnTab": true
         ```
 
+## Keyboard shortcuts
+
+```
+openInTerminal
+workbench.action.terminal.toggleTerminal
+```
+
 ## Snippet
 
 > [FreeCodeCamp](https://www.freecodecamp.org/news/definitive-guide-to-snippets-visual-studio-code/)

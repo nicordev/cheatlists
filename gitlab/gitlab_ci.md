@@ -8,7 +8,7 @@
 
 1. Créer un repository dans GitLab.
 1. Créer un fichier `.gitlab-ci.yml` à la racine du projet contenant les commandes à exécuter.
-    
+
     > [Documentation](https://docs.gitlab.com/ee/user/project/pages/getting_started_part_four.html)
 
     GitLab va détecter ce fichier et lancer GitLab Runner pour exécuter les commandes.
@@ -17,7 +17,7 @@
     ```yaml
     before_script:
         - echo 'Hello world!'
-        
+
         run-zog:
             script:
                 - echo 'zogzog'
