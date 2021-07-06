@@ -92,6 +92,28 @@ Mettre à jour les packages globaux :
 php composer.phar global update
 ```
 
+Utiliser une branche en particulier :
+1. `composer.json` :
+
+    ```json
+    {
+        "require": {
+            "me/myPackage": "dev-branchName as versionAlias",
+        },
+        "repositories": [
+            {
+                "type": "git",
+                "url": "https://myRepository.git"
+            }
+        ]
+    }
+    ```
+1. Lancer
+
+    ```
+    composer update
+    ```
+
 ## Versions
 
 > [Documentation](https://getcomposer.org/doc/articles/versions.md#tilde-version-range-)
