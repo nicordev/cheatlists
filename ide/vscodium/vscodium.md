@@ -1,4 +1,4 @@
-# Visual studio code
+# VSCodium
 
 ## Installation
 
