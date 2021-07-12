@@ -7,6 +7,7 @@ Ressources externes :
 - [Parameter expansion](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Shell-Parameter-Expansion)
 - [Opérateurs](https://linuxhint.com/bash_operator_examples/#o32)
 - [Bonnes pratiques](https://ineumann.developpez.com/tutoriels/linux/bash-bonnes-pratiques/)
+- [Wiki bash hackers](https://wiki.bash-hackers.org/)
 
 ## Autocompletion
 
@@ -20,6 +21,12 @@ complete -W "${nomScript_options}" -o bashdefault -o default 'nomScript'
 ## Utilisation
 
 Exemples présents là : `/usr/share/doc/util-linux/examples`.
+
+Le `~` :
+- `~` correspond au dossier `$HOME` de l'utilisateur courant
+- `~nomUtilisateur` correspond au dossier `$HOME` de l'utilisateur `nomUtilisateur`
+- `~+` correspond au dossier courant `$PWD`
+- `~-` correspond au précédent dossier `$OLDPWD`
 
 Ecrire un script bash :
 1. Créer un fichier avec ou sans l'extension `.sh`.
