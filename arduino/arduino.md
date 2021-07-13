@@ -4,6 +4,41 @@
 - [Tutoriels](https://www.arduino.cc/en/Tutorial/HomePage)
 - [Documentation](https://www.arduino.cc/reference/en/)
 
+## LED
+
+```c
+int ledPinDay = 3;
+int ledPinNight = 4;
+int btnPin = 2;
+bool day = false;
+
+void lightALed(int ledPin, bool isOn)
+{
+    if (isOn) {
+        digitalWrite(ledPin, HIGH);
+    } else {
+        digitalWrite(ledPin, LOW);
+    }
+}
+
+void setup()
+{
+    pinMode(ledPinDay, OUTPUT);
+    pinMode(ledPinNight, OUTPUT);
+    pinMode(btnPin, INPUT);
+}
+
+void loop()
+{
+    day = digitalRead(btnPin);
+
+    lightALed(ledPinDay, day);
+    lightALed(ledPinNight, !day);
+
+    delay(100); // Advice to help reading data
+}
+```
+
 ## Infrared Remote
 
 - [tuto drone bot workshop](https://dronebotworkshop.com/using-ir-remote-controls-with-arduino/)
@@ -56,3 +91,7 @@ void loop() {
 
 }
 ```
+
+## Radio Frequency remote control
+
+- [RF remote control using Arduino and 433mhz ASK module](https://mechatrofice.com/arduino/rf-remote-controller-using-arduino-and-ask-module)
