@@ -19,3 +19,30 @@ Consulter la doc de Rust :
 rustup doc --book
 ```
 
+## Cargo
+
+Créer un projet :
+
+```bash
+cargo new projectNameHere
+```
+
+Lancer un projet :
+
+```bash
+cargo run
+```
+
+Récupérer les dépendances :
+
+```bash
+cargo build
+```
+
+## Compiler
+
+Compiler un fichier simple :
+
+```bash
+rustc main.rs
+```
