@@ -4,6 +4,10 @@
 - [Tutoriels](https://www.arduino.cc/en/Tutorial/HomePage)
 - [Documentation](https://www.arduino.cc/reference/en/)
 
+## Composants
+
+Microcontroller : [atmega328p](http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
+
 ## LED
 
 ```c
