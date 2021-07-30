@@ -83,3 +83,6 @@ From the booted microSD OS
 1. Extract the image file if it is archived
 1. Flash the image file to eMMC using dd if=new-pinephone-image.img of=/dev/mmcblkX bs=1M status=progress conv=fsync where X is the number label of the eMMC (of the disk, not the partition!). Use the command lsblk to check your devices: typically with the current kernel the SD card is /dev/mmcblk0 and the eMMC is /dev/mmcblk2 but as always with dd be extremely cautious to get the devices correct.
 1. Turn off phone, remove SD card and then turn on the phone.
+
+## [Multi-distro image](https://xnux.eu/p-boot-demo/)
+

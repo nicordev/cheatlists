@@ -59,3 +59,11 @@ pm.sendRequest({
     pm.collectionVariables.set("token variable name here", response.json().tokenKeyHere);
 });
 ```
+
+## Test scripts
+
+```js
+function getResponseBody() {
+    return pm.response.json()
+}
+```
