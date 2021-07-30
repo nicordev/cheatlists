@@ -14,3 +14,7 @@ Mesure de la résistance :
 - [robot maker](https://www.robot-maker.com/shop/blog/27_Connecter-capteur-Infrarouge-HCSR501.html)
 
 ![image montage](image/HCSR501_picture.jpg)
+
+## Génération de courant
+
+- [alternateurs, dynamo](http://bigtoys.free.fr/ALTERNATEUR%20-%20DYNAMO.htm)
