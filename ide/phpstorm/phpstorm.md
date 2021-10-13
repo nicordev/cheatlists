@@ -20,6 +20,7 @@ https://enrolment.supinfo.com/NewCandidate.aspx?lang=fr
 * `ctl x2` ouvre un prompt qui sauvegarde les commandes saisies.
 * `shift + Echap` ferme la fenêtre du bas (terminal, debug...).
 * `alt + shift + click gauche + glisser la souris` ajoute des curseurs.
+- `ctl + alt + enter` déroule un fichier xml
 
 ## Inspection du code
 

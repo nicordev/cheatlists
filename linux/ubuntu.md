@@ -45,7 +45,7 @@ Liste réalisée en partie à partir [du cours de mateo21 sur OpenClassrooms](ht
     sudo echo "#!/bin/sh \
     xdotool key End" > /etc/acpi/power.sh && sudo chmod +x /etc/acpi/power.sh
     ```
-    
+
 1. `sudo acpid restart`
 1. Ajouter à la fin de `/etc/pam.d/common-session` :
 
@@ -65,7 +65,7 @@ Liste réalisée en partie à partir [du cours de mateo21 sur OpenClassrooms](ht
         * `$` Normal
         * `#` Super utilisateur (pseudonyme *root*)
 - Exécuter une commande :
-    
+
     ```bash
     nomCommande valeur --nomOption valeur -p valeur -- valeur
     ```
@@ -223,9 +223,15 @@ MOT_CLE_DE_FIN
 ## Flush DNS cache
 
 * `sudo systemd-resolve --flush-caches` flush le cache.
+    * `sudo systemctl restart systemd-resolved` redémarre le service et vide le cache au passage.
     * `sudo systemd-resolve --statistics` montre que le cache a été vidé.
 
 ## Packages PPA
 
 - [Packages Ubuntu](https://packages.ubuntu.com/)
 - [ondrej php](https://launchpad.net/~ondrej/+archive/ubuntu/php/+packages?field.name_filter=xdebug&field.status_filter=published&field.series_filter=)
+
+## cgroups
+
+- [doc ubuntu](https://guide.ubuntu-fr.org/server/cgroups.html)
+- [tuto](https://zarak.fr/linux/exploration-des-cgroups/)

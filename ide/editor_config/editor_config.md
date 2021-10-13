@@ -1,0 +1,3 @@
+# EditorConfig
+
+https://editorconfig.org/

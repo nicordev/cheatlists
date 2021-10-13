@@ -82,6 +82,15 @@ CREATE EXTENSION IF NOT EXISTS unaccent
 * Types custom
     * `DROP TYPE nom_type cascade;` supprime le type.
     * `CREATE TYPE nom_énumération AS ENUM ('valeur1', 'valeur2', 'valeur3');` créé une nouvelle énumération.
+    - list enumerations:
+
+        ```sql
+        select pg_type.typname as enum_type,
+        pg_enum.enumlabel as enum_label
+        from pg_type
+        join pg_enum on pg_enum.enumtypid = pg_type.oid
+        ;
+        ```
 
 Déconnecter toutes les connexions sauf celle actuelle :
 
