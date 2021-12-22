@@ -1,5 +1,9 @@
 # VSCodium
 
+## Astuces
+
+- tab switching focus on/off: `ctl + m`
+
 ## Installation
 
 [VSCodium](https://vscodium.com/)

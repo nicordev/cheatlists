@@ -2,6 +2,19 @@
 
 [doc](https://curl.haxx.se/docs/manual.html)
 
+## Paramètres
+
+- `-s --silent` hide the progress bar
+- `-o, --output <file>` write output in a file
+- `-w, --write-out <format>` write information about the request
+
+    Get status code:
+
+    ```bash
+    curl --write-out '%{http_code}'
+    curl -w '%{http_code}'
+    ```
+
 ## Requêtes GET
 
 * `curl http://mon.super.site`
