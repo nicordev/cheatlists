@@ -2,6 +2,12 @@
 
 ## Pre-request scripts
 
+Variables:
+```js
+pm.variables.set('product_id', 10022)
+console.log(pm.variables.get('product_id'))
+```
+
 Basic authentication:
 
 ```js

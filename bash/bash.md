@@ -522,4 +522,6 @@ Boucles
 
 ## Scope
 
-When you use a command substitution (i.e., the $(...) construct), you are creating a subshell. Subshells inherit variables from their parent shells, but this only works one way: A subshell cannot modify the environment of its parent shell. [StackOverflow](https://stackoverflow.com/questions/23564995/how-to-modify-a-global-variable-within-a-function-in-bash)
+> When you use a command substitution (i.e., the $(...) construct), you are creating a subshell. Subshells inherit variables from their parent shells, but this only works one way: A subshell cannot modify the environment of its parent shell.
+>
+> [StackOverflow](https://stackoverflow.com/questions/23564995/how-to-modify-a-global-variable-within-a-function-in-bash)
