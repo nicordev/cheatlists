@@ -15,3 +15,14 @@ list disks
 fdisk -l
 ```
 
+## troubleshooting
+
+- ["Probing edd" hangs](https://unix.stackexchange.com/questions/272701/liveusb-stuck-after-probing-edd-during-boot)
+
+    I had to add 
+
+    ```
+    intel_pstate=no_hwp
+    ``` 
+    
+    to the kernel parameters. I did it by pressing [Tab] in the bootloader.
