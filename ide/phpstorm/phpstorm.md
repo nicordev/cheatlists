@@ -32,3 +32,9 @@ https://enrolment.supinfo.com/NewCandidate.aspx?lang=fr
 
 - *Settings > Language & Frameworks > PHP > Servers* bidouiller le mapping jusqu'à ce que ça fonctionne.
 - `ctl + shift + F8` affiche les points d'arrêts.
+
+## behaviour
+
+[original post](https://intellij-support.jetbrains.com/hc/en-us/community/posts/207074075/comments/360001817819)
+
+For those who would want simple completion (no deletion) upon hitting tab - you need to change `Choose Lookup Item` and `Choose Lookup Item and Replace` in Settings | Keymap.

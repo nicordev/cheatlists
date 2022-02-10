@@ -280,6 +280,7 @@ git merge --squash target_branch_name
 Pour regrouper (squash) les 3 derniers commits en un seul dans la branche actuelle :
 1. ```bash
     git rebase -i HEAD~3
+    git rebase --interactive HEAD~3
     ```
 1. remplacer `pick` par `squash` pour les 2 plus anciens commits
 1. enregistrer & quitter
