@@ -21,6 +21,7 @@ https://enrolment.supinfo.com/NewCandidate.aspx?lang=fr
 * `shift + Echap` ferme la fenêtre du bas (terminal, debug...).
 * `alt + shift + click gauche + glisser la souris` ajoute des curseurs.
 - `ctl + alt + enter` déroule un fichier xml
+- `ctl + tab` sélectionner le fichier précédemment utilisé, rester appuyer sur `ctl` pour sélectionner un fichier précédemment ouvert
 
 ## Inspection du code
 

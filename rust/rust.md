@@ -4,6 +4,7 @@
 - [Rust programming language book](https://doc.rust-lang.org/book/title-page.html)
 - [Rust embedded book](https://docs.rust-embedded.org/book/intro/index.html)
 - [Cargo book](https://doc.rust-lang.org/cargo/index.html)
+- [Rust to wasm](https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm)
 
 ## The Rust toolchain installer
 

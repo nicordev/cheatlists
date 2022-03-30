@@ -81,6 +81,11 @@ Fichier `.gitignore` Fichier à créer à la racine du projet. Il doit contenir 
     nomDossier/monFichierA.exclure
     nomFichierA.exclure
     ```
+- Pour éviter tout le contenu d'un dossier, placer dans le dossier un fichier `.gitignore` contenant :
+
+    ```
+    *
+    ```
 
 Ignorer des fichiers/dossiers globalement :
 1. `git config --get core.excludesfile` voir où se situe le fichier global (par exemple `~/.gitignore_global`)
