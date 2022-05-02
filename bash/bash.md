@@ -16,6 +16,7 @@ Dans le fichier `.bashrc` ou un de ses fichiers source :
 ```bash
 nomScript_options=$(nomCommandePourRécupérerLesOptionsPossibles)
 complete -W "${nomScript_options}" -o bashdefault -o default 'nomScript'
+unset nomScript_options
 ```
 
 ## Utilisation
