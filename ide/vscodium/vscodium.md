@@ -136,3 +136,25 @@ workbench.action.terminal.toggleTerminal
 > [FreeCodeCamp](https://www.freecodecamp.org/news/definitive-guide-to-snippets-visual-studio-code/)
 
 Emplacement des fichiers contenant les snippets : `~/.config/VSCodium/User/snippets/nomLangage.json`
+
+## Search and replace
+
+Capturing groups `$1`
+
+find:
+```
+\[([a-z]+)\]
+```
+
+replace
+```
+'$1'
+```
+
+```
+[hello]
+```
+
+```
+'hello'
+```
