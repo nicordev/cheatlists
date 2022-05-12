@@ -291,3 +291,8 @@ Pour regrouper (squash) les 3 derniers commits en un seul dans la branche actuel
 1. enregistrer & quitter
 1. entrer le message du commit restant
 1. enregistrer & quitter
+
+A creuser, à priori ça aide lorsque quelqu'un a force push:
+```
+git rebase --onto <new-branch-to-move-to> <last-change-that-should-NOT-move> <last-change-to-move>
+```
