@@ -25,7 +25,7 @@ sed [option] 'action1;action2;action3' [fileName]
 - `targets` lignes ciblées :
     - `1` cibler la première ligne
     - `$` cibler la dernière ligne
-    - `lineNumber1;lineNumber2` cibler plusieurs lignes
+    - `lineNumber1; lineNumber2` cibler plusieurs lignes
     - `lineNumberStart,lineNumberEnd` cibler plusieurs lignes consécutives
     - `/hint1\|hint2/` cibler les lignes comportant les chaînes `hint1` ou `hint2` :
         - *Penser à échapper le pipe : `\|`*
@@ -59,6 +59,7 @@ sed [option] 'action1;action2;action3' [fileName]
     - `p` afficher :
         - uniquement les lignes ciblées avec l'option `-n`
         - tout le contenu avec les lignes ciblées en double
+    - `q` arrêter le script
     - `s` remplacer
 
 - `pattern` : une regex

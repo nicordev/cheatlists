@@ -1,8 +1,10 @@
 # PhpStorm
 
-## Pour n'importe quoi : Double shift > Actions
+Pour n'importe quoi : Double shift > Actions
 
 Afficher le menu View : `view`
+
+Chercher dans le panneau de gauche (arborescence fichiers): shift puis entrer le début d'un fichier/dossier
 
 ## Obtenir un compte
 

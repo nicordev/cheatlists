@@ -11,19 +11,18 @@
     ```
 
     Formatter la sortie de la commande en utilisant un template *go* :
-    
+
     ```bash
     docker inspect --format='{{template go ici}}' nomOuIdObjetDocker
     ```
 
 - Construire une image :
-
     ```bash
     docker build -t nomImage cheminVers/DossierContenant/Dockerfile
     ```
 
     En spécifiant un dockerfile particulier :
-    
+
     ```bash
     docker build -t nomImage -f nomFichierDockerfileSouhaité cheminVersLeDossierContenantLeDockerfile
     ```
@@ -67,7 +66,7 @@
         ```bash
         docker system prune --volumes
         ```
-      
+
     - Cibler certains éléments :
 
         ```bash
@@ -314,10 +313,10 @@ docker network nomCommande
         VOLUME /app/logs
 
         CMD npm run start
-        ``` 
-    
+        ```
+
     > Chaque instruction RUN, ADD etc. constitue une couche pour docker correspondant chacune à un step qu'on voit lors d'un build.
-    
+
 2. Créer un fichier `.dockerignore` pour limiter la taille de l'image
 
     Exemple :

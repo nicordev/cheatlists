@@ -284,6 +284,8 @@ class BankAccount {
 console.log(BankAccount.getRandomRate());
 ```
 
+> If a class method is invoked directly from `DOMElement.addEventListener`, then `this` will refer to the DOM element, not the class.
+
 ## Tableaux
 
 * [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array)

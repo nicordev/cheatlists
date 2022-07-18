@@ -38,5 +38,6 @@
     },
     "cSpell.language": "en,fr",
     "workbench.settings.enableNaturalLanguageSearch": false,
-    "editor.suggest.showWords": false
+    "editor.suggest.showWords": false,
+    "terminal.integrated.allowChords": false // to use terminal shortcuts instead of codium ctl + k shortcuts
 }

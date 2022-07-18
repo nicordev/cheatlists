@@ -114,6 +114,14 @@ Utiliser une branche en particulier :
     composer update
     ```
 
+## Authentication
+
+store github token
+
+```
+composer config --global --auth github-oauth.github.com tokenHere
+```
+
 ## Versions
 
 > [Documentation](https://getcomposer.org/doc/articles/versions.md#tilde-version-range-)
